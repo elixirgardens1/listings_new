@@ -1,0 +1,20 @@
+* Viewing Aggregates/Aggregates | Amazon returns an Undefined index error: incs\php_functions.php on line 103
+  Nb. This error doesn't occur on Aggregates/Rock Salt | Amazon
+
+* Viewing Aggregates/Aggregates | Prime returns several Undefined index errors:
+  - total_weight (views\listings.php on line 59)
+  - pricing_suggestion_20perc (line 146)
+  - cpu_to_cust (line 155)
+  - cls_colour_profit (line 159)
+  - profit (line 159)
+  - profit_perc (line 161)
+  - total_product_cost (line 168)
+  - postage (line 169)
+  - vat (line 170)
+  - fees (line 172)
+
+* Errors page returns an Undefined offset error: views\errors.php on line 182
+
+* Changes page returns an Undefined offset error: views\changes.php on line 107
+
+

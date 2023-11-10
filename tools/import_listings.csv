@@ -1,0 +1,3 @@
+product_name,packaging_band,lowest_variation_weight,variation,prev_price,new_price,notes,comp1,comp2,sku,sku_add
+Blue Slate x 1kg Sample,8,0.5,1,10,11,Sample Test,8.99<$>400968385773<$>1,15.99<$>383838538646<$>3,testsku1<$>sestsku1,2
+Limestone x 1kg Sample,10,0.6,1,11,12,Samples Test,9.99<$>401625947605<$>2,15.99<$>383838538646<$>4,tsetsku<$>skutest,2
