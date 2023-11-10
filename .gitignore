@@ -1,0 +1,12 @@
+.aliases
+*.db3
+# .gitignore
+# index.php
+# listings_issues.txt
+# dbase/
+# tools/
+# sort_by_profit.php
+# convert_db_format/
+# js/
+# incs/
+# views/
