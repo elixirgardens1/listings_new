@@ -959,7 +959,8 @@ CSV import can be used to add new platform listings or replace existing listings
 
 <div style="clear:left;">
     Comps, IDs and Types:<br>
-    The comp fields (comp1, comp2, comp3) require 3 values - price, link id and type (separated by '-').<br>
+    The comp fields (comp1, comp2, comp3) require 3 values - price, link id and type (separated by '<$>').<br>
+    <!-- The comp fields (comp1, comp2, comp3) require 3 values - price, link id and type (separated by '-').<br> -->
     Price must be between £1–£1000 and either no pence or 1 to 2 decimal places.<br>
     The link id format depends on the platform. eBay is a 12 digit number. Amazon/Prime is a mixture of 10 uppercase letters/digits, beginning with B.<br>
     Type can be 1 of 4 values: ➤ 1 (Like 4 Like), ➤ 2 (Cheapest), ➤ 3 (Most popular) ➤ 4 (Out of Stock). <b><i>*** Type names cannot be used. Numbers only ***</i></b>

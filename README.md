@@ -7,6 +7,7 @@
 * [Competition Columns](#competition-columns)
 * [URLs Column](#urls-column)
 * [VAT Rates](#vat-rates)
+* [Platform Fees](#platform-fees)
 
 ### Main category drop-down
 
@@ -185,11 +186,14 @@ and `js/js_form_fld_calculations.php`:
 ![Image of vat_calc_js_form_fld_calculations](docs/img/vat_calc_js_form_fld_calculations.png)
 
 
+### Platform Fees
 
+Platform fees are stored in the `config_fees` table ('listings.db3').  
 
+![Image of platform_fees table](docs/img/platform_fees_-_listings.db3.png)
 
+The code that sets the fees_val is located in `sort_by_profit.php`:
 
-
-
+![Image of sort_by_profit_fees_val](docs/img/sort_by_profit_fees_val.png)
 
 

@@ -39,7 +39,7 @@ if( isset($_POST['fix_errors_view_cat']) || isset($_POST['fix_errors_view_platfo
 
 // require_once 'database_paths.php';
 
-if ($live = true) {
+if ($live = false) {
 	require_once 'C:/inetpub/wwwroot/database_paths.php';
 	$listings_db_path = 'dbase/listings_NEW.db3';
 }

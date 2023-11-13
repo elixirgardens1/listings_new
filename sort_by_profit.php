@@ -281,11 +281,6 @@ elseif( 'a' == $platform || 'p' == $platform ){ $pricing_suggestion_val = $confi
 // elseif( 'a' == $platform || 'p' == $platform ){ $pricing_suggestion_val = $sort_by_profit_pricing_suggestion['high']; }
 
 $fees_val = 'e' == $platform ? $config_fees['platform_fees'][1] : $config_fees['platform_fees'][2];
-// $fees_val = 'e' == $platform ? $sort_by_profit_fees['low'] : $sort_by_profit_fees['high'];
-
-
-// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($lookup_courier_names); echo '</pre>'; die();
-
 
 $profit_results = [];
 foreach( $listings as $i => $rec ){
