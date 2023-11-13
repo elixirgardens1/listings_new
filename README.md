@@ -188,7 +188,7 @@ and `js/js_form_fld_calculations.php`:
 
 ### Platform Fees
 
-Platform fees are stored in the `config_fees` table ('listings.db3').  
+Platform fees are stored in the `config_fees@listings.db3`.  
 
 ![Image of platform_fees table](docs/img/platform_fees_-_listings.db3.png)
 
