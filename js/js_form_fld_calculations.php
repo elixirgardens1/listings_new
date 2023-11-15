@@ -1,5 +1,8 @@
 <?php
 $files_used[] = 'js/js_form_fld_calculations.php'; //DEBUG
+
+// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($session['pp1']); echo '</pre>'; die();
+
 ?>
 <script>
 // *** js_form_fld_calculations ***
@@ -75,6 +78,7 @@ $(function() {
 	var cpu_to_cust;
 	var vat;
 	var fees;
+	var pp1;
 	var perc_advertising;
 	var packaging_band;
 	var weight;
@@ -248,11 +252,14 @@ function fnc_calc_new_price(rowid,element_class_name){
 		$('tr[data-id_lkup="'+rowid+'"] .fees').html( fees.toFixed(2) );
 		<?php endif; ?>
 		
+		pp1 = new_price * <?= $session['pp1_perc'] ?> / 100;
+		$('tr[data-id_lkup="'+rowid+'"] .pp1').html(pp1.toFixed(2))
+		
 		total_product_cost = fnc_total_product_cost(rowid);
 
 		postage = fnc_postage(rowid);
 
-		profit = new_price - total_product_cost - postage - vat - fees;
+		profit = new_price - total_product_cost - postage - vat - fees - pp1;
 
 		// Deduct 30 pence from profit ebay
 		<?php if( 'e' == $platform_post ): ?>
@@ -262,7 +269,8 @@ function fnc_calc_new_price(rowid,element_class_name){
 		$('tr[data-id_lkup="'+rowid+'"] .profit').html(profit.toFixed(2) );
 
 		// Modify "Profit (£)" cell colour (green/red)
-		if( profit < 1.25 ){ $('tr[data-id_lkup="'+rowid+'"] .profit').removeClass().addClass('profit red-bg'); }
+		if( profit < 1 ){ $('tr[data-id_lkup="'+rowid+'"] .profit').removeClass().addClass('profit red-bg'); }
+		// if( profit < 1.25 ){ $('tr[data-id_lkup="'+rowid+'"] .profit').removeClass().addClass('profit red-bg'); }
 		else{ $('tr[data-id_lkup="'+rowid+'"] .profit').removeClass().addClass('profit grn'); }
 
 		profit_perc = (profit / new_price * 100);
@@ -270,6 +278,22 @@ function fnc_calc_new_price(rowid,element_class_name){
 
 		// Modify "Profit %" cell colour (green/red)
 		switch (true) {
+		    case profit_perc < 4:
+                $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc red-bg');
+                break;
+            case profit_perc < 7:
+                $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc orange');
+                break;
+            case profit_perc < 10:
+                $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc yellow');
+                break;
+            case profit_perc < 15:
+                $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc grn');
+                break;
+            default:
+            	$('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc blue');
+		    
+		    /*
 		    case profit_perc < 15:
                 $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc red-bg');
                 break;
@@ -282,8 +306,10 @@ function fnc_calc_new_price(rowid,element_class_name){
             case profit_perc > 29:
                 $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc blue');
                 break;
+            */
         }
 
+        /*
         // Modify "Total Product Cost (£)" cell colour (green/red)
         switch (true) {
         	case total_product_cost / new_price < 0.15:
@@ -315,6 +341,7 @@ function fnc_calc_new_price(rowid,element_class_name){
         		$('tr[data-id_lkup="'+rowid+'"] .postage').removeClass().addClass('postage red-bg');
         		break;
         }
+        */
 
 
 
@@ -327,7 +354,8 @@ function fnc_calc_new_price(rowid,element_class_name){
 			$('tr[data-id_lkup="'+rowid+'"] .profit_10off_perc').html(profit_10off_perc.toFixed(2) );
 
 			// modify cell colour (green/red)
-			if( profit_10off < 1.25 ){ $('tr[data-id_lkup="'+rowid+'"] .profit_10off').removeClass().addClass('profit_10off red'); }
+			if( profit_10off < 1 ){ $('tr[data-id_lkup="'+rowid+'"] .profit_10off').removeClass().addClass('profit_10off red'); }
+			// if( profit_10off < 1.25 ){ $('tr[data-id_lkup="'+rowid+'"] .profit_10off').removeClass().addClass('profit_10off red'); }
 			else{ $('tr[data-id_lkup="'+rowid+'"] .profit_10off').removeClass().addClass('profit_10off grn'); }
 
 			// modify cell colour (green/red)

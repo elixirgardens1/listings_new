@@ -8,6 +8,8 @@ function calculate_flds_fnc($params)
 	$vat_rate = $params['vat_rate'];
 	// $lookup_platform  = $params['lookup_platform'];
 	
+	// $args['pp1_perc']
+	
 	$total_weight = $args['variation'] * $args['lowest_variation_weight'] + $args['lookup_postage_bands'][$args['packaging_band']]['max_weight'];
 	
 	$lookup_couriers = 'p' != $args['platform'] ? 'lookup_couriers' : 'lookup_prime_couriers';
@@ -139,14 +141,35 @@ function calculate_flds_fnc($params)
 	
 	$id_skus_flip = array_flip($id_skus);
 	
+	$pp1 = $new_price_calc * $args['pp1_perc']/100;
+	
 	$fees = 'w' != $args['platform'] ? $new_price_calc * $args['fees_val'] + $new_price_calc * ($args['perc_advertising']/100) : 0; //MOD
-	@($profit = $new_price_calc - $total_product_cost - $postage - $vat - $fees);
+	@($profit = $new_price_calc - $total_product_cost - $postage - $vat - $fees - $pp1);
 
 	@($profit_perc = $profit / $new_price_calc * 100);
 
-	$cls_colour_profit = $profit < 1.25 ? ' red-bg' : ' grn';
+	$cls_colour_profit = $profit < 1 ? ' red-bg' : ' grn';
+	// $cls_colour_profit = $profit < 1.25 ? ' red-bg' : ' grn';
+
+	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($pp1_perc); echo '</pre>'; die();
 
 	switch (true) {
+        case $profit_perc < 4:
+            $cls_colour_profit_perc = ' red-bg';
+            break;
+        case $profit_perc < 7:
+            $cls_colour_profit_perc = ' orange';
+            break;
+        case $profit_perc < 10:
+            $cls_colour_profit_perc = ' yellow';
+            break;
+        case $profit_perc < 15:
+            $cls_colour_profit_perc = ' grn';
+            break;
+        default:
+        	$cls_colour_profit_perc = ' blue';
+        
+        /*
         case $profit_perc < 15:
             $cls_colour_profit_perc = ' red-bg';
             break;
@@ -162,8 +185,12 @@ function calculate_flds_fnc($params)
         case $profit_perc > 29:
             $cls_colour_profit_perc = ' blue';
             break;
+        */
     }
+    $cls_color_total_product_cost = '';
+    $cls_color_postage = '';
     
+    /*
     switch (true) {
     	case $total_product_cost / $new_price_calc < 0.15:
     		$cls_color_total_product_cost = ' blue';
@@ -193,7 +220,7 @@ function calculate_flds_fnc($params)
     		$cls_color_postage = ' red-bg';
     		break;
     }
-    
+    */
     
 
 	$cls_colour_profit_10off = '';
@@ -203,7 +230,8 @@ function calculate_flds_fnc($params)
 		// Calculate fields
 		@($profit_10off = $new_price_calc * 0.9 - $new_price_calc * 0.9 / 6 - $total_product_cost - $postage);
 		@($profit_10off_perc = $profit_10off / ($new_price_calc * 0.9) * 100);
-		$cls_colour_profit_10off = $profit_10off < 1.25 ? ' red-bg' : ' grn';
+		$cls_colour_profit_10off = $profit_10off < 1 ? ' red-bg' : ' grn';
+		// $cls_colour_profit_10off = $profit_10off < 1.25 ? ' red-bg' : ' grn';
 		$cls_colour_profit_10off_perc = $profit_10off_perc < 20 ? ' red-bg' : ' grn';
 
 		// Round calculations
@@ -222,7 +250,9 @@ function calculate_flds_fnc($params)
 	$profit = number_format((float)$profit, 2, '.', '');
 
 	$profit_perc = number_format((float)$profit_perc, 2, '.', '');
-
+	
+	$pp1 = number_format($pp1, 2, '.', '');
+	
 	$return_array = [
 		'total_weight'                 => $total_weight,
 		'new_price'                    => $new_price,
@@ -242,6 +272,8 @@ function calculate_flds_fnc($params)
 		'profit_perc'                  => $profit_perc,
 		'profit_10off'                 => '',
 		'profit_10off_perc'            => '',
+		
+		'pp1'                          => $pp1,
 
 		'cls_colour_profit'            => $cls_colour_profit,
 		'cls_colour_profit_perc'       => $cls_colour_profit_perc,

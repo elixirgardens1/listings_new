@@ -174,6 +174,11 @@ foreach( $session['listings'] as $id_lkup => $rec ){
 		<?php if( 'w' != $platform_post ): ?>
 		<td class="fees"><?= $rec['fees'] ?></td><!-- CALCULATION -->
 		<?php endif; ?>
+		
+		<td class="pp1"><?= $rec['pp1'] ?></td><!-- CALCULATION -->
+		<?php $rec['pp2'] = 0; ?>
+		<td class="pp2"><?= $rec['pp2'] ?></td><!-- CALCULATION -->
+		
 		<!-- CHECKBOX -->
 		<td class='tick fvis-status-generated'>
 			<input id='<?= $id_lkup ?>' class="sudo_cbx" type='checkbox' name='export_remove[]' value='<?= $id_lkup ?>'>

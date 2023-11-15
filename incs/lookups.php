@@ -33,7 +33,12 @@ $config_fees = $results->fetchAll(PDO::FETCH_ASSOC);
 
 $tmp = [];
 foreach( $config_fees as $rec ){
-	$tmp[$rec['type'] ][$rec['id'] ] = $rec['value'];
+	if ('pp1_perc' != $rec['type']) {
+		$tmp[$rec['type'] ][$rec['id'] ] = $rec['value'];
+	}
+	// else {
+	// 	$pp1_perc = $rec['value'];
+	// }
 }
 $config_fees = $tmp;
 

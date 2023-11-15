@@ -46,8 +46,8 @@ NOTE: New listings_{PLATFORM} tables (eg. listings_floorworld, listings_onbuy et
 
 // This creates database if not exist
 // unlink('listings_NEW.db3');
-// $db = new PDO('sqlite:../dbase/listings_NEW2.db3');
-$db = new PDO('sqlite:../dbase/listings_NEW.db3');
+// $db = new PDO('sqlite:../dbase/listings_NEW.db3');
+$db = new PDO('sqlite:listings_NEW.db3');
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/database_paths.php';
 $db_orig = new PDO('sqlite:'.$listings_db_path);
@@ -84,6 +84,7 @@ $sql_create_tbls = "
   INSERT INTO `config_fees` VALUES ('projection_20perc','2.15828','2','');
   INSERT INTO `config_fees` VALUES ('platform_fees','0.14','1','');
   INSERT INTO `config_fees` VALUES ('platform_fees','0.17','2','');
+  INSERT INTO `config_fees` VALUES ('pp1_perc','17','','');
   
   CREATE TABLE `deletes` (
     `id` INT,
@@ -129,6 +130,7 @@ $sql_create_tbls = "
     `packaging_band` INT,
     `lowest_variation_weight` INT,
     `variation` INT,
+    `pp2` REAL,
     `remove` INT,
     `timestamp` INT
   );
@@ -237,7 +239,7 @@ $sql_create_tbls = "
     `cat` TEXT,
     `cat_id` TEXT PRIMARY KEY,
     `product_cat` TEXT,
-    `zero_vat` INT,
+    `vat_rate` INT,
     `timestamp` INT
   );
   CREATE TABLE `multi_cpu` (
@@ -487,6 +489,10 @@ foreach( $tbls as $tbl ){
       'lookup_prod_cats' == $tbl ||
       'listings' == $tbl
     ) {$que_marks = $que_marks.',?';}
+      
+    if ('listings' == $tbl) {
+      $que_marks = $que_marks.',?';
+    }
     
     $sql = "INSERT INTO `$tbl` VALUES (?$que_marks)";
     
@@ -524,6 +530,7 @@ foreach( $tbls as $tbl ){
           'packaging_band'          => $rec['packaging_band'],
           'lowest_variation_weight' => $rec['lowest_variation_weight'],
           'variation'               => $rec['variation'],
+          'pp2'                     => '0.00',
           'remove'                  => $rec['remove'],
           'timestamp'               => $rec['timestamp']
         ];
@@ -533,7 +540,7 @@ foreach( $tbls as $tbl ){
       }
       
       if ('lookup_prod_cats' == $tbl) {
-        $zero_vat = NULL;
+        $vat_rate = 20;
         
         if (
           'a11'  == $rec['cat_id'] ||
@@ -541,13 +548,13 @@ foreach( $tbls as $tbl ){
           'a164' == $rec['cat_id'] ||
           'a224' == $rec['cat_id'] ||
           'a282' == $rec['cat_id']
-        ) {$zero_vat = 1;}
+        ) {$vat_rate = 0;}
         
         $rec = [
           'cat'         => $rec['cat'],
           'cat_id'      => $rec['cat_id'],
           'product_cat' => $rec['product_cat'],
-          'zero_vat'    => $zero_vat,
+          'vat_rate'    => $vat_rate,
           'timestamp'   => $rec['timestamp']
         ];
       }
@@ -584,6 +591,9 @@ $db->commit();
 
 
 $sql = "DELETE FROM `lookup_couriers_plus_fuel` WHERE `name` = '- PLEASE SELECT -'";
+$db->query($sql);
+
+$sql = "DELETE FROM `user` WHERE `id` > 9";
 $db->query($sql);
 
 $stmt = $db->prepare("INSERT INTO `lookup_couriers_plus_fuel` VALUES (?,?,?,?,?,?)");

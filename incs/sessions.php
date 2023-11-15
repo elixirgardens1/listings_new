@@ -250,3 +250,8 @@ foreach ($session['lookup_cats'] as $key => $val) {
 	}
 }
 $session['lookup_prod_cats'] = $tmp;
+
+$sql = "SELECT `value` FROM `config_fees` WHERE `type` = 'pp1_perc'";
+$results = $db_listings->query($sql);
+
+$session['pp1_perc'] = $results->fetch(PDO::FETCH_COLUMN);

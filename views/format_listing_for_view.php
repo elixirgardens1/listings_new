@@ -41,6 +41,8 @@ foreach( $session['listings'] as $id_lkup => $recs ){
 	$lvws[ $recs['group_'] ]["{$recs['lowest_variation_weight']}"] = $recs['lowest_variation_weight'];
 
 	$args = [
+		'pp1_perc'                => $session['pp1_perc'],
+		
 		'id'                      => $id_lkup,
 		'cost_per_unit'           => $recs['cost_per_unit'],
 		'variation'               => $recs['variation'],
@@ -98,6 +100,9 @@ foreach( $session['listings'] as $id_lkup => $recs ){
 	$session['listings'][$id_lkup]['cpu_to_cust']                  = $calc_vals['cpu_to_cust'];
 	$session['listings'][$id_lkup]['vat']                          = $calc_vals['vat'];
 	$session['listings'][$id_lkup]['fees']                         = $calc_vals['fees'];
+	
+	$session['listings'][$id_lkup]['pp1']                          = $calc_vals['pp1'];
+	
 	$session['listings'][$id_lkup]['profit']                       = $calc_vals['profit'];
 	$session['listings'][$id_lkup]['profit_perc']                  = $calc_vals['profit_perc'];
 	$session['listings'][$id_lkup]['profit_10off']                 = $calc_vals['profit_10off'];

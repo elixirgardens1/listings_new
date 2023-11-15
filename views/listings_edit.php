@@ -150,6 +150,10 @@ foreach( $session['listings'] as $id_lkup => $rec ){ ?>
 		<?php if( 'w' != $platform_post ){  ?>
 			<td class="fees"><?= $rec['fees'] ?></td><!-- CALCULATION -->
 		<?php } ?>
+		
+		<td class="pp1"><?= $rec['pp1'] ?></td><!-- CALCULATION -->
+		<?php $rec['pp2'] = 0; ?>
+		<td class="pp2"><?= $rec['pp2'] ?></td><!-- CALCULATION -->
 	</tr>
 <?php } ?>
 </table>

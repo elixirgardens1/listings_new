@@ -67,7 +67,7 @@ Table Columns:
 			
 			<th class="sticky comp3 <?= $bg_colour ?>">OURS</th>
 			<th class="sticky prev_price <?= $bg_colour ?>">Previous Price (&pound;)</th>
-			<th class="sticky calc pricing_suggestion_20perc">Pricing Suggestion 20% (&pound;)</th>
+			<th class="sticky calc pricing_suggestion_20perc">Pricing Suggestion 10% (&pound;)</th>
 			
 			<?php if( 'a' == $platform_post ){ ?><th class="sticky calc new_price">Ebay Price (&pound;)</th><?php } ?>
 			
@@ -95,6 +95,9 @@ Table Columns:
 			<?php if( 'w' != $platform_post ){ ?>
 			<th class="sticky calc fees">Fees (&pound;)</th>
 			<?php } ?>
+			
+			<th class="sticky calc fees">PP1 (&pound;)</th>
+			<th class="sticky calc fees">PP2 (&pound;)</th>
 			
 			<?php if( !isset($_POST['group_edit']) && !isset($_POST['add_to_group']) ){ ?>
 			<th class="sticky export_remove <?= $bg_colour ?>">
