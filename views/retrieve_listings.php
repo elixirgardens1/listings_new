@@ -226,6 +226,7 @@ foreach( $listings as $rec ){
 	}
 	
 	$session['listings'][$rec['id_lkup']] = [
+	   'pp2'                     => $rec['pp2'],
 	   'key'                     => $rec['key'],
 	   'group_'                  => $rec['group_'],
 	   'packing'                 => $rec['packing'],

@@ -42,6 +42,7 @@ foreach( $session['listings'] as $id_lkup => $recs ){
 
 	$args = [
 		'pp1_perc'                => $session['pp1_perc'],
+		'pp2'                     => $recs['pp2'],
 		
 		'id'                      => $id_lkup,
 		'cost_per_unit'           => $recs['cost_per_unit'],
@@ -102,6 +103,7 @@ foreach( $session['listings'] as $id_lkup => $recs ){
 	$session['listings'][$id_lkup]['fees']                         = $calc_vals['fees'];
 	
 	$session['listings'][$id_lkup]['pp1']                          = $calc_vals['pp1'];
+	$session['listings'][$id_lkup]['pp2']                          = $calc_vals['pp2'];
 	
 	$session['listings'][$id_lkup]['profit']                       = $calc_vals['profit'];
 	$session['listings'][$id_lkup]['profit_perc']                  = $calc_vals['profit_perc'];

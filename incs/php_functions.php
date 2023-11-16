@@ -3,6 +3,8 @@ $files_used[] = 'incs/php_functions.php'; //DEBUG
 
 function calculate_flds_fnc($params)
 {
+	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($params['args']); echo '</pre>';
+	
 	$args     = $params['args'];
 	$id_skus  = $params['id_skus'];
 	$vat_rate = $params['vat_rate'];
@@ -20,6 +22,7 @@ function calculate_flds_fnc($params)
 	
 	//DEBUG
 	$allowed = [
+		'pp2',
 		'id',
 		'cost_per_unit',
 		'variation',
@@ -131,8 +134,12 @@ function calculate_flds_fnc($params)
 		$new_price_a = number_format((float)$new_price_a, 2, '.', '');
 	}
 	
+	// gettype() floatval()
+	
+	$new_price_calc = (float)$new_price_calc;
+	
 	// Suppress warnings
-	@($cpu_to_cust = $new_price_calc / $args['variation']);
+	@($cpu_to_cust = (float)$new_price_calc / $args['variation']);
 	
 	if (0 != $vat_rate[$args['id']]) {
 		@($vat = $new_price_calc - $new_price_calc/(1 + $vat_rate[$args['id']]/100));
@@ -146,12 +153,13 @@ function calculate_flds_fnc($params)
 	$fees = 'w' != $args['platform'] ? $new_price_calc * $args['fees_val'] + $new_price_calc * ($args['perc_advertising']/100) : 0; //MOD
 	@($profit = $new_price_calc - $total_product_cost - $postage - $vat - $fees - $pp1);
 
+	$pp2 = $args['pp2'] + $profit;
+	
+	// if (!$new_price_calc) {$new_price_calc = 999;}
+	//ISSUE: Some records on the "Aggregates/Aggregates/Web" page end up with $new_price_calc having a zero value, causing 'DivisionByZeroError'
 	@($profit_perc = $profit / $new_price_calc * 100);
 
 	$cls_colour_profit = $profit < 1 ? ' red-bg' : ' grn';
-	// $cls_colour_profit = $profit < 1.25 ? ' red-bg' : ' grn';
-
-	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($pp1_perc); echo '</pre>'; die();
 
 	switch (true) {
         case $profit_perc < 4:
@@ -252,6 +260,7 @@ function calculate_flds_fnc($params)
 	$profit_perc = number_format((float)$profit_perc, 2, '.', '');
 	
 	$pp1 = number_format($pp1, 2, '.', '');
+	$pp2 = number_format($pp2, 2, '.', '');
 	
 	$return_array = [
 		'total_weight'                 => $total_weight,
@@ -274,6 +283,7 @@ function calculate_flds_fnc($params)
 		'profit_10off_perc'            => '',
 		
 		'pp1'                          => $pp1,
+		'pp2'                          => $pp2,
 
 		'cls_colour_profit'            => $cls_colour_profit,
 		'cls_colour_profit_perc'       => $cls_colour_profit_perc,

@@ -8,13 +8,8 @@ require_once 'format_listing_for_view.php';
 // This also includes the 'Edit', 'Add' & 'Add Prime' buttons
 //=========================================================================
 
-// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($session['listings']); echo '</pre>'; die();
-
 $group_variations = [];
 foreach( $session['listings'] as $id_lkup => $rec ){
-	//DEBUG
-	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($rec); echo '</pre>';
-	
 	if( $group_prev != $rec['group_'] && '' != $group_prev ){
 		// This code also appears at the end of script
 		$return = spacer_and_buttons_fnc([
@@ -49,7 +44,6 @@ foreach( $session['listings'] as $id_lkup => $rec ){
 			$courier_fmt = str_replace(' 10', ' &pound;10', $rec['courier']);
 		}
 		
-		// $existing_skus = '';
 		$existing_skus = is_array($rec['sku_'.$platform_post]) ? implode('_-_',$rec['sku_'.$platform_post]) : '';
 		?>
 		<td class="product_name"><?= $rec['product_name'] ?><?= $notes_icon ?></td>
@@ -176,7 +170,6 @@ foreach( $session['listings'] as $id_lkup => $rec ){
 		<?php endif; ?>
 		
 		<td class="pp1"><?= $rec['pp1'] ?></td><!-- CALCULATION -->
-		<?php $rec['pp2'] = 0; ?>
 		<td class="pp2"><?= $rec['pp2'] ?></td><!-- CALCULATION -->
 		
 		<!-- CHECKBOX -->
