@@ -87,6 +87,8 @@ function calculate_flds_fnc($params)
 	}
 	
 	$new_price_calc = '' != $args['new_price'] ? $args['new_price'] : $new_price;
+	
+	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($new_price_calc); echo '</pre>';
 
 	$new_price_e = 0;
 	$new_price_a = 0;
@@ -153,7 +155,8 @@ function calculate_flds_fnc($params)
 	$fees = 'w' != $args['platform'] ? $new_price_calc * $args['fees_val'] + $new_price_calc * ($args['perc_advertising']/100) : 0; //MOD
 	@($profit = $new_price_calc - $total_product_cost - $postage - $vat - $fees - $pp1);
 
-	$pp2 = $args['pp2'] + $profit;
+	$pp2 = $args['pp2_listings'] + $profit;
+	// $pp2 = $args['pp2'];
 	
 	// if (!$new_price_calc) {$new_price_calc = 999;}
 	//ISSUE: Some records on the "Aggregates/Aggregates/Web" page end up with $new_price_calc having a zero value, causing 'DivisionByZeroError'
@@ -435,8 +438,10 @@ function spacer_and_buttons_fnc($args)
 	// The number of items in a 'Prime view' group are either very few or non existant.
 	// Full groups need to exist in order to add the required items to Prime listings.
 	if( 'p' != $platform_post ){
-		$tmp[] = '<input type="button" name="add_prime" data-id="'.$inc++.'" value="Add Prime" class="btn bt_spacer">';
+		$tmp[] = '<input type="button" name="add_prime" data-id="'.$inc.'" value="Add Prime" class="btn bt_spacer">';
 	}
+	
+	$inc++;
 	
 	$tmp[] = '</td></tr>';
 	

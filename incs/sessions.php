@@ -196,10 +196,10 @@ $session['lookup_no_vat_skus'] = array_flip($filtered_results);
 //=========================================================================
 $sql = "SELECT * FROM `listings`";
 $results = $db_listings->query($sql);
-$results = $results->fetchAll(PDO::FETCH_ASSOC);
+$listings_res = $results->fetchAll(PDO::FETCH_ASSOC);
 
 $current_products = [];
-foreach ($results as $vals) {
+foreach ($listings_res as $vals) {
 	$current_products[ $vals['cat_id'] ] = 1;
 }
 
@@ -235,11 +235,30 @@ foreach ($session['lookup_cats'] as $key => $v) {
 if( isset($_POST['cat']) ){
 	$_POST['cat'] = html_entity_decode($_POST['cat']);
 	$cat = $_POST['cat'];
+	
+	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($cat); echo '</pre>'; die();
 }
 $cat_id = '';
 if( isset($_POST['cat_id']) ){
 	$cat_id = $_POST['cat_id'];
 	if( !isset($session['lookup_prod_cats'][$_POST['cat'] ][$_POST['cat_id'] ]) ){ $cat_id = ''; }
+	
+	// Create lookup for current cat_ids' 'pp2' values
+	function filterByCatId($record, $catId) {
+	    return $record['cat_id'] == $catId;
+	}
+	
+	$filteredData = array_filter($listings_res, function ($record) use ($cat_id) {
+	    return filterByCatId($record, $cat_id);
+	});
+	
+	// $pp2_lkup = [];
+	foreach ($filteredData as $rec) {
+		$session['pp2_lkup'][$rec['id_lkup']] = $rec['pp2'];
+	}
+	
+	
+	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($pp2_lkup); echo '</pre>'; die();
 }
 
 // $session['lookup_prod_cats'] array needs to be sorted so that categories drop-down appears in alphabetical order.
@@ -255,3 +274,6 @@ $sql = "SELECT `value` FROM `config_fees` WHERE `type` = 'pp1_perc'";
 $results = $db_listings->query($sql);
 
 $session['pp1_perc'] = $results->fetch(PDO::FETCH_COLUMN);
+
+// $sql = "SELECT `id_lkup`,`pp2` FROM `listings` WHERE `type` = 'pp1_perc'";
+

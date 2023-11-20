@@ -66,7 +66,19 @@ foreach( $session['listings'] as $id_lkup => $rec ){ ?>
 		if( 'w' != $platform_post ){
 			$not_empty_colour = '' == $rec['comp1'] && '' == $rec['comp2'] && '' == $rec['comp3'] ? '' : '#ff0';
 			$exist = '' == $not_empty_colour ? 0 : 1;
-			$data_id = $id_lkup; ?>
+			$data_id = $id_lkup;
+			
+			$comp_display = '';
+			if ('' != $rec['comp1']) {
+				$comp_display .= $rec['comp1'];
+			}
+			if ('' != $rec['comp2']) {
+				$comp_display .= ' '. $rec['comp2'];
+			}
+			if ('' != $rec['comp3']) {
+				$comp_display .= ' '. $rec['comp3'];
+			}
+			?>
 		<td>
 			<input type="hidden" id="<?= $id_lkup ?>_comp1" name="listings_data[<?= $id_lkup ?>][comp1]" value="<?= $rec['comp1'] ?>">
 			<input type="hidden" id="<?= $id_lkup ?>_comp2" name="listings_data[<?= $id_lkup ?>][comp2]" value="<?= $rec['comp2'] ?>">
@@ -76,9 +88,9 @@ foreach( $session['listings'] as $id_lkup => $rec ){ ?>
 			<input type="hidden" id="<?= $id_lkup ?>_id2" name="listings_data[<?= $id_lkup ?>][id2]" value="<?= $rec['id2'] ?>">
 			<input type="hidden" id="<?= $id_lkup ?>_id3" name="listings_data[<?= $id_lkup ?>][id3]" value="<?= $rec['id3'] ?>">
 			
-			<input type="hidden" id="<?= $id_lkup ?>_type1" name="listings_data[<?= $id_lkup ?>][type1]" value="<?= $rec['type1'] ?>">
-			<input type="hidden" id="<?= $id_lkup ?>_type2" name="listings_data[<?= $id_lkup ?>][type2]" value="<?= $rec['type2'] ?>">
-			<input type="hidden" id="<?= $id_lkup ?>_type3" name="listings_data[<?= $id_lkup ?>][type3]" value="<?= $rec['type3'] ?>">
+			<input type="hidden" id="<?= $id_lkup ?>_type1" name="listings_data[<?= $id_lkup ?>][type1]" value="<?= '' == $rec['type1'] ? '1' : $rec['type1']; ?>">
+			<input type="hidden" id="<?= $id_lkup ?>_type2" name="listings_data[<?= $id_lkup ?>][type2]" value="<?= '' == $rec['type2'] ? '1' : $rec['type2']; ?>">
+			<input type="hidden" id="<?= $id_lkup ?>_type3" name="listings_data[<?= $id_lkup ?>][type3]" value="<?= '' == $rec['type3'] ? '1' : $rec['type3']; ?>">
 			
 			<input type="hidden" id="<?= $id_lkup ?>_exist" name="listings_data[<?= $id_lkup ?>][exist]" value="<?= $exist ?>">
 			
@@ -89,7 +101,7 @@ foreach( $session['listings'] as $id_lkup => $rec ){ ?>
 				data-id="<?= $data_id ?>"
 				data-vars="<?= $rec['variation'] ?>"
 				value="edit comps & ids"
-				onclick="return false;">
+				onclick="return false;"><span style="font-size: 12px;"><?= $comp_display ?></span>
 		</td>
 		<?php } ?>
 		
@@ -152,7 +164,7 @@ foreach( $session['listings'] as $id_lkup => $rec ){ ?>
 		<?php } ?>
 		
 		<td class="pp1"><?= $rec['pp1'] ?></td><!-- CALCULATION -->
-		<?php $rec['pp2'] = 0; ?>
+		<?php /*$rec['pp2'] = 0;*/ ?>
 		<td class="pp2"><?= $rec['pp2'] ?></td><!-- CALCULATION -->
 	</tr>
 <?php } ?>

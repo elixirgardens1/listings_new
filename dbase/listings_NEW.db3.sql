@@ -31,17 +31,17 @@ CREATE TABLE IF NOT EXISTS "deletes" (
 	"user"	INT,
 	"timestamp"	INT
 );
+CREATE TABLE IF NOT EXISTS "header_colour_selection" (
+	"platform"	TEXT,
+	"id"	INT,
+	"timestamp"	INT
+);
 CREATE TABLE IF NOT EXISTS "header_colours" (
 	"id"	INT,
 	"bg-color"	TEXT,
 	"fg-color"	TEXT,
 	"timestamp"	INT,
 	PRIMARY KEY("id")
-);
-CREATE TABLE IF NOT EXISTS "header_colour_selection" (
-	"platform"	TEXT,
-	"id"	INT,
-	"timestamp"	INT
 );
 CREATE TABLE IF NOT EXISTS "listings" (
 	"id_lkup"	INT,
@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS "listings" (
 	"packaging_band"	INT,
 	"lowest_variation_weight"	INT,
 	"variation"	INT,
+	"pp2"	REAL,
 	"remove"	INT,
 	"timestamp"	INT,
 	PRIMARY KEY("id_lkup")
@@ -115,6 +116,14 @@ CREATE TABLE IF NOT EXISTS "lookup_postage_bands" (
 	"example_packaging"	TEXT,
 	"timestamp"	INT
 );
+CREATE TABLE IF NOT EXISTS "lookup_prod_cats" (
+	"cat"	TEXT,
+	"cat_id"	TEXT,
+	"product_cat"	TEXT,
+	"vat_rate"	INT,
+	"timestamp"	INT,
+	PRIMARY KEY("cat_id")
+);
 CREATE TABLE IF NOT EXISTS "multi_cpu" (
 	"key"	INT,
 	"keys"	TEXT,
@@ -159,13 +168,5 @@ CREATE TABLE IF NOT EXISTS "user" (
 	"id"	INT,
 	"name"	TEXT,
 	PRIMARY KEY("id")
-);
-CREATE TABLE IF NOT EXISTS "lookup_prod_cats" (
-	"cat"	TEXT,
-	"cat_id"	TEXT,
-	"product_cat"	TEXT,
-	"vat_rate"	INT,
-	"timestamp"	INT,
-	PRIMARY KEY("cat_id")
 );
 COMMIT;

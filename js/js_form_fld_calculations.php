@@ -1,7 +1,8 @@
 <?php
 $files_used[] = 'js/js_form_fld_calculations.php'; //DEBUG
 
-// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($session['pp1']); echo '</pre>'; die();
+// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($session['listings']); echo '</pre>'; die();
+// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($session['pp1_perc']); echo '</pre>'; die();
 
 ?>
 <script>
@@ -79,6 +80,7 @@ $(function() {
 	var vat;
 	var fees;
 	var pp1;
+	var pp2;
 	var perc_advertising;
 	var packaging_band;
 	var weight;
