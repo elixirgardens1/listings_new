@@ -98,6 +98,8 @@ Specific platform data (prices, notes etc) is stored in individual platform tabl
 
 ## Edit View
 
+Clicking the `Edit` button below a category group (Listings View) displays the `Edit View` - essentially an editable version of the `Listings View`:
+
 ![Image of edit_view](docs/img/edit_view.png)
 
 ---------------
