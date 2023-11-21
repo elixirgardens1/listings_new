@@ -126,6 +126,20 @@ The popup allows up to 3 competition prices to be added, along with their URL ID
 
 ![Image of comps](docs/img/comps.png)
 
+Competition TYPE can also be selected. There are 4 options - `Like 4 Like` being the default:
+
+- Like 4 Like
+- Cheapest
+- Most Popular
+- Out of Stock
+
+Listings that have competition prices set, display `edit comps & ids` buttons with green text. Since the prices are now displayed below each button, strictly speaking, this isn't required anymore.
+
+Buttons displaying a dotted white border indicate modified unsaved comps.
+
+![Image of modified_comps](docs/img/modified_comps.png)
+
+
 ---------------
 
 ## Courier Lookup
