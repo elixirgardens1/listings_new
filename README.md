@@ -8,6 +8,7 @@
 * [Courier Lookup](#courier-lookup)
 * [Competition Columns](#competition-columns)
 * [URLs Column](#urls-column)
+* [Add/Edit Skus](#urls-column)
 * [VAT Rates](#vat-rates)
 * [Platform Fees](#platform-fees)
 
@@ -166,6 +167,10 @@ The link ids are stored in the `sku_am_ebb` table ('stock_control.db3').
 ![Image of sku_ids2 table](docs/img/sku_ids2-sku_am_ebb_-_stock_control.db3.png)
 
 ![Image of sku_ids1 table](docs/img/sku_ids1-sku_am_ebb_-_stock_control.db3.png)
+
+---------------
+
+## Add/Edit Skus
 
 The skus get added by clicking the listing's `add/edit` button ('Skus' column). The skus with checkboxes, that appear in the pop up, show the skus that have already been added. The 3 skus in this example tally with the 'ids' (ebay platform) on the previous screenshots.
 
