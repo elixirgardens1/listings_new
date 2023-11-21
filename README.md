@@ -100,7 +100,7 @@ Columns with dark blue headings (*Total Weight*, *Pricing Suggestion*, *New Pric
 
 | Total Weight | Pricing Suggestion | New Price | CPU to Cust. | Profit (£) | Profit % |
 | ------------ | ------------------ | --------- | ------------ | ---------- | -------- |
-| Variation x Lowest Variation Weight + Lookup Weight of Packaging Band | (Postage + Total Product Costs) x Lookup value in config_fees relating to platform (2.362205 or 2.542372) | ONLY IF NO VALUE IN DB - Give cheapest COMP, IF No COMP Give Prev Price, IF No Prev Price Give Price Suggestion | New Price ÷ Variation | New Price - Total Product Cost - Postage - VAT - Fees - PP1 - PP2 | Profit ÷ New Price |
+| Variation x Lowest Variation Weight + Lookup Weight of Packaging Band | (Postage + Total Product Costs) x Lookup value in config_fees relating to platform (2.362205 or 2.542372) | ONLY IF NO VALUE IN DB - Give cheapest COMP, IF No COMP Give Prev Price, IF No Prev Price Give Price Suggestion | New Price ÷ Variation | New Price - (Total Product Cost + Postage + VAT + Fees + PP1 + PP2) | Profit ÷ New Price |
 
 
 | Total Product Cost | Postage | VAT | Fees | PP1 | PP2 |
