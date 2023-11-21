@@ -1,6 +1,7 @@
 # Listings
 
 #contents
+* [Categories Operation](#categories-operation)
 * [Listings View](#listings-view)
 * [Platform Specific Listings Tables](#platform-specific-listings-tables)
 * [Courier Lookup](#courier-lookup)
@@ -8,6 +9,9 @@
 * [URLs Column](#urls-column)
 * [VAT Rates](#vat-rates)
 * [Platform Fees](#platform-fees)
+
+
+## Categories Operation
 
 ### Main category drop-down
 
@@ -45,7 +49,7 @@ Data from the above tables is sorted alphabetically before displaying in the lis
 
 ---------------
 
-### Listings View
+## Listings View
 
 The listings view is created from several database tables.
 
@@ -86,7 +90,7 @@ Specific platform data (prices, notes etc) is stored in individual platform tabl
 ![Image of record with a note](docs/img/listings_ebay_note.png)
 ![Image of notes icon](docs/img/notes_icon.png)
 
-### Courier Lookup
+## Courier Lookup
 
 The 'id' values in the 'listings_couriers' table are matched to the 'id_lkup' values in 'listings':
 
@@ -107,7 +111,7 @@ Listings view Courier values
 **NOTE.** The `listings_couriers` table is not used when '**Prime**' is selected (listings view drop-down). It uses the `prime_couriers` table.
 
 
-### Competition Columns
+## Competition Columns
 
 Displays the price of up to 3 competitors. The displayed prices are also links to the competitor's listing (eg. https://www.ebay.co.uk/itm/373442522706).
 
@@ -141,7 +145,7 @@ $link_titles = [
 ];
 ```
 
-### URLs Column
+## URLs Column
 
 Hovering over a URLs label, ('OURS' column) displays 3 links. These link to the Elixir listings on the selected platform (Amazon, Ebay etc). It uses the `$sort_by_profit_urls` array mentioned previously.
 
@@ -162,7 +166,7 @@ The skus get added by clicking the listing's `add/edit` button ('Skus' column). 
 ![Image of Skus add/edit](docs/img/skus_add_edit.png)
 
 
-### VAT Rates
+## VAT Rates
 
 Some categories can have zero vat - eg. Bird Seed
 
@@ -186,7 +190,7 @@ and `js/js_form_fld_calculations.php`:
 ![Image of vat_calc_js_form_fld_calculations](docs/img/vat_calc_js_form_fld_calculations.png)
 
 
-### Platform Fees
+## Platform Fees
 
 Platform fees are stored in the `config_fees@listings.db3`.  
 
