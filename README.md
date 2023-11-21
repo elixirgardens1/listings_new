@@ -8,7 +8,7 @@
 * [Courier Lookup](#courier-lookup)
 * [Competition Columns](#competition-columns)
 * [URLs Column](#urls-column)
-* [Add/Edit Skus](#urls-column)
+* [Add/Edit Skus](#addedit-skus)
 * [VAT Rates](#vat-rates)
 * [Platform Fees](#platform-fees)
 
