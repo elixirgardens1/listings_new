@@ -91,6 +91,8 @@ Specific platform data (prices, notes etc) is stored in individual platform tabl
 ![Image of record with a note](docs/img/listings_ebay_note.png)
 ![Image of notes icon](docs/img/notes_icon.png)
 
+---------------
+
 ## Courier Lookup
 
 The 'id' values in the 'listings_couriers' table are matched to the 'id_lkup' values in 'listings':
