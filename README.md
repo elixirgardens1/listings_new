@@ -11,9 +11,9 @@
 * [VAT Rates](#vat-rates)
 * [Platform Fees](#platform-fees)
 
+---------------
 
 ## Categories Operation
----------------
 
 ### Main category drop-down
 
@@ -111,6 +111,7 @@ Listings view Courier values
 
 **NOTE.** The `listings_couriers` table is not used when '**Prime**' is selected (listings view drop-down). It uses the `prime_couriers` table.
 
+---------------
 
 ## Competition Columns
 
@@ -146,6 +147,8 @@ $link_titles = [
 ];
 ```
 
+---------------
+
 ## URLs Column
 
 Hovering over a URLs label, ('OURS' column) displays 3 links. These link to the Elixir listings on the selected platform (Amazon, Ebay etc). It uses the `$sort_by_profit_urls` array mentioned previously.
@@ -166,6 +169,7 @@ The skus get added by clicking the listing's `add/edit` button ('Skus' column). 
 
 ![Image of Skus add/edit](docs/img/skus_add_edit.png)
 
+---------------
 
 ## VAT Rates
 
@@ -190,6 +194,7 @@ and `js/js_form_fld_calculations.php`:
 
 ![Image of vat_calc_js_form_fld_calculations](docs/img/vat_calc_js_form_fld_calculations.png)
 
+---------------
 
 ## Platform Fees
 
@@ -201,6 +206,7 @@ The code that sets the fees_val is located in `sort_by_profit.php`:
 
 ![Image of sort_by_profit_fees_val](docs/img/sort_by_profit_fees_val.png)
 
+---------------
 
 ## Listings DB Tables
 
