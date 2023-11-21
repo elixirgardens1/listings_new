@@ -93,6 +93,14 @@ Specific platform data (prices, notes etc) is stored in individual platform tabl
 ![Image of record with a note](docs/img/listings_ebay_note.png)
 ![Image of notes icon](docs/img/notes_icon.png)
 
+### Calculated Values
+
+Columns with dark blue headings (Total Weight, Pricing Suggestion, New Price etc) are calculated.
+
+| Profit (£) | Profit % | Total Product Cost | Postage | VAT | Fees | PP1 | PP2 |
+| ---------- | -------- | ------------------ | ------- | --- | ---- | --- | --- |
+|            |          |                    |         | New Price - (New Price / 1.05) |
+
 
 ---------------
 
@@ -101,6 +109,8 @@ Specific platform data (prices, notes etc) is stored in individual platform tabl
 Clicking the `Edit` button below a category group (Listings View) displays the `Edit View` - essentially an editable version of the `Listings View`:
 
 ![Image of edit_view](docs/img/edit_view.png)
+
+It uses JavaScript/jQuery to update modified values in real time.
 
 ---------------
 
