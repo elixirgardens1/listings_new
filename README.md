@@ -96,7 +96,7 @@ Specific platform data (prices, notes etc) is stored in individual platform tabl
 
 ### Calculated Values
 
-Columns with dark blue headings (**Total Weight**, **Pricing Suggestion**, **New Price** etc) are calculated.
+Columns with dark blue headings (*Total Weight*, *Pricing Suggestion*, *New Price* etc) are calculated.
 
 | Profit (£) | Profit % | Total Product Cost | Postage | VAT | Fees | PP1 | PP2 |
 | ---------- | -------- | ------------------ | ------- | --- | ---- | --- | --- |
