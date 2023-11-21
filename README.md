@@ -5,6 +5,7 @@
 * [Categories Operation](#categories-operation)
 * [Listings View](#listings-view)
 * [Platform Specific Listings Tables](#platform-specific-listings-tables)
+* [Calculated Values](#calculated-values)
 * [Edit View](#edit-view)
 * [Courier Lookup](#courier-lookup)
 * [Competition Columns](#competition-columns)
