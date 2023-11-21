@@ -1,7 +1,7 @@
 # Listings
 
 #contents
-* [Listings Db Table](#listings-db-table)
+* [Listings DB Tables](#listings-db-tables)
 * [Categories Operation](#categories-operation)
 * [Listings View](#listings-view)
 * [Platform Specific Listings Tables](#platform-specific-listings-tables)
@@ -202,6 +202,6 @@ The code that sets the fees_val is located in `sort_by_profit.php`:
 ![Image of sort_by_profit_fees_val](docs/img/sort_by_profit_fees_val.png)
 
 
-## Listings Db Table
+## Listings DB Tables
 
 ![Image of db_tables](docs/img/db_tables.png)
