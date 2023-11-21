@@ -5,6 +5,7 @@
 * [Categories Operation](#categories-operation)
 * [Listings View](#listings-view)
 * [Platform Specific Listings Tables](#platform-specific-listings-tables)
+* [Edit View](#edit-view)
 * [Courier Lookup](#courier-lookup)
 * [Competition Columns](#competition-columns)
 * [URLs Column](#urls-column)
@@ -91,6 +92,13 @@ Specific platform data (prices, notes etc) is stored in individual platform tabl
 
 ![Image of record with a note](docs/img/listings_ebay_note.png)
 ![Image of notes icon](docs/img/notes_icon.png)
+
+
+---------------
+
+## Edit View
+
+![Image of edit_view](docs/img/edit_view.png)
 
 ---------------
 
