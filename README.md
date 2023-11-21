@@ -1,6 +1,7 @@
 # Listings
 
 #contents
+* [Listings Db Table](#listings-db-table)
 * [Categories Operation](#categories-operation)
 * [Listings View](#listings-view)
 * [Platform Specific Listings Tables](#platform-specific-listings-tables)
@@ -12,6 +13,7 @@
 
 
 ## Categories Operation
+---------------
 
 ### Main category drop-down
 
@@ -28,7 +30,6 @@ Coir Blocks|coi
 Electrical|ele
 etc.
 ```
----------------
 
 ### Sub category drop-down (assuming `Electrical` selected above)
 
@@ -201,3 +202,6 @@ The code that sets the fees_val is located in `sort_by_profit.php`:
 ![Image of sort_by_profit_fees_val](docs/img/sort_by_profit_fees_val.png)
 
 
+## Listings Db Table
+
+![Image of db_tables](docs/img/db_tables.png)
