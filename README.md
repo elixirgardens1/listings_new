@@ -13,6 +13,7 @@
 * [VAT Rates](#vat-rates-top)
 * [Platform Fees](#platform-fees-top)
 * [Listings DB Tables](#listings-db-tables-top)
+* [Stock Control DB Tables](#stock-control-db-tables-top)
 
 ---------------
 
@@ -217,15 +218,11 @@ Hovering over a URLs label, ('OURS' column) displays 3 links. These link to the 
 
 ![Image of URLs](docs/img/urls.png)
 
-The link ids are stored in the `sku_am_ebb` table ('stock_control.db3').
+The link ids are stored in the `sku_am_eb` table ('stock_control.db3').
 
-`sku_am_ebb@stock_control.db3`
+`sku_am_eb@stock_control.db3`
 
-![Image of sku_ids3 table](docs/img/sku_ids3-sku_am_ebb_-_stock_control.db3.png)
-
-![Image of sku_ids2 table](docs/img/sku_ids2-sku_am_ebb_-_stock_control.db3.png)
-
-![Image of sku_ids1 table](docs/img/sku_ids1-sku_am_ebb_-_stock_control.db3.png)
+![Image of sku_am_eb table](docs/img/sku_am_eb_-_stock_control.db3.png)
 
 ---------------
 
@@ -276,4 +273,10 @@ The code that sets the fees_val is located in `sort_by_profit.php`:
 
 ## Listings DB Tables [[top]](https://github.com/daveswaves/listings_new#listings)
 
-![Image of db_tables](docs/img/db_tables_listings.png)
+![Image of db_tables_listings](docs/img/db_tables_listings.png)
+
+---------------
+
+## Stock Control DB Tables [[top]](https://github.com/daveswaves/listings_new#listings)
+
+![Image of db_tables_stock_control](docs/img/db_tables_stock_control.png)
