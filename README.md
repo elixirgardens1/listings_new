@@ -118,7 +118,18 @@ Clicking the `Edit` button below a category group (Listings View) displays the `
 
 JavaScript/jQuery allows calculated values to update in real time when editable values are modified.
 
-The `edit comps & ids` buttons display a modal popup:
+The following 9 fields have editable text inputs:
+* Product Name
+* Packaging Band
+* Courier
+* Cost Per Unit
+* Lowest variation Weight
+* Variation
+* Previous Price (£)
+* New Price (£)
+* Advertising %
+
+However, `COMP & IDs` can also be edited by clicking an item's `edit comps & ids` button to display a modal popup.
 
 ![Image of edit_comps_and_ids](docs/img/edit_comps_and_ids.png)
 
