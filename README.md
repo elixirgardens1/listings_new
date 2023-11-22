@@ -276,4 +276,4 @@ The code that sets the fees_val is located in `sort_by_profit.php`:
 
 ## Listings DB Tables [[top]](https://github.com/daveswaves/listings_new#listings)
 
-![Image of db_tables](docs/img/db_tables.png)
+![Image of db_tables](docs/img/db_tables_listings.png)
