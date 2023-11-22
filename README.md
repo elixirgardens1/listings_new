@@ -167,7 +167,7 @@ This displays the add listing page:
 
 If all the group's 'Cost Per Unit' values are the same, the `Cost Per Unit` value is prepopulated.
 
-
+All the fields can have values that already exist within the group (including `Product Name`), but the `Variation` must be unique. An error message is display if the value already exists:
 
 ![Image of add_listing_var_exists](docs/img/add_listing_var_exists.png)
 
