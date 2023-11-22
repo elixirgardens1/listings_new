@@ -130,11 +130,11 @@ The following 9 fields have editable text inputs:
 * New Price (£)
 * Advertising %
 
-However, `COMP & IDs` can also be edited by clicking an item's `edit comps & ids` button to display a modal popup.
+However, `COMP & IDs` can also be edited by clicking an item's `edit comps & ids` button to display a modal pop up.
 
 ![Image of edit_comps_and_ids](docs/img/edit_comps_and_ids.png)
 
-The popup allows up to 3 competition prices to be added, along with their URL IDs. The prices appear in the COMP1, COMP2 & SPON COMP columns (Listings View). The prices are actually links to the competition listings. In the example shown, £5.99 links to [https://www.ebay.co.uk/itm/391208794732](https://www.ebay.co.uk/itm/391208794732) and £7.98 links to [https://www.ebay.co.uk/itm/171869007392](https://www.ebay.co.uk/itm/171869007392):
+The pop up allows up to 3 competition prices to be added, along with their URL IDs. The prices appear in the COMP1, COMP2 & SPON COMP columns (Listings View). The prices are actually links to the competition listings. In the example shown, £5.99 links to [https://www.ebay.co.uk/itm/391208794732](https://www.ebay.co.uk/itm/391208794732) and £7.98 links to [https://www.ebay.co.uk/itm/171869007392](https://www.ebay.co.uk/itm/171869007392):
 
 ![Image of comps](docs/img/comps.png)
 
@@ -233,6 +233,8 @@ Nb. See [stock_control.db3](#stock-control-db-tables-top) image below to see all
 The skus get added by clicking the listing's `add/edit` button ('Skus' column). The skus with checkboxes, that appear in the pop up, show the skus that have already been added. The 3 skus in this example tally with the 'ids' (ebay platform) on the previous screenshots.
 
 ![Image of Skus add/edit](docs/img/skus_add_edit.png)
+
+Nb. The number after "***Edit SKUs -***" (1 in this example) indicate the listing `Variation`.
 
 ---------------
 
