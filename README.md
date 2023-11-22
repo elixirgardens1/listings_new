@@ -74,7 +74,7 @@ The listing view sorts the results into groups. The first group are those whose 
 * lowest_variation_weight
 * variation
 
-### Platform Specific Listings Tables
+### Platform Specific Listings Tables [[top]](https://github.com/daveswaves/listings_new#listings)
 
 Specific platform data (prices, notes etc) is stored in individual platform tables. Selecting 'Ebay' in the drop-down, for example, retrieves the records from the 'listings_ebay' table. The 'id' values in 'listings_ebay' are matched to the 'id_lkup' values in 'listings'. The following are group 'a' records:
 
@@ -218,7 +218,7 @@ The link ids are stored in the `sku_am_ebb` table ('stock_control.db3').
 
 ---------------
 
-## Add/Edit Skus
+## Add/Edit Skus [[top]](https://github.com/daveswaves/listings_new#listings)
 
 The skus get added by clicking the listing's `add/edit` button ('Skus' column). The skus with checkboxes, that appear in the pop up, show the skus that have already been added. The 3 skus in this example tally with the 'ids' (ebay platform) on the previous screenshots.
 
@@ -251,7 +251,7 @@ and `js/js_form_fld_calculations.php`:
 
 ---------------
 
-## Platform Fees
+## Platform Fees [[top]](https://github.com/daveswaves/listings_new#listings)
 
 Platform fees are stored in the `config_fees@listings.db3`.  
 
