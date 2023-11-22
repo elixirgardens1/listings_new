@@ -6,6 +6,7 @@
 * [Platform Specific Listings Tables](#platform-specific-listings-tables-top)
 * [Calculated Values](#calculated-values-top)
 * [Edit View](#edit-view-top)
+* [Add Listing](#add-listing-top)
 * [Courier Lookup](#courier-lookup-top)
 * [Competition Columns](#competition-columns-top)
 * [URLs Column](#urls-column-top)
@@ -151,6 +152,12 @@ Buttons displaying a dotted white border indicate modified unsaved comps:
 
 ![Image of modified_comps](docs/img/modified_comps.png)
 
+
+---------------
+
+## Add Listing [[top]](https://github.com/daveswaves/listings_new#listings)
+
+![Image of add_listings](docs/img/add_listings.png)
 
 ---------------
 
