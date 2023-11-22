@@ -13,6 +13,7 @@
 * [Add/Edit Skus](#addedit-skus)
 * [VAT Rates](#vat-rates)
 * [Platform Fees](#platform-fees)
+* [Listings DB Tables](#listings-db-tables)
 
 ---------------
 
@@ -135,7 +136,7 @@ Competition TYPE can also be selected. There are 4 options - `Like 4 Like` being
 
 Listings that have competition prices set, display `edit comps & ids` buttons with green text. Since the prices are now displayed below each button, strictly speaking, this isn't required anymore.
 
-Buttons displaying a dotted white border indicate modified unsaved comps.
+Buttons displaying a dotted white border indicate modified unsaved comps:
 
 ![Image of modified_comps](docs/img/modified_comps.png)
 
