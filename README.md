@@ -111,7 +111,7 @@ Columns with dark blue headings (*Total Weight*, *Pricing Suggestion*, *New Pric
 
 ---------------
 
-## Edit View [[top](https://github.com/daveswaves/listings_new#listings)]
+## Edit View [[top]](https://github.com/daveswaves/listings_new#listings)
 
 Clicking the `Edit` button below a category group (Listings View) displays the `Edit View` - essentially an editable version of the `Listings View`:
 
