@@ -224,6 +224,8 @@ The link ids are stored in the `sku_am_eb` table ('stock_control.db3').
 
 ![Image of sku_am_eb table](docs/img/sku_am_eb_-_stock_control.db3.png)
 
+Nb. See [stock_control.db3](#stock-control-db-tables-top) image below to see all tables and fields.
+
 ---------------
 
 ## Add/Edit Skus [[top]](https://github.com/daveswaves/listings_new#listings)
