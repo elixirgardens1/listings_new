@@ -1,7 +1,6 @@
 # Listings
 
 ### contents
-* [Listings DB Tables](#listings-db-tables)
 * [Categories Operation](#categories-operation)
 * [Listings View](#listings-view)
 * [Platform Specific Listings Tables](#platform-specific-listings-tables)
@@ -13,7 +12,7 @@
 * [Add/Edit Skus](#addedit-skus)
 * [VAT Rates](#vat-rates)
 * [Platform Fees](#platform-fees)
-* [Listings DB Tables](#listings-db-tables)
+* [Listings DB Tables](#listings-db-tables-top)
 
 ---------------
 
@@ -54,7 +53,7 @@ Data from the above tables is sorted alphabetically before displaying in the lis
 
 ---------------
 
-## Listings View
+## Listings View [[top]](https://github.com/daveswaves/listings_new#listings)
 
 The listings view is created from several database tables.
 
@@ -95,7 +94,7 @@ Specific platform data (prices, notes etc) is stored in individual platform tabl
 ![Image of record with a note](docs/img/listings_ebay_note.png)
 ![Image of notes icon](docs/img/notes_icon.png)
 
-### Calculated Values
+### Calculated Values [[top]](https://github.com/daveswaves/listings_new#listings)
 
 Columns with dark blue headings (*Total Weight*, *Pricing Suggestion*, *New Price* etc) are calculated.
 
@@ -143,7 +142,7 @@ Buttons displaying a dotted white border indicate modified unsaved comps:
 
 ---------------
 
-## Courier Lookup
+## Courier Lookup [[top]](https://github.com/daveswaves/listings_new#listings)
 
 The 'id' values in the 'listings_couriers' table are matched to the 'id_lkup' values in 'listings':
 
@@ -165,7 +164,7 @@ Listings view Courier values
 
 ---------------
 
-## Competition Columns
+## Competition Columns [[top]](https://github.com/daveswaves/listings_new#listings)
 
 Displays the price of up to 3 competitors. The displayed prices are also links to the competitor's listing (eg. https://www.ebay.co.uk/itm/373442522706).
 
@@ -201,7 +200,7 @@ $link_titles = [
 
 ---------------
 
-## URLs Column
+## URLs Column [[top]](https://github.com/daveswaves/listings_new#listings)
 
 Hovering over a URLs label, ('OURS' column) displays 3 links. These link to the Elixir listings on the selected platform (Amazon, Ebay etc). It uses the `$sort_by_profit_urls` array mentioned previously.
 
@@ -227,7 +226,7 @@ The skus get added by clicking the listing's `add/edit` button ('Skus' column). 
 
 ---------------
 
-## VAT Rates
+## VAT Rates [[top]](https://github.com/daveswaves/listings_new#listings)
 
 Some categories can have zero vat - eg. Bird Seed
 
@@ -264,6 +263,6 @@ The code that sets the fees_val is located in `sort_by_profit.php`:
 
 ---------------
 
-## Listings DB Tables
+## Listings DB Tables [[top]](https://github.com/daveswaves/listings_new#listings)
 
 ![Image of db_tables](docs/img/db_tables.png)
