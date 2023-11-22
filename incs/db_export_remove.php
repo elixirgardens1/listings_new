@@ -18,7 +18,7 @@ if( isset($_POST['export_remove']) ){
 	$files_used[] = 'incs/export_remove.php'; //DEBUG
 
 	$timestamp = time();
-
+	
 	$ids = [];
 	foreach ($_POST['export_remove'] as $val) {
 		$ids[] = $val;
@@ -37,9 +37,9 @@ if( isset($_POST['export_remove']) ){
 		$new_prices = $results->fetchAll(PDO::FETCH_KEY_PAIR);
 		
 		$sql = "SELECT id,sku FROM 'skus' WHERE `id` IN ('$ids_in') AND `source` = '{$_POST['platform']}'";
+		
 		$results = $db_listings->query($sql);
-		// Cannot be 'FETCH_KEY_PAIR' because of multiple 'skus' per 'id'
-		$skus = $results->fetchAll(PDO::FETCH_ASSOC);
+		$skus = $results->fetchAll(PDO::FETCH_ASSOC); // Cannot be 'FETCH_KEY_PAIR' because of multiple 'skus' per 'id'
 
 		$header1 = "skus";
 		$header2 = "new_price";
@@ -48,8 +48,9 @@ if( isset($_POST['export_remove']) ){
 		$recs[] = "$header1,$header2";
 		
 		foreach( $skus as $i => $rec ){
-			$new_prices = isset($new_prices[ $rec['id'] ]) && '' != $new_prices[ $rec['id'] ] ? $new_prices[ $rec['id'] ] : $new_prices_ebay[ $rec['id'] ];
-			$recs[] = $rec['sku'].','.$new_prices;
+			// If 'id' exists in 'new prices' array and not empty, then use new price value. Otherwise use Ebay price.
+			$new_prices_ = isset($new_prices[ $rec['id'] ]) && '' != $new_prices[ $rec['id'] ] ? $new_prices[ $rec['id'] ] : $new_prices_ebay[ $rec['id'] ];
+			$recs[] = $rec['sku'].','.$new_prices_;
 		}
 	}
 
@@ -101,7 +102,7 @@ if( isset($_POST['export_remove']) ){
 		$file = fopen($filepath,"w");
 		fwrite($file,  implode("\n", $recs) );
 		fclose($file);
-
+		
 		// Backup export as zip
 		$zip = new ZipArchive;
 		$zipfile = "$filepath.zip";

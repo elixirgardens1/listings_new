@@ -157,7 +157,20 @@ Buttons displaying a dotted white border indicate modified unsaved comps:
 
 ## Add Listing [[top]](https://github.com/daveswaves/listings_new#listings)
 
+New items can be added to an existing listing group by clicking the `Add` button:
+
+![Image of add_listing_button](docs/img/add_listing_button.png)
+
+This displays the add listing page:
+
 ![Image of add_listing](docs/img/add_listing.png)
+
+If all the group's 'Cost Per Unit' values are the same, the `Cost Per Unit` value is prepopulated.
+
+
+
+![Image of add_listing_var_exists](docs/img/add_listing_var_exists.png)
+
 
 ---------------
 
