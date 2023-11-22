@@ -6,7 +6,7 @@
 * [Listings View](#listings-view)
 * [Platform Specific Listings Tables](#platform-specific-listings-tables)
 * [Calculated Values](#calculated-values)
-* [Edit View](#edit-view)
+* [Edit View](#edit-view-top)
 * [Courier Lookup](#courier-lookup)
 * [Competition Columns](#competition-columns)
 * [URLs Column](#urls-column)
@@ -111,7 +111,7 @@ Columns with dark blue headings (*Total Weight*, *Pricing Suggestion*, *New Pric
 
 ---------------
 
-## Edit View ([top](https://www.ebay.co.uk/itm/171869007392))
+## Edit View [top](https://github.com/daveswaves/listings_new#listings)
 
 Clicking the `Edit` button below a category group (Listings View) displays the `Edit View` - essentially an editable version of the `Listings View`:
 
