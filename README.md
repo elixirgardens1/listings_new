@@ -2,16 +2,16 @@
 
 ### contents
 * [Categories Operation](#categories-operation)
-* [Listings View](#listings-view)
-* [Platform Specific Listings Tables](#platform-specific-listings-tables)
-* [Calculated Values](#calculated-values)
+* [Listings View](#listings-view-top)
+* [Platform Specific Listings Tables](#platform-specific-listings-tables-top)
+* [Calculated Values](#calculated-values-top)
 * [Edit View](#edit-view-top)
-* [Courier Lookup](#courier-lookup)
-* [Competition Columns](#competition-columns)
-* [URLs Column](#urls-column)
-* [Add/Edit Skus](#addedit-skus)
-* [VAT Rates](#vat-rates)
-* [Platform Fees](#platform-fees)
+* [Courier Lookup](#courier-lookup-top)
+* [Competition Columns](#competition-columns-top)
+* [URLs Column](#urls-column-top)
+* [Add/Edit Skus](#addedit-skus-top)
+* [VAT Rates](#vat-rates-top)
+* [Platform Fees](#platform-fees-top)
 * [Listings DB Tables](#listings-db-tables-top)
 
 ---------------
