@@ -126,7 +126,7 @@ The popup allows up to 3 competition prices to be added, along with their URL ID
 
 ![Image of comps](docs/img/comps.png)
 
-Competition TYPE can also be selected. There are 4 options - ***Like 4 Like*** being the default:
+Competition TYPE can also be selected. There are 4 options - "***Like 4 Like***" being the default:
 
 - Like 4 Like
 - Cheapest
