@@ -157,7 +157,7 @@ Buttons displaying a dotted white border indicate modified unsaved comps:
 
 ## Add Listing [[top]](https://github.com/daveswaves/listings_new#listings)
 
-![Image of add_listings](docs/img/add_listings.png)
+![Image of add_listing](docs/img/add_listing.png)
 
 ---------------
 
