@@ -1,6 +1,6 @@
 # Listings
 
-#contents
+### contents
 * [Listings DB Tables](#listings-db-tables)
 * [Categories Operation](#categories-operation)
 * [Listings View](#listings-view)
@@ -111,7 +111,7 @@ Columns with dark blue headings (*Total Weight*, *Pricing Suggestion*, *New Pric
 
 ---------------
 
-## Edit View
+## Edit View ([top](https://www.ebay.co.uk/itm/171869007392))
 
 Clicking the `Edit` button below a category group (Listings View) displays the `Edit View` - essentially an editable version of the `Listings View`:
 
@@ -123,7 +123,7 @@ The `edit comps & ids` buttons display a modal popup:
 
 ![Image of edit_comps_and_ids](docs/img/edit_comps_and_ids.png)
 
-The popup allows up to 3 competition prices to be added, along with their URL IDs. The prices appear in the COMP1, COMP2 & SPON COMP columns (Listings View). The prices are actually links to the competition listings. In the example shown, £5.99 links to `https://www.ebay.co.uk/itm/391208794732` and £7.98 links to `https://www.ebay.co.uk/itm/171869007392`:
+The popup allows up to 3 competition prices to be added, along with their URL IDs. The prices appear in the COMP1, COMP2 & SPON COMP columns (Listings View). The prices are actually links to the competition listings. In the example shown, £5.99 links to [https://www.ebay.co.uk/itm/391208794732](https://www.ebay.co.uk/itm/391208794732) and £7.98 links to [https://www.ebay.co.uk/itm/171869007392](https://www.ebay.co.uk/itm/171869007392):
 
 ![Image of comps](docs/img/comps.png)
 
