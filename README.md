@@ -239,7 +239,7 @@ $link_type = [
 
 The link type gets highlighted in the `Listings View` via the competition price background colour:
 
-![Image of comp_type_colors_](docs/img/comp_type_colors_.png)
+![Image of comp_type_colors](docs/img/comp_type_colors.png)
 
 ```
 $link_colour = [
