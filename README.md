@@ -246,7 +246,7 @@ No background colour indicates 'Like 4 Like':
 * Orange: Most Popular
 * Blue: Out of Stock
 
-These are also defined in the 'incs/lookups.php' file:
+These are defined in the 'incs/lookups.php' file:
 
 ```
 $link_colour = [
