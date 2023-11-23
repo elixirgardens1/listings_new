@@ -194,7 +194,7 @@ PRIME Parcel 15-20kg
 PRIME Parcel 20-23kg
 ```
 
-These get added to the `prime_couriers` table. The following example shows the record for the 'Blue Slate x 20kg' listing. The actual `courier` value is saved as an integer, which corresponds to the `courier` name's `rowid` in the `lookup_couriers_plus_fuel` table:
+These get added to the `prime_couriers` table. The following example shows the record for the '***Blue Slate x 20kg***' listing. The actual `courier` value is saved as an integer, which corresponds to the `courier` name's `rowid` in the `lookup_couriers_plus_fuel` table:
 
 ![Image of prime_couriers](docs/img/prime_couriers.webp)
 
