@@ -364,8 +364,15 @@ The code that sets the $fees_val is located in `sort_by_profit.php`:
 
 ## Export / Remove [[top]](https://github.com/daveswaves/listings_new#listings)
 
+The `Export/Remove` select menu (header bar) defaults to 'Export'. The submit button is disabled until 1 or more listings have been checked.
+
+TIP: All checkboxes on the whole page can be checked by checking the heading checkbox. To check all listings in a single group, check the first checkbox and then the last while holding shift.
 
 ![Image of export_remove](docs/img/export_remove.png)
+
+Clicking `submit` creates a comma separated CSV file:
+
+![Image of export_csv](docs/img/export_csv.png)
 
 
 
