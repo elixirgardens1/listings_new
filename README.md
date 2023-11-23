@@ -178,6 +178,14 @@ Group listings are sorted by `variation`, so new listings don't necessarily appe
 
 ## Add Prime Listing [[top]](https://github.com/daveswaves/listings_new#listings)
 
+The `Add Prime` button displays the add prime listings page:
+
+![Image of add_prime_listings](docs/img/add_prime_listings.png)
+
+![Image of lookup_couriers_plus_fuel](docs/img/lookup_couriers_plus_fuel.png)
+
+![Image of prime_couriers](docs/img/prime_couriers.png)
+
 
 ---------------
 

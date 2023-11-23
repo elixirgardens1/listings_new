@@ -328,7 +328,10 @@ function sanitize_post_data_fnc($post_array, $operations)
 	}
 	// Replace MS style single/double quotes (“ ” ‘ ’) with standard quotes (" ')
 	function ascii_translit(&$item, $key) {
-		$item = iconv('UTF-8', 'ASCII//TRANSLIT', $item);
+		// B0CM7T7YWF
+		if (!in_array($key, ['id1','id2','id3'])) {
+			$item = iconv('UTF-8', 'ASCII//TRANSLIT', $item);
+		}
 	}
 
 	foreach ($operations as $operation) {
