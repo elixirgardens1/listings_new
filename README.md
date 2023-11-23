@@ -14,6 +14,7 @@
 * [Add/Edit Skus](#addedit-skus-top)
 * [VAT Rates](#vat-rates-top)
 * [Platform Fees](#platform-fees-top)
+* [Export / Remove](#export-remove-top)
 * [Listings DB Tables](#listings-db-tables-top)
 * [Stock Control DB Tables](#stock-control-db-tables-top)
 
@@ -178,11 +179,11 @@ Group listings are sorted by `variation`, so new listings don't necessarily appe
 
 ## Add Prime Listing [[top]](https://github.com/daveswaves/listings_new#listings)
 
-The `Add Prime` button displays the add prime listings page:
+The `Add Prime` button displays the `Add Prime Listings` page:
 
 ![Image of add_prime_listings](docs/img/add_prime_listings.png)
 
-Rather than adding new listings to an existing group, it allows you to select Prime couriers for the existing listings via a select menu:
+Rather than adding new listings to an existing group, 'Add Prime Listings' allows you to select Prime couriers for the existing listings via a select menu:
 
 ```
 PRIME Post
@@ -193,7 +194,7 @@ PRIME Parcel 15-20kg
 PRIME Parcel 20-23kg
 ```
 
-These get added to the `prime_couriers` table. The following example shows the record for 'Blue Slate x 20kg' listing. The actual `courier` value is saved as an integer, which corresponds to the `courier` name's `rowid` in the `lookup_couriers_plus_fuel` table:
+These get added to the `prime_couriers` table. The following example shows the record for the 'Blue Slate x 20kg' listing. The actual `courier` value is saved as an integer, which corresponds to the `courier` name's `rowid` in the `lookup_couriers_plus_fuel` table:
 
 ![Image of prime_couriers](docs/img/prime_couriers.png)
 
@@ -358,6 +359,16 @@ Platform fees are stored in the `config_fees@listings.db3`.
 The code that sets the fees_val is located in `sort_by_profit.php`:
 
 ![Image of sort_by_profit_fees_val](docs/img/sort_by_profit_fees_val.png)
+
+---------------
+
+## Export / Remove [[top]](https://github.com/daveswaves/listings_new#listings)
+
+
+
+
+
+
 
 ---------------
 
