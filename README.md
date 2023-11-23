@@ -182,9 +182,22 @@ The `Add Prime` button displays the add prime listings page:
 
 ![Image of add_prime_listings](docs/img/add_prime_listings.png)
 
-![Image of lookup_couriers_plus_fuel](docs/img/lookup_couriers_plus_fuel.png)
+Rather than adding new listings to an existing group, it allows you to select Prime couriers for the existing listings via a select menu:
+
+```
+PRIME Post
+PRIME Parcel 0-2kg
+PRIME Parcel 2-7kg
+PRIME Parcel 7-15kg
+PRIME Parcel 15-20kg
+PRIME Parcel 20-23kg
+```
+
+These get added to the `prime_couriers` table. The following example shows the record for 'Blue Slate x 20kg' listing. The actual `courier` value is saved as an integer, which corresponds to the `courier` name's `rowid` in the `lookup_couriers_plus_fuel` table:
 
 ![Image of prime_couriers](docs/img/prime_couriers.png)
+
+![Image of lookup_couriers_plus_fuel](docs/img/lookup_couriers_plus_fuel.png)
 
 
 ---------------
