@@ -95,7 +95,7 @@ $files_used[] = 'incs/modal_boxes.php'; //DEBUG
 				<td class="ra w50">TYPE1</td>
 				<td class="">
 					<select id="type1" name="type1">
-					<?php foreach( $link_titles as $i => $type ){ ?>
+					<?php foreach( $link_type as $i => $type ){ ?>
 						<option value="<?= $i ?>"><?= $type ?></option>
 					<?php } ?>
 					</select>
@@ -109,7 +109,7 @@ $files_used[] = 'incs/modal_boxes.php'; //DEBUG
 				<td class="ra">TYPE2</td>
 				<td class="">
 					<select id="type2" name="type2">
-						<?php foreach( $link_titles as $i => $type ){ ?>
+						<?php foreach( $link_type as $i => $type ){ ?>
 							<option value="<?= $i ?>"><?= $type ?></option>
 						<?php } ?>
 					</select>
@@ -123,7 +123,7 @@ $files_used[] = 'incs/modal_boxes.php'; //DEBUG
 				<td class="ra">TYPE3</td>
 				<td class="">
 					<select id="type3" name="type3">
-						<?php foreach( $link_titles as $i => $type ){ ?>
+						<?php foreach( $link_type as $i => $type ){ ?>
 							<option value="<?= $i ?>"><?= $type ?></option>
 						<?php } ?>
 					</select>

@@ -285,7 +285,7 @@ if( isset($_POST['upload_file']) ){
                     'tbl'           => 'comps_ids',
                     'fld_names_arr' => $fld_names,
                     'rec'           => $rec,
-                    'link_titles'   => $link_titles,
+                    'link_type'   => $link_type,
                     'source'        => $source,
                     'id'            => $id,
                 ];
@@ -494,9 +494,9 @@ if( isset($_POST['upload_file']) ){
                         // echo '<pre style="background:#111; color:#b5ce28; font-size:11px; margin-top:-4px; margin-bottom:6px;">'; print_r($sql_delete); echo '</pre><br>';
                     }
                     
-                    // $type_a = type_name2id_fnc($rec[7], $link_titles);
-                    // $type_b = type_name2id_fnc($rec[8], $link_titles);
-                    // $type_c = type_name2id_fnc($rec[9], $link_titles);
+                    // $type_a = type_name2id_fnc($rec[7], $link_type);
+                    // $type_b = type_name2id_fnc($rec[8], $link_type);
+                    // $type_c = type_name2id_fnc($rec[9], $link_type);
                     
                     $type_a = $rec[7];
                     $type_b = $rec[8];
@@ -608,16 +608,16 @@ function sql_arr_fnc($args)
         $regex   = $args['regex'];
         $id_errs = $args['id_errs'];
         
-        $link_titles      = $args['link_titles'];
-        // $link_titles_flp  = array_flip($link_titles);
-        // $link_titles_str = array_values($link_titles);
-        // $link_titles_str = implode(', ', $link_titles);
+        $link_type      = $args['link_type'];
+        // $link_type_flp  = array_flip($link_type);
+        // $link_type_str = array_values($link_type);
+        // $link_type_str = implode(', ', $link_type);
         
         $tmp = [];
-        foreach( $link_titles as $key => $val ){
+        foreach( $link_type as $key => $val ){
             $tmp[] = "$key ($val)";
         }
-        $link_titles_str = implode(', ', $tmp);
+        $link_type_str = implode(', ', $tmp);
         
         $errors = '';
         $insert = [];
@@ -653,9 +653,9 @@ function sql_arr_fnc($args)
                     break;
                 }
                 
-                elseif( !isset($link_titles[ $cits[2] ]) ){
-                // elseif( !isset($link_titles_flp[ strtolower($cits[2]) ]) ){
-                    $errors = 'type values can only be '.$link_titles_str;
+                elseif( !isset($link_type[ $cits[2] ]) ){
+                // elseif( !isset($link_type_flp[ strtolower($cits[2]) ]) ){
+                    $errors = 'type values can only be '.$link_type_str;
                 }
                 else{
                     $insert['comps'][$j] = $cits[0];
@@ -760,7 +760,7 @@ function array_merge_recursive_distinct_fnc( array &$array1, array &$array2 )
     return $merged;
 }
 
-// function type_name2id_fnc($type_name, $link_titles)
+// function type_name2id_fnc($type_name, $link_type)
 // {
 //     $lkup = [
 //         'like 4 like' => 1,

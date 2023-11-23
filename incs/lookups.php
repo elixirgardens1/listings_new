@@ -19,7 +19,7 @@ $link_colour = [
 	'4' => 'link_blu',
 ];
 
-$link_titles = [
+$link_type = [
 	'1' => 'Like 4 Like',
 	'2' => 'Cheapest',
 	'3' => 'Most Popular',

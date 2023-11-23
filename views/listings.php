@@ -122,7 +122,7 @@ foreach( $session['listings'] as $id_lkup => $rec ){
 			// 	'3' => 'link_orange',
 			// ];
 			
-			// $link_titles = [
+			// $link_type = [
 			// 	'1' => 'Like 4 Like',
 			// 	'2' => 'Cheapest',
 			// 	'3' => 'Most Popular',
@@ -130,7 +130,7 @@ foreach( $session['listings'] as $id_lkup => $rec ){
 
 			foreach( $comps as $i => $comp ){
 				if( '' != $comp ){
-					$comp = "<a class='{$link_colour[$types[$i] ]}' href='$url/{$ids[$i]}' title='{$link_titles[$types[$i] ]}' target='_blank'>$comp</a>";
+					$comp = "<a class='{$link_colour[$types[$i] ]}' href='$url/{$ids[$i]}' title='{$link_type[$types[$i] ]}' target='_blank'>$comp</a>";
 				}
 				echo "<td class='comp1'>$comp</td>";
 			}
