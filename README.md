@@ -14,7 +14,7 @@
 * [Add/Edit Skus](#addedit-skus-top)
 * [VAT Rates](#vat-rates-top)
 * [Platform Fees](#platform-fees-top)
-* [Export / Remove](#export-remove-top)
+* [Export / Remove](#export--remove-top)
 * [Listings DB Tables](#listings-db-tables-top)
 * [Stock Control DB Tables](#stock-control-db-tables-top)
 
