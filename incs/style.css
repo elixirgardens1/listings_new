@@ -107,12 +107,12 @@ table.style-tbl{
 	background: #42C0FB;
 }
 
-.link_orange{
-	background: #ffa500;
-	color: #000;
-}
 .link_grn{
 	background: #0f0;
+	color: #000;
+}
+.link_orange{
+	background: #ffa500;
 	color: #000;
 }
 .link_blu{

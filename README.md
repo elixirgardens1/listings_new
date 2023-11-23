@@ -226,7 +226,7 @@ $sort_by_profit_urls = [
 ];
 ```
 
-The 'type' field values are used to display the correct link titles - appear as a pop up on mouseover. It uses the `$link_type` array (`incs/lookups.php`). If 'type1' value equals 1, then a `Like 4 Like` pop up will appear on mouseover (see previous ***competition.png*** - start of "_Competition Columns_" section).
+The 'type' field values are used to display the correct link titles - appear as a pop up on mouseover. It uses the `$link_type` array - 'incs/lookups.php'. If 'type1' value equals 1, then a `Like 4 Like` pop up will appear on mouseover (see previous ***competition.png*** - start of "_Competition Columns_" section).
 
 ```
 $link_type = [
@@ -241,6 +241,13 @@ The link type gets highlighted in the `Listings View` via the competition price 
 
 ![Image of comp_type_colors](docs/img/comp_type_colors.png)
 
+No background colour indicates 'Like 4 Like':
+* Green: Cheapest
+* Orange: Most Popular
+* Blue: Out of Stock
+
+These are also defined in the 'incs/lookups.php' file:
+
 ```
 $link_colour = [
     '1' => '',
@@ -250,6 +257,22 @@ $link_colour = [
 ];
 ```
 
+The $link_color classes are defined in the 'incs/style.css' file:
+
+```
+.link_grn{
+    background: #0f0;
+    color: #000;
+}
+.link_orange{
+    background: #ffa500;
+    color: #000;
+}
+.link_blu{
+    background: #00f;
+    color: #fff;
+}
+```
 
 
 ---------------
