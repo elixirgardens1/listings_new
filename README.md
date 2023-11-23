@@ -165,11 +165,13 @@ This displays the add listing page:
 
 ![Image of add_listing](docs/img/add_listing.png)
 
-If all the group's 'Cost Per Unit' values are the same, the `Cost Per Unit` value is prepopulated.
+If a group's 'Cost Per Unit' values are all the same, the `Cost Per Unit` value is automatically prepopulated.
 
 All fields can have existing values (including `Product Name`), but the `Variation` must be unique. An error message is displayed if the value already exists:
 
 ![Image of add_listing_var_exists](docs/img/add_listing_var_exists.png)
+
+Group listings are sorted by `variation`, so new listings don't necessarily appear at the end of a group.
 
 
 ---------------
