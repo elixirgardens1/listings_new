@@ -365,6 +365,7 @@ The code that sets the fees_val is located in `sort_by_profit.php`:
 ## Export / Remove [[top]](https://github.com/daveswaves/listings_new#listings)
 
 
+![Image of export_remove](docs/img/export_remove.png)
 
 
 
