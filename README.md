@@ -374,7 +374,7 @@ Clicking `submit` creates a comma separated CSV file:
 
 ![Image of export_csv](docs/img/export_csv.png)
 
-The 'skus' column contains all the skus associated with the checked listings. The 'new_price' column displays the sku prices. The prices will be for the selected platform (Amazon, Onbuy etc). The price defaults to the Ebay price if no price exists for the selected platform.
+The '***skus***' column contains all the skus associated with the checked listings. The '***new_price***' column displays the sku prices. The prices will be for the selected platform (Amazon, Onbuy etc). However, the price defaults to the Ebay price if no price exists for the selected platform.
 
 ---------------
 
