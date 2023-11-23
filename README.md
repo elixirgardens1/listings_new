@@ -7,6 +7,7 @@
 * [Calculated Values](#calculated-values-top)
 * [Edit View](#edit-view-top)
 * [Add Listing](#add-listing-top)
+* [Add Prime Listing](#add-prime-listing-top)
 * [Courier Lookup](#courier-lookup-top)
 * [Competition Columns](#competition-columns-top)
 * [URLs Column](#urls-column-top)
@@ -173,6 +174,10 @@ All fields can have existing values (including `Product Name`), but the `Variati
 
 Group listings are sorted by `variation`, so new listings don't necessarily appear at the end of a group.
 
+---------------
+
+## Add Prime Listing [[top]](https://github.com/daveswaves/listings_new#listings)
+
 
 ---------------
 
@@ -221,7 +226,7 @@ $sort_by_profit_urls = [
 ];
 ```
 
-The 'type' field values are used to display the correct link titles - appear as a pop up on mouseover. It uses the `$link_titles` array (`incs/lookups.php`). If 'type1' value equals 1, then a `Like 4 Like` pop up will appear on mouseover (see previous **competition.png**).
+The 'type' field values are used to display the correct link titles - appear as a pop up on mouseover. It uses the `$link_titles` array (`incs/lookups.php`). If 'type1' value equals 1, then a `Like 4 Like` pop up will appear on mouseover (see previous ***competition.png*** - start of "_Competition Columns_").
 
 ```
 $link_titles = [
