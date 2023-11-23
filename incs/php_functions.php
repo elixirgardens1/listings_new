@@ -155,8 +155,8 @@ function calculate_flds_fnc($params)
 	$fees = 'w' != $args['platform'] ? $new_price_calc * $args['fees_val'] + $new_price_calc * ($args['perc_advertising']/100) : 0; //MOD
 	@($profit = $new_price_calc - $total_product_cost - $postage - $vat - $fees - $pp1);
 
-	$pp2 = $args['pp2_listings'] + $profit;
-	// $pp2 = $args['pp2'];
+	// $pp2 = $args['pp2_listings'] + $profit;
+	$pp2 = $args['pp2_listings'];
 	
 	// if (!$new_price_calc) {$new_price_calc = 999;}
 	//ISSUE: Some records on the "Aggregates/Aggregates/Web" page end up with $new_price_calc having a zero value, causing 'DivisionByZeroError'
