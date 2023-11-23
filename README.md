@@ -118,7 +118,7 @@ Columns with dark blue headings (*Total Weight*, *Pricing Suggestion*, *New Pric
 
 Clicking the `Edit` button below a category group (Listings View) displays the `Edit View` - essentially an editable version of the `Listings View`:
 
-![Image of edit_view](docs/img/edit_view.png)
+![Image of edit_view](docs/img/edit_view.webp)
 
 JavaScript/jQuery allows calculated values to update in real time when editable values are modified.
 
@@ -356,7 +356,7 @@ Platform fees are stored in the `config_fees@listings.db3`.
 
 ![Image of platform_fees table](docs/img/platform_fees_-_listings.db3.png)
 
-The code that sets the fees_val is located in `sort_by_profit.php`:
+The code that sets the $fees_val is located in `sort_by_profit.php`:
 
 ![Image of sort_by_profit_fees_val](docs/img/sort_by_profit_fees_val.png)
 
