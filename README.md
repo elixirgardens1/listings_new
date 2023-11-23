@@ -376,7 +376,7 @@ Clicking `submit` creates a comma separated CSV file:
 
 The '***skus***' column contains all the skus associated with the checked listings. The '***new_price***' column displays the sku prices. The prices will be for the selected platform (Amazon, Onbuy etc). However, the price defaults to the Ebay price if no price exists for the selected platform.
 
-If `Remove` is selected, clicking `submit` sets the value in the `listings` table `remove` column to '1'. This stops the listing displaying.
+clicking `submit`, when the `Remove` option is selected, sets the value in the `listings` table `remove` column to '1'. This stops the listing displaying.
 
 ---------------
 
