@@ -323,6 +323,10 @@ The skus get added by clicking the listing's `add/edit` button ('Skus' column). 
 
 Nb. The number after "***Edit SKUs -***" (1 in this example) indicate the listing `Variation`.
 
+The skus associated with this listing are stored in the skus table (listings database):
+
+![Image of skus_tbl](docs/img/skus_tbl.webp)
+
 ---------------
 
 ## VAT Rates [[top]](https://github.com/daveswaves/listings_new#listings)
