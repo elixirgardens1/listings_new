@@ -15,6 +15,7 @@
 * [VAT Rates](#vat-rates-top)
 * [Platform Fees](#platform-fees-top)
 * [Export / Remove](#export--remove-top)
+* [View Price matrix](#view-price-matrix-top)
 * [Listings DB Tables](#listings-db-tables-top)
 * [Stock Control DB Tables](#stock-control-db-tables-top)
 
