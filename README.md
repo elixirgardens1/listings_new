@@ -323,7 +323,7 @@ The skus get added by clicking the listing's `add/edit` button ('Skus' column). 
 
 Nb. The number after "***Edit SKUs -***" (1 in this example) indicate the listing `Variation`.
 
-The skus associated with this listing are stored in the skus table (listings database):
+The skus associated with this listing are stored in `skus@listings.db3`:
 
 ![Image of skus_tbl](docs/img/skus_tbl.webp)
 
