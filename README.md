@@ -382,6 +382,19 @@ The '***skus***' column contains all the skus associated with the checked listin
 
 clicking `submit`, when the `Remove` option is selected, sets the value in the `listings` table `remove` column to '1'. This stops the listing displaying.
 
+
+---------------
+
+## View Price matrix [[top]](https://github.com/daveswaves/listings_new#listings)
+
+Allows `New Price` values across the whole page to be updated simultaneously.
+
+![Image of price_matrix](docs/img/price_matrix.webp)
+
+All the prices in each group are displayed horizontally below the item's variation. In this `Rock Salt` example, the 6 prices in the first group for variations: 1, 5, 10, 15, 20, 25 are 7.49, 10.09, 11.69, 16.
+
+![Image of price_matrix_update](docs/img/price_matrix_update.webp)
+
 ---------------
 
 ## Listings DB Tables [[top]](https://github.com/daveswaves/listings_new#listings)
