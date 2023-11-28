@@ -320,8 +320,8 @@ if( isset($_POST['save_listing_to_db']) ){
 						'' == $id1 && '' == $id2 && '' == $id3
 					){
 						// DEBUG: Only for display purposes
-						$sql_delete_listings_comps_ids[] = "DELETE FROM `comps_ids` WHERE `id` = '$id'";
-						$db_listings->query("DELETE FROM `comps_ids` WHERE `id` = '$id'");
+						$sql_delete_listings_comps_ids[] = "DELETE FROM `comps_ids` WHERE `id` = '$id' AND `source` = '$post_platform'";
+						$db_listings->query("DELETE FROM `comps_ids` WHERE `id` = '$id' AND `source` = '$post_platform'");
 					}
 					// Update record
 					else{
