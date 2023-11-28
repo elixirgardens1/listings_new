@@ -262,7 +262,7 @@ function fnc_calc_new_price(rowid,element_class_name){
 		postage = fnc_postage(rowid);
 
 		profit = new_price - total_product_cost - postage - vat - fees - pp1;
-
+		
 		// Deduct 30 pence from profit ebay
 		<?php if( 'e' == $platform_post ): ?>
 		// profit = profit - 0.3;
@@ -456,13 +456,27 @@ function fnc_postage(rowid){
 	var courier = $('tr[data-id_lkup="'+rowid+'"] .courier').val();
 
 	courier = courier.replace("£10", "&pound;10");
+	
+	if ('20-30kg DX Over 8ft' != courier) {
+		var cost_c = parseFloat( lookup_couriers[courier]['cost'] );
+		var postage = (cost_c + cost_pb) * Math.ceil(lowest_variation_weight * variation / 29.5);
+	}
+	else {
+		var total_weight = $('tr[data-id_lkup="'+rowid+'"] .total_weight').html();
+		var postage = (13.59+( (total_weight - 20) *0.3 )) *1.095 *1.1;
+	}
+	
+	// console.log(['Postage: ' + postage, 'total_weight: ' + total_weight]);
 
-	// console.log( courier );
-
-	var cost_c = parseFloat( lookup_couriers[courier]['cost'] );
-
-	var postage = (cost_c + cost_pb) * Math.ceil(lowest_variation_weight * variation / 29.5);
-
+	// console.table({
+	// 	"lowest_variation_weight": lowest_variation_weight,
+	// 	"variation": variation,
+	// 	"packaging_band": packaging_band,
+	// 	"cost_pb": cost_pb,
+	// 	"courier": courier,
+	// 	"cost_c": cost_c
+	// })
+	
 	// If courier name contains 'pallet' or 'drop' (case insensitive check)
 	if( courier.toLowerCase().includes('pallet') || courier.toLowerCase().includes('drop') ){
 		postage = parseFloat( lookup_couriers[courier]['cost'] );
