@@ -129,6 +129,12 @@ $files_used[] = 'incs/modal_boxes.php'; //DEBUG
 					</select>
 				</td>
 			</tr>
+			
+			<tr>
+				<td></td>
+				<td colspan="3"><button id="clear_flds" style="width:100%">Clear Fields</button></td>
+				<td colspan="2"></td>
+			</tr>
 		</table>
 		
 		<div style="font-size:30px; color:red; margin-top:14px;">Do Not Press Enter(Return)</div>
@@ -139,6 +145,26 @@ $files_used[] = 'incs/modal_boxes.php'; //DEBUG
 </div>
 
 <script>
+	$('#clear_flds').on('click', function(){
+		let myId = $('#modal_id').val();
+		console.log(myId);
+		
+		for( let i=1; i<=3; i++ ){
+			// comp1, comp2, comp3
+			$( '#' +myId+ '_comp' +i ).val('');
+			$( '#comp' +i ).val('');
+			
+			// id1, id2, id3
+			$( '#' +myId+ '_id' +i ).val('');
+			$( '#id' +i ).val('');
+			
+			updateBtnColour(myId);
+			
+			// Remove comp prices below 'edit comps & ids' button
+			$( '#' +myId+ '_comp_display' ).css({'display': 'none'});
+		}
+	});
+	
 	// Display add/edit Skus modal box
 	$('.triggerSkuEdit').on('click', function(){
 		// Clear add sku text fields & add sku(s) button

@@ -101,7 +101,7 @@ foreach( $session['listings'] as $id_lkup => $rec ){ ?>
 				data-id="<?= $data_id ?>"
 				data-vars="<?= $rec['variation'] ?>"
 				value="edit comps & ids"
-				onclick="return false;"><span style="font-size: 12px;"><?= $comp_display ?></span>
+				onclick="return false;"><span id="<?= $id_lkup ?>_comp_display" style="font-size: 12px;"><?= $comp_display ?></span>
 		</td>
 		<?php } ?>
 		
