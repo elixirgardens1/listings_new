@@ -388,9 +388,11 @@ clicking `submit`, when the `Remove` option is selected, sets the value in the `
 
 ## View Price matrix [[top]](https://github.com/daveswaves/listings_new#listings)
 
-Allows `New Price` values across the whole page to be updated simultaneously. The price matrix table displays the product names in the first column (only the first item in each group) and the prices for each variation in the following columns. The variation values are displayed above each price column.
+Allows `New Price` values across the whole page to be updated simultaneously. The price matrix table displays the product names in the first column (only the first item in each group) and the prices for each variation in the following columns. The variation values are displayed above each price column - 1, 5, 10 etc.
 
 The second and fourth groups (brown rock salt tubs / white rock salt tubs respectively) don't have a variation value of 25, which is why N/A is displayed in the 25 column for these two groups.
+
+The R1, R2, R3 and R4 boxes are used to calculate price ranges between minimum / maximum values. However, It's not currently working properly so I'm not got to add any further documentation here.
 
 ![Image of price_matrix](docs/img/price_matrix.webp)
 
