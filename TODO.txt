@@ -1,0 +1,75 @@
+# TO-DO
+
+The following Dashboard views are displaying errors:
+
+- Errors
+- Changes
+- Copy eBay couriers to Amazon &amp; eBay listings
+- View profit drop-down links - ebay, Amazon etc.
+
+---------------------------------------------------
+
+Issue with value disparity in the Bamboo Canes 10ft group. The values for the first item are:
+
+Profit (£): 20.24
+Profit %:   29.77
+
+However, the values in the Edit view change to the following when New Price box loses focus:
+
+Profit (£): 5.96
+Profit %:   8.77
+
+Note that this doesn't affect other groups.
+
+
+INFO:
+It appears to be using a different value for postage: 24.299999999999997 instead of 10.02
+
+---------------------------------------------------
+
+Change 'zero_vat' values ('lookup_prod_cats@listings_NEW.db3') from 1 to required vat rate: eg. 5 for 5%, 20 for 20%.
+The code in the following files obviously needs modifying:
+
+- convert_db_format/modify_tables.php
+- incs/php_functions.php
+- incs/sessions.php
+- js/js_form_fld_calculations.php
+- sort_by_profit.php
+- views/format_listing_for_view.php
+- views/retrieve_listings.php
+
+
+Working on: incs/php_functions.php
+
+---------------------------------------------------
+
+Updated:
+- 'lookup_prod_cats@listings_NEW.db3'
+- incs/sessions.php
+- views/retrieve_listings.php
+- 
+
+
+The following no longer exists: $session['zero_vat_cat_ids']
+It's now: $session['vat_rate']
+
+js/js_form_fld_calculations.php:239:        vat = new_price/6;
+js/js_form_fld_calculations.php:242:        vat = lookup_zero_vat.includes('<?= $_POST['cat_id'] ?>') ? 0 : new_price/6;
+
+incs/php_functions.php:134: @($vat = $new_price_calc/6);
+incs/php_functions.php:519: @($vat = $new_price_calc/6);
+
+---------------------------------------------------
+
+
+'ignore_zero_vat' colum ('listings@listings_NEW.db3') probably needs removing.
+
+Change 'zero_vat' to 'vat_rate' ('lookup_prod_cats@listings_NEW.db3')
+
+
+
+
+
+grep -niR "session['zero_vat_cat_ids']" --exclude-dir=zzz --exclude="*zzz*"
+grep -niR "zero_vat" --exclude-dir=zzz --exclude="*zzz*"
+grep -niR "/6" --exclude-dir=zzz --exclude="*zzz*"
