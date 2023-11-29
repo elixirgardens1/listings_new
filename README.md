@@ -236,7 +236,7 @@ The lookup is done via the 'id_lkup/listings' > 'id/comps_ids' method used previ
 
 ![Image of competition columns](docs/img/competition.webp)
 
-The competition fields that get created via the [Edit Comps and IDs](https://github.com/daveswaves/listings_new#edit-comps-and-ids) modal pop-up, get added to `comps_ids@listings.db3`. If all the pop-up COMP and ID fields are cleared, clicking `Save` removes the record,for for that platform, from the `comps_ids` table.
+The competition fields that get created via the [Edit Comps and IDs](https://github.com/daveswaves/listings_new#edit-comps-and-ids) modal pop-up, get added to `comps_ids@listings.db3`. If all the pop-up COMP and ID fields are cleared, clicking `Save` removes the record, for that platform, from the `comps_ids` table.
 
 ![Image of comps_ids table](docs/img/comps_ids_-_listings.db3.webp)
 
