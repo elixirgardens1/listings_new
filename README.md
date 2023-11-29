@@ -138,7 +138,7 @@ However, `COMP & IDs` can also be edited by clicking an item's `edit comps & ids
 
 ![Image of edit_comps_and_ids](docs/img/edit_comps_and_ids.webp)
 
-The pop up allows up to 3 competition prices to be added, along with their URL IDs. The prices appear in the COMP1, COMP2 & SPON COMP columns (Listings View). The prices are actually links to the competition listings. In the example shown, £5.99 links to [https://www.ebay.co.uk/itm/391208794732](https://www.ebay.co.uk/itm/391208794732) and £7.98 links to [https://www.ebay.co.uk/itm/171869007392](https://www.ebay.co.uk/itm/171869007392):
+The pop up allows up to 3 competition prices to be added, along with their URL IDs. The prices appear in the COMP1, COMP2 & SPON COMP columns (Listings View). See [Copetition Columns][https://github.com/daveswaves/listings_new#competition-columns-top] The prices are actually links to the competition listings. In the example shown, £5.99 links to [https://www.ebay.co.uk/itm/391208794732](https://www.ebay.co.uk/itm/391208794732) and £7.98 links to [https://www.ebay.co.uk/itm/171869007392](https://www.ebay.co.uk/itm/171869007392):
 
 ![Image of comps](docs/img/comps.png)
 
