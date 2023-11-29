@@ -19,7 +19,7 @@
 * [Listings DB Tables](#listings-db-tables-top)
 * [Stock Control DB Tables](#stock-control-db-tables-top)
 * [Add New Product](#add-new-product-top)
-* [Add New Listings](add-new-listings-top)
+* [Add New Listings](#add-new-listings-top)
 
 ---------------
 
