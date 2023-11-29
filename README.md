@@ -134,6 +134,8 @@ The following 9 fields have editable text inputs:
 * New Price (£)
 * Advertising %
 
+### Edit Comps and IDs
+
 However, `COMP & IDs` can also be edited by clicking an item's `edit comps & ids` button to display a modal pop-up.
 
 ![Image of edit_comps_and_ids](docs/img/edit_comps_and_ids.webp)
@@ -234,7 +236,7 @@ The lookup is done via the 'id_lkup/listings' > 'id/comps_ids' method used previ
 
 ![Image of competition columns](docs/img/competition.webp)
 
-The competition fields that get created via the `Edit Comps and IDs` modal pop-up, get added to `comps_ids@listings.db3`:
+The competition fields that get created via the [Edit Comps and IDs](Edit Comps and IDs) modal pop-up, get added to `comps_ids@listings.db3`:
 
 ![Image of comps_ids table](docs/img/comps_ids_-_listings.db3.webp)
 
