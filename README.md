@@ -18,7 +18,8 @@
 * [View Price matrix](#view-price-matrix-top)
 * [Listings DB Tables](#listings-db-tables-top)
 * [Stock Control DB Tables](#stock-control-db-tables-top)
-* [Add New Product — Stock Control]()
+* [Add New Product — Stock Control](#add-new-product--stock-control)
+* [Add New Listings](add-new-listings)
 
 ---------------
 
@@ -414,3 +415,16 @@ All the prices in each group are displayed horizontally below the item's variati
 ## Stock Control DB Tables [[top]](#listings)
 
 ![Image of db_tables_stock_control](docs/img/db_tables_stock_control.webp)
+
+---------------
+
+## Add New Product — Stock Control
+
+![Image of add_new_product](docs/img/add_new_product.webp)
+
+---------------
+
+## Add New Listings
+
+![Image of add_new_listings](docs/img/add_new_listings.webp)
+
