@@ -236,7 +236,7 @@ The lookup is done via the 'id_lkup/listings' > 'id/comps_ids' method used previ
 
 ![Image of competition columns](docs/img/competition.webp)
 
-The competition fields that get created via the [Edit Comps and IDs](Edit Comps and IDs) modal pop-up, get added to `comps_ids@listings.db3`:
+The competition fields that get created via the [Edit Comps and IDs](https://github.com/daveswaves/listings_new#edit-comps-and-ids) modal pop-up, get added to `comps_ids@listings.db3`:
 
 ![Image of comps_ids table](docs/img/comps_ids_-_listings.db3.webp)
 
