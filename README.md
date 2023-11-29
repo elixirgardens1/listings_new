@@ -94,7 +94,7 @@ Specific platform data (prices, notes etc) is stored in individual platform tabl
 * perc_advertising
 * notes
 
-*** There is no 'notes' column in the listings view. Records that have note values display a notes icon in the 'Product Name' column. An icon mouseover causes the note's message to pop up:
+*** There is no 'notes' column in the listings view. Records that have note values display a notes icon in the 'Product Name' column. An icon mouseover causes the note's message to pop-up:
 
 ![Image of record with a note](docs/img/listings_ebay_note.webp)
 ![Image of notes icon](docs/img/notes_icon.webp)
@@ -134,11 +134,11 @@ The following 9 fields have editable text inputs:
 * New Price (£)
 * Advertising %
 
-However, `COMP & IDs` can also be edited by clicking an item's `edit comps & ids` button to display a modal pop up.
+However, `COMP & IDs` can also be edited by clicking an item's `edit comps & ids` button to display a modal pop-up.
 
 ![Image of edit_comps_and_ids](docs/img/edit_comps_and_ids.webp)
 
-The pop up allows up to 3 competition prices to be added, along with their URL IDs. The prices appear in the COMP1, COMP2 & SPON COMP columns (Listings View). See [Competition Columns](https://github.com/daveswaves/listings_new#competition-columns-top). The prices are actually links to the competition listings. In the example shown, £5.99 links to [https://www.ebay.co.uk/itm/391208794732](https://www.ebay.co.uk/itm/391208794732) and £7.98 links to [https://www.ebay.co.uk/itm/171869007392](https://www.ebay.co.uk/itm/171869007392):
+The pop-up allows up to 3 competition prices to be added, along with their URL IDs. The prices appear in the COMP1, COMP2 & SPON COMP columns (Listings View). See [Competition Columns](https://github.com/daveswaves/listings_new#competition-columns-top). The prices are actually links to the competition listings. In the example shown, £5.99 links to [https://www.ebay.co.uk/itm/391208794732](https://www.ebay.co.uk/itm/391208794732) and £7.98 links to [https://www.ebay.co.uk/itm/171869007392](https://www.ebay.co.uk/itm/171869007392):
 
 ![Image of comps](docs/img/comps.png)
 
@@ -234,7 +234,7 @@ The lookup is done via the 'id_lkup/listings' > 'id/comps_ids' method used previ
 
 ![Image of competition columns](docs/img/competition.webp)
 
-`comps_ids@listings.db3`
+The competition fields that get created via the `Edit Comps and IDs` modal pop-up, get added to `comps_ids@listings.db3`:
 
 ![Image of comps_ids table](docs/img/comps_ids_-_listings.db3.webp)
 
@@ -249,7 +249,7 @@ $sort_by_profit_urls = [
 ];
 ```
 
-The 'type' field values are used to display the correct link titles - appear as a pop up on mouseover. It uses the `$link_type` array - 'incs/lookups.php'. If 'type1' value equals 1, then a `Like 4 Like` pop up will appear on mouseover (see previous ***competition.png*** - start of "_Competition Columns_" section).
+The 'type' field values are used to display the correct link titles - appear as a pop-up on mouseover. It uses the `$link_type` array - 'incs/lookups.php'. If 'type1' value equals 1, then a `Like 4 Like` pop-up will appear on mouseover (see previous ***competition.png*** - start of "_Competition Columns_" section).
 
 ```
 $link_type = [
@@ -318,7 +318,7 @@ Nb. See [stock_control.db3](#stock-control-db-tables-top) image below to see all
 
 ## Add/Edit Skus [[top]](https://github.com/daveswaves/listings_new#listings)
 
-The skus get added by clicking the listing's `add/edit` button ('Skus' column). The skus with checkboxes, that appear in the pop up, show the skus that have already been added. The 3 skus in this example tally with the 'ids' (ebay platform) on the previous screenshots.
+The skus get added by clicking the listing's `add/edit` button ('Skus' column). The skus with checkboxes, that appear in the pop-up, show the skus that have already been added. The 3 skus in this example tally with the 'ids' (ebay platform) on the previous screenshots.
 
 ![Image of Skus add/edit](docs/img/skus_add_edit.webp)
 
