@@ -422,7 +422,12 @@ All the prices in each group are displayed horizontally below the item's variati
 
 ![[Image of add_new_product]](docs/img/add_new_product.webp)
 
-Adding a new product updates 4 tables in the `stock_control.db3` database: 'products','product_rooms','stock_qty' & 'stock'.
+Adding a new product updates 4 tables in the `stock_control.db3` database:
+
+* products
+* product_rooms
+* stock_qty
+* stock.
 
 The following 8 fields (cat, key, unit, product, product_cost, primary_supplier, yellowThreshold, redThreshold), in the `products` table, get added:
 
@@ -432,9 +437,12 @@ _Nb. The `yellowThreshold` & `redThreshold` values are hardcoded in the 'incs/db
 
 The options displayed in the `Add New Product` drop-downs ('Cat', 'Units', 'Room' & 'Existing Suppliers') are not the values posted and added to the tables. For example, the 'Cat' drop-down's values are the 'cat' field values in the 'cats' table (see [Categories Operation](#categories-operation)).
 
-
-### Add New Product drop-downs
+Add New Product drop-downs  
 ![[Image of add_new_prod_menus]](docs/img/add_new_prod_menus.webp)
+
+
+![[Image of product_rooms table]](docs/img/product_rooms_-_stock_control.db3.png)
+
 
 ---------------
 
