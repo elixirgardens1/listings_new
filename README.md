@@ -428,10 +428,9 @@ The following 8 fields (cat, key, unit, product, product_cost, primary_supplier,
 
 ![[Image of products_stock_control]](docs/img/products_-_stock_control.db3.webp)
 
-_Nb. `yellowThreshold` & `redThreshold` values are hardcoded._
+_Nb. The `yellowThreshold` & `redThreshold` values are hardcoded in the 'incs/db_add_new_product.php' file._
 
-
-Category, Units, Room and Existing Suppliers drop-downs:
+The options displayed in the `Add New Product` drop-downs ('Cat', 'Units', 'Room' & 'Existing Suppliers') are not the values posted and added to the tables. For example, the 'Cat' drop-down's values are the 'cat' field values in the 'cats' table (see [Categories Operation](#categories-operation)).
 
 ![[Image of add_new_prod_menus]](docs/img/add_new_prod_menus.webp)
 
