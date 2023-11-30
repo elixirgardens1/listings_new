@@ -18,6 +18,8 @@
 * [View Price matrix](#view-price-matrix-top)
 * [Listings DB Tables](#listings-db-tables-top)
 * [Stock Control DB Tables](#stock-control-db-tables-top)
+* [Add New Product](#add-new-product-top)
+* [Add New Listings](#add-new-listings-top)
 
 ---------------
 
@@ -58,7 +60,7 @@ Data from the above tables is sorted alphabetically before displaying in the lis
 
 ---------------
 
-## Listings View [[top]](https://github.com/daveswaves/listings_new#listings)
+## Listings View [[top]](#listings)
 
 The listings view is created from several database tables.
 
@@ -79,7 +81,7 @@ The listing view sorts the results into groups. The first group are those whose 
 * lowest_variation_weight
 * variation
 
-### Platform Specific Listings Tables [[top]](https://github.com/daveswaves/listings_new#listings)
+### Platform Specific Listings Tables [[top]](#listings)
 
 Specific platform data (prices, notes etc) is stored in individual platform tables. Selecting 'Ebay' in the drop-down, for example, retrieves the records from the 'listings_ebay' table. The 'id' values in 'listings_ebay' are matched to the 'id_lkup' values in 'listings'. The following are group 'a' records:
 
@@ -94,12 +96,12 @@ Specific platform data (prices, notes etc) is stored in individual platform tabl
 * perc_advertising
 * notes
 
-*** There is no 'notes' column in the listings view. Records that have note values display a notes icon in the 'Product Name' column. An icon mouseover causes the note's message to pop up:
+*** There is no 'notes' column in the listings view. Records that have note values display a notes icon in the 'Product Name' column. An icon mouseover causes the note's message to pop-up:
 
 ![Image of record with a note](docs/img/listings_ebay_note.webp)
 ![Image of notes icon](docs/img/notes_icon.webp)
 
-### Calculated Values [[top]](https://github.com/daveswaves/listings_new#listings)
+### Calculated Values [[top]](#listings)
 
 Columns with dark blue headings (*Total Weight*, *Pricing Suggestion*, *New Price* etc) are calculated.
 
@@ -115,7 +117,7 @@ Columns with dark blue headings (*Total Weight*, *Pricing Suggestion*, *New Pric
 
 ---------------
 
-## Edit View [[top]](https://github.com/daveswaves/listings_new#listings)
+## Edit View [[top]](#listings)
 
 Clicking the `Edit` button below a category group (Listings View) displays the `Edit View` - essentially an editable version of the `Listings View`:
 
@@ -134,11 +136,13 @@ The following 9 fields have editable text inputs:
 * New Price (£)
 * Advertising %
 
-However, `COMP & IDs` can also be edited by clicking an item's `edit comps & ids` button to display a modal pop up.
+### Edit Comps and IDs
+
+However, `COMP & IDs` can also be edited by clicking an item's `edit comps & ids` button to display a modal pop-up.
 
 ![Image of edit_comps_and_ids](docs/img/edit_comps_and_ids.webp)
 
-The pop up allows up to 3 competition prices to be added, along with their URL IDs. The prices appear in the COMP1, COMP2 & SPON COMP columns (Listings View). The prices are actually links to the competition listings. In the example shown, £5.99 links to [https://www.ebay.co.uk/itm/391208794732](https://www.ebay.co.uk/itm/391208794732) and £7.98 links to [https://www.ebay.co.uk/itm/171869007392](https://www.ebay.co.uk/itm/171869007392):
+The pop-up allows up to 3 competition prices to be added, along with their URL IDs. The prices appear in the COMP1, COMP2 & SPON COMP columns (Listings View). See [Competition Columns](#competition-columns-top). The prices are actually links to the competition listings. In the example shown, £5.99 links to [https://www.ebay.co.uk/itm/391208794732](https://www.ebay.co.uk/itm/391208794732) and £7.98 links to [https://www.ebay.co.uk/itm/171869007392](https://www.ebay.co.uk/itm/171869007392):
 
 ![Image of comps](docs/img/comps.png)
 
@@ -158,7 +162,7 @@ Buttons displaying a dotted white border indicate modified unsaved comps:
 
 ---------------
 
-## Add Listing [[top]](https://github.com/daveswaves/listings_new#listings)
+## Add Listing [[top]](#listings)
 
 New items can be added to an existing listing group by clicking the `Add` button:
 
@@ -178,7 +182,7 @@ Group listings are sorted by `variation`, so new listings don't necessarily appe
 
 ---------------
 
-## Add Prime Listing [[top]](https://github.com/daveswaves/listings_new#listings)
+## Add Prime Listing [[top]](#listings)
 
 The `Add Prime` button displays the `Add Prime Listings` page:
 
@@ -204,7 +208,7 @@ These get added to the `prime_couriers` table. The following example shows the r
 
 ---------------
 
-## Courier Lookup [[top]](https://github.com/daveswaves/listings_new#listings)
+## Courier Lookup [[top]](#listings)
 
 The 'id' values in the 'listings_couriers' table are matched to the 'id_lkup' values in 'listings':
 
@@ -226,7 +230,7 @@ Listings view Courier values
 
 ---------------
 
-## Competition Columns [[top]](https://github.com/daveswaves/listings_new#listings)
+## Competition Columns [[top]](#listings)
 
 Displays the price of up to 3 competitors. The displayed prices are also links to the competitor's listing (eg. https://www.ebay.co.uk/itm/373442522706).
 
@@ -234,7 +238,7 @@ The lookup is done via the 'id_lkup/listings' > 'id/comps_ids' method used previ
 
 ![Image of competition columns](docs/img/competition.webp)
 
-`comps_ids@listings.db3`
+The competition fields that get created via the [Edit Comps and IDs](#edit-comps-and-ids) modal pop-up, get added to `comps_ids@listings.db3`. If all the pop-up COMP and ID fields are cleared (use the `Clear Fields` button to do this with 1 click), clicking `Save` removes the record, for that platform, from the `comps_ids` table.
 
 ![Image of comps_ids table](docs/img/comps_ids_-_listings.db3.webp)
 
@@ -249,7 +253,7 @@ $sort_by_profit_urls = [
 ];
 ```
 
-The 'type' field values are used to display the correct link titles - appear as a pop up on mouseover. It uses the `$link_type` array - 'incs/lookups.php'. If 'type1' value equals 1, then a `Like 4 Like` pop up will appear on mouseover (see previous ***competition.png*** - start of "_Competition Columns_" section).
+The 'type' field values are used to display the correct link titles - appear as a pop-up on mouseover. It uses the `$link_type` array - 'incs/lookups.php'. If 'type1' value equals 1, then a `Like 4 Like` pop-up will appear on mouseover (see previous ***competition.png*** - start of "_Competition Columns_" section).
 
 ```
 $link_type = [
@@ -300,7 +304,7 @@ The $link_color classes are defined in the 'incs/style.css' file:
 
 ---------------
 
-## URLs Column [[top]](https://github.com/daveswaves/listings_new#listings)
+## URLs Column [[top]](#listings)
 
 Hovering over a URLs label, ('OURS' column) displays 3 links. These link to the Elixir listings on the selected platform (Amazon, Ebay etc). It uses the `$sort_by_profit_urls` array mentioned previously.
 
@@ -316,9 +320,9 @@ Nb. See [stock_control.db3](#stock-control-db-tables-top) image below to see all
 
 ---------------
 
-## Add/Edit Skus [[top]](https://github.com/daveswaves/listings_new#listings)
+## Add/Edit Skus [[top]](#listings)
 
-The skus get added by clicking the listing's `add/edit` button ('Skus' column). The skus with checkboxes, that appear in the pop up, show the skus that have already been added. The 3 skus in this example tally with the 'ids' (ebay platform) on the previous screenshots.
+The skus get added by clicking the listing's `add/edit` button ('Skus' column). The skus with checkboxes, that appear in the pop-up, show the skus that have already been added. The 3 skus in this example tally with the 'ids' (ebay platform) on the previous screenshots.
 
 ![Image of Skus add/edit](docs/img/skus_add_edit.webp)
 
@@ -330,7 +334,7 @@ The skus associated with this listing are stored in `skus@listings.db3`:
 
 ---------------
 
-## VAT Rates [[top]](https://github.com/daveswaves/listings_new#listings)
+## VAT Rates [[top]](#listings)
 
 Some categories can have zero vat - eg. Bird Seed
 
@@ -355,7 +359,7 @@ and `js/js_form_fld_calculations.php`:
 
 ---------------
 
-## Platform Fees [[top]](https://github.com/daveswaves/listings_new#listings)
+## Platform Fees [[top]](#listings)
 
 Platform fees are stored in the `config_fees@listings.db3`.  
 
@@ -367,7 +371,7 @@ The code that sets the $fees_val is located in `sort_by_profit.php`:
 
 ---------------
 
-## Export / Remove [[top]](https://github.com/daveswaves/listings_new#listings)
+## Export / Remove [[top]](#listings)
 
 The `Export/Remove` select menu (header bar) defaults to 'Export'. The submit button is disabled until 1 or more listings have been checked.
 
@@ -386,7 +390,7 @@ clicking `submit`, when the `Remove` option is selected, sets the value in the `
 
 ---------------
 
-## View Price matrix [[top]](https://github.com/daveswaves/listings_new#listings)
+## View Price matrix [[top]](#listings)
 
 Allows `New Price` values across the whole page to be updated simultaneously. The price matrix table displays the product names in the first column (only the first item in each group) and the prices for each variation in the following columns. The variation values are displayed above each price column - 1, 5, 10 etc.
 
@@ -402,18 +406,28 @@ All the prices in each group are displayed horizontally below the item's variati
 
 ---------------
 
-## Listings DB Tables [[top]](https://github.com/daveswaves/listings_new#listings)
+## Listings DB Tables [[top]](#listings)
 
 ![Image of db_tables_listings](docs/img/db_tables_listings.webp)
+
+---------------
+
+## Stock Control DB Tables [[top]](#listings)
+
+![Image of db_tables_stock_control](docs/img/db_tables_stock_control.webp)
+
+---------------
+
+## Add New Product [[top]](#listings)
+
+![Image of add_new_product](docs/img/add_new_product.webp)
 
 Category, Units, Room amd Existing Suppliers drop-downs:
 
 ![Image of add_new_prod_menus](docs/img/add_new_prod_menus.webp)
 
-
-
 ---------------
 
-## Stock Control DB Tables [[top]](https://github.com/daveswaves/listings_new#listings)
+## Add New Listings [[top]](#listings)
 
-![Image of db_tables_stock_control](docs/img/db_tables_stock_control.webp)
+![Image of add_new_listings](docs/img/add_new_listings.webp)
