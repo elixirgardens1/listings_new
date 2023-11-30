@@ -432,6 +432,8 @@ _Nb. The `yellowThreshold` & `redThreshold` values are hardcoded in the 'incs/db
 
 The options displayed in the `Add New Product` drop-downs ('Cat', 'Units', 'Room' & 'Existing Suppliers') are not the values posted and added to the tables. For example, the 'Cat' drop-down's values are the 'cat' field values in the 'cats' table (see [Categories Operation](#categories-operation)).
 
+
+### Add New Product drop-downs
 ![[Image of add_new_prod_menus]](docs/img/add_new_prod_menus.webp)
 
 ---------------
