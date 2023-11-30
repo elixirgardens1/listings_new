@@ -422,7 +422,14 @@ All the prices in each group are displayed horizontally below the item's variati
 
 ![Image of add_new_product](docs/img/add_new_product.webp)
 
-Category, Units, Room amd Existing Suppliers drop-downs:
+Adding a new product updates 4 tables in the `stock_control.db3` database: 'products','product_rooms','stock_qty' & 'stock'.
+
+The following 8 fields, in the `products` table get added:
+
+![Image of products_stock_control](docs/img/products_-_stock_control.db3.webp)
+
+
+Category, Units, Room and Existing Suppliers drop-downs:
 
 ![Image of add_new_prod_menus](docs/img/add_new_prod_menus.webp)
 
