@@ -91,7 +91,7 @@ if( isset($_POST['save_listing_to_db']) ){
 		$prev_price        = $rec['prev_price'];
 		$new_price         = $rec['new_price'];
 		$perc_advertising  = $rec['perc_advertising'];
-
+		
 		if( 'w' != $post_platform ){
 			// comps_ids
 			$comp1 = $rec['comp1'];
@@ -198,6 +198,14 @@ if( isset($_POST['save_listing_to_db']) ){
 				`timestamp` = ?
 				WHERE `id` = ?");
 			
+			// A `new_price` update on ebay also needs to update the price on the web
+			if (
+				'e' == $post_platform // if ebay
+		        && (string)$new_price !== (string)$results_listings_platform[$id]['new_price'] // has the price changed?
+		    ) {
+				$stmt_web = $db_listings->prepare("UPDATE `listings_web` SET `new_price` = ?, `timestamp` = ? WHERE `id` = ?");
+			}
+			
 			$stmt_courier = $db_listings->prepare("UPDATE `$tbl` SET `courier` = ?, `timestamp` = ? WHERE `id` = ?");
 			
 			// If a listing shipped in a bag has an equivalent tub listing,
@@ -244,6 +252,15 @@ if( isset($_POST['save_listing_to_db']) ){
 				$timestamp,
 				$id
 			]);
+			
+			// Update web price if $stmt_web exists
+			if (isset($stmt_web)) {
+				$stmt_web->execute([
+					$new_price,
+					$timestamp,
+					$id
+				]);
+			}
 			
 			// update tub listing price.
 			if( isset($stmt_tub_price) ){
