@@ -428,6 +428,8 @@ The following 8 fields (cat, key, unit, product, product_cost, primary_supplier,
 
 ![[Image of products_stock_control]](docs/img/products_-_stock_control.db3.webp)
 
+_Nb. yellowThreshold & redThreshold values are hardcoded._
+
 
 Category, Units, Room and Existing Suppliers drop-downs:
 
