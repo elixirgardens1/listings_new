@@ -424,9 +424,9 @@ All the prices in each group are displayed horizontally below the item's variati
 
 Adding a new product updates 4 tables in the `stock_control.db3` database: 'products','product_rooms','stock_qty' & 'stock'.
 
-The following 8 fields, in the `products` table get added:
+The following 8 fields (cat, key, unit, product, product_cost, primary_supplier, yellowThreshold, redThreshold), in the `products`, table get added:
 
-![Image of products_stock_control](docs/img/products_-_stock_control.db3.webp)
+![[Image of products_stock_control]](docs/img/products_-_stock_control.db3.webp)
 
 
 Category, Units, Room and Existing Suppliers drop-downs:
