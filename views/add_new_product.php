@@ -100,6 +100,7 @@ sort($suppliers_dropdown);
 	<div class="h20"></div>
 	
 	<input type="hidden" name="user" value="<?= $_POST['user'] ?>">
+	<input type="hidden" name="view" value="<?= $_POST['view'] ?>">
 	
 	<div class="fl-l mr50">
 		<input type="submit" name="add_new_product" class="btn w140" value="Add">
@@ -112,6 +113,14 @@ sort($suppliers_dropdown);
 
 <script>
 	// DEBUG: pre-populate form fields
+	// $('[name="product"]').val('Test Product');
+	// $('[name="cat"]').val('agg');
+	// $('[name="cost"]').val('9.99');
+	// $('[name="units"]').val('q');
+	// $('[name="room"]').val('1');
+	// $('[name="pkg_qty"]').val('1');
+	// $('[name="pkg_multiples"]').val('1');
+	// $('[name="pri_sup"]').val('China');
 	
 	// $('[name="product"]').val('Soil Warming Cable 3"');
 	// $('[name="cat"]').val('ele');

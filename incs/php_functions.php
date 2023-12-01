@@ -738,11 +738,13 @@ function record_changes_fnc($args)
 	if( !isset($args['no_trans']) ){ $db->commit(); }
 }
 
+// This is no longer being called. It was returning an error of 'changes_stock' does not exist
 function record_changes_to_stock_fnc($args)
 {
 	$db  = $args['db'];
 
-	$stmt = $db->prepare("INSERT INTO `changes_stock` VALUES (?,?,?)");
+	$stmt = $db->prepare("INSERT INTO `changes` VALUES (?,?,?)");
+	// $stmt = $db->prepare("INSERT INTO `changes_stock` VALUES (?,?,?)");
 	
 	$db->beginTransaction();
 	$stmt->execute([$args['changes'], $args['user'], $args['timestamp'] ]);

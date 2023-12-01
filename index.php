@@ -12,7 +12,7 @@ http://192.168.0.24/listings_new/convert_db_format/modify_tables.php
 */
 
 //DEBUG
-// echo '<pre style="background:#002; color:#fff;">'; print_r($_POST); echo '</pre>'; die();
+// echo '<pre style="background:#002; color:#fff;">'; print_r($_POST); echo '</pre>';
 
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
