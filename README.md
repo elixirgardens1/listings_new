@@ -429,7 +429,7 @@ Adding a new product updates 4 tables in the `stock_control.db3` database:
 * stock_qty
 * stock.
 
-The following 8 fields (cat, key, unit, product, product_cost, primary_supplier, yellowThreshold, redThreshold), in the `products` table, get added. The `key` values are a composite of the `cat` value and the total number of each: eg. 67 x 'acc', 28 x 'agg' etc.
+The following 8 fields (cat, key, unit, product, product_cost, primary_supplier, yellowThreshold, redThreshold), in the `products` table, get added. The `key` values are a composite of the `cat` value and the total number of each `cat` value: eg. 67 x 'acc', 28 x 'agg' etc.
 
 ![[Image of products_stock_control]](docs/img/products_-_stock_control.db3.webp)
 
@@ -440,7 +440,7 @@ The options displayed in the `Add New Product` drop-downs ('Cat', 'Units', 'Room
 Add New Product drop-downs  
 ![[Image of add_new_prod_menus]](docs/img/add_new_prod_menus.webp)
 
-
+The `product_rooms` table saves the `key` value
 
 ![[Image of product_rooms table]](docs/img/product_rooms_-_stock_control.db3.png)
 

@@ -62,7 +62,11 @@ sort($suppliers_dropdown);
 				<td class="pr10 va_m">
 					<select name="room" id="room" class="large_select" required>
 						<option value="">- Select Room -</option>
-						<?php foreach( $lookup_rooms as $room_id => $room ){ ?>
+						<?php
+						// foreach( $lookup_rooms as $room_id => $room ){
+						foreach( $lookup_rooms as $room ){
+							$room_id = strtolower(substr($room, 0,1));
+						?>
 							<?= sel_opt_fnc($room_id, $room, isset($data['room']) ? $data['room'] : '') ?>
 						<?php } ?>
 					</select>
@@ -118,6 +122,7 @@ sort($suppliers_dropdown);
 	// $('[name="cost"]').val('9.99');
 	// $('[name="units"]').val('q');
 	// $('[name="room"]').val('1');
+	// $('[name="room"]').val('m');
 	// $('[name="pkg_qty"]').val('1');
 	// $('[name="pkg_multiples"]').val('1');
 	// $('[name="pri_sup"]').val('China');
@@ -126,7 +131,6 @@ sort($suppliers_dropdown);
 	// $('[name="cat"]').val('ele');
 	// $('[name="cost"]').val('3.96');
 	// $('[name="units"]').val('q');
-	// $('[name="room"]').val('m');
 	// $('[name="pkg_qty"]').val('1');
 	// $('[name="pkg_multiples"]').val('1');
 	// $('[name="pri_sup"]').val('China');
