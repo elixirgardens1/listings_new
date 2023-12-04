@@ -20,6 +20,7 @@
 * [Stock Control DB Tables](#stock-control-db-tables-top)
 * [Add New Product](#add-new-product-top)
 * [Add New Listings](#add-new-listings-top)
+* [NOTES](#notes-top)
 
 ---------------
 
@@ -450,3 +451,10 @@ The `product_rooms` table saves the `key` value
 ## Add New Listings [[top]](#listings)
 
 ![[Image of add_new_listings]](docs/img/add_new_listings.webp)
+
+
+---------------
+
+## NOTES [[top]](#listings)
+
+You would assume that the `$session['listings']` array is created in `incs/sessions.php`, but not so - `views/retrieve_listings.php`.
