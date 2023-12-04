@@ -30,6 +30,7 @@ $price_matrix = [];
 // Need to create a complete array with required elements for either
 // 'Listing' view or 'Edit' view.
 //=========================================================================
+$prev_cpu = '';
 foreach( $session['listings'] as $id_lkup => $recs ){
 	if( 'p' == $platform_post && 'PRIME' != substr($recs['courier'], 0,5) ){ continue; }
 	
@@ -99,6 +100,9 @@ foreach( $session['listings'] as $id_lkup => $recs ){
 	$session['listings'][$id_lkup]['postage']                      = $calc_vals['postage'];
 	$session['listings'][$id_lkup]['pricing_suggestion_20perc']    = $calc_vals['pricing_suggestion_20perc'];
 	$session['listings'][$id_lkup]['cpu_to_cust']                  = $calc_vals['cpu_to_cust'];
+	
+	$session['listings'][$id_lkup]['prev_cpu_value_less']          = '' != $prev_cpu && $calc_vals['cpu_to_cust'] > $prev_cpu ? true : false;
+	
 	$session['listings'][$id_lkup]['vat']                          = $calc_vals['vat'];
 	$session['listings'][$id_lkup]['fees']                         = $calc_vals['fees'];
 	
@@ -117,6 +121,8 @@ foreach( $session['listings'] as $id_lkup => $recs ){
 	
 	$session['listings'][$id_lkup]['cls_colour_profit_10off']      = $calc_vals['cls_colour_profit'];
 	$session['listings'][$id_lkup]['cls_colour_profit_10off_perc'] = $calc_vals['cls_colour_profit'];
+	
+	$prev_cpu = $calc_vals['cpu_to_cust'];
 
 	if( preg_match('/(\d{1,2}m x \d{1,2}m)$/', $recs['product_name'], $match) ){
 		$variants = $match[1];

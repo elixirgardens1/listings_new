@@ -5,6 +5,7 @@
 * [Listings View](#listings-view-top)
 * [Platform Specific Listings Tables](#platform-specific-listings-tables-top)
 * [Calculated Values](#calculated-values-top)
+* [Cell Colour Indicators](#cell-colour-indicators-top)
 * [Edit View](#edit-view-top)
 * [Add Listing](#add-listing-top)
 * [Add Prime Listing](#add-prime-listing-top)
@@ -115,6 +116,22 @@ Columns with dark blue headings (*Total Weight*, *Pricing Suggestion*, *New Pric
 | ------------------ | ------- | --- | ---- | --- | --- |
 | Cost Per Unit x Variation | (Courier Cost + Postage Band Cost) x Variation / 29.5 | New Price ÷ 6 | Amazon: New Price x 0.17 / Ebay: New Price x 0.14 | New Price x 0.17 | TBD |
 
+
+---------------
+
+### Cell Colour Indicators [[top]](#listings)
+
+The 2 `Profit` columns have colour coded cells to indicate various bands:
+
+* First Profit column displays a RED background if less than 1, and GREEN otherwise.
+* Second Profit column (%) displays:
+  * RED if less than 4
+  * ORANGE if 4 or more, but less than 7
+  * YELLOW if 7 or more, but less than 10
+  * GREEN if 10 or more, but less than 15
+  * BLUE otherwise.
+
+The `Edit View` (see next section) also displays cell colours in the `CPU to Cust.` column. A RED background is displayed if the previous record's CPU to Cust. value is lower than current record's.
 
 ---------------
 
@@ -457,4 +474,7 @@ The `product_rooms` table saves the `key` value
 
 ## NOTES [[top]](#listings)
 
-You would assume that the `$session['listings']` array is created in `incs/sessions.php`, but not so - `views/retrieve_listings.php`.
+You would assume that the `$session['listings']` array is created in `incs/sessions.php`, but not so. It is created in 2 files:
+
+* views/retrieve_listings.php
+* views/format_listing_for_view.php
