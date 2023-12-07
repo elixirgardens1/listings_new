@@ -12,7 +12,7 @@ http://192.168.0.24/listings_new/convert_db_format/modify_tables.php
 */
 
 //DEBUG
-// echo '<pre style="background:#002; color:#fff;">'; print_r($_POST); echo '</pre>';
+// echo '<div style="position:fixed; margin-left:1710px; margin-top:40px;"><pre style="background:#002; color:#fff;">'; print_r($_POST); echo '</pre></div>';
 
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
@@ -225,7 +225,7 @@ elseif( 'Import' == $view ){ require_once 'views/import.php'; }
 <?php
 require('js/js_multiselect_chkbxs.php');
 require('js/js_connect_btns_to_forms.php');
-require('js/js_retain_scroll_pos.php');
+if ('Edit' != $view) { require('js/js_retain_scroll_pos.php'); }
 ?>
 
 <?php
