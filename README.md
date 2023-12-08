@@ -469,7 +469,7 @@ The `product_rooms` table saves the `key` value
 
 ![[Image of add_new_listings]](docs/img/add_new_listings.webp)
 
-Creating a new listing updates ? database tables:
+Creating a new listing updates the following database tables:
 
 * multi_cpu
 * listings
