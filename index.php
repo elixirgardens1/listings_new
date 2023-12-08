@@ -37,17 +37,7 @@ if( isset($_POST['fix_errors_view_cat']) || isset($_POST['fix_errors_view_platfo
 	$_POST['platform'] = $_POST['fix_errors_view_platform'];
 }
 
-// require_once 'database_paths.php';
-
-if ($live = false) {
-	require_once 'C:/inetpub/wwwroot/database_paths.php';
-	$listings_db_path = 'dbase/listings_NEW.db3';
-}
-else {
-	$listings_db_path = 'dbase/listings_NEW.db3';
-	$stock_control_db_path = 'dbase/stock_control.db3';
-}
-
+require_once 'incs/db_connections.php';
 require_once 'incs/php_functions.php';
 
 $db_listings = new PDO("sqlite:$listings_db_path");
