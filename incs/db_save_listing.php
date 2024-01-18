@@ -138,14 +138,14 @@ if( isset($_POST['save_listing_to_db']) ){
 			//    9159 |agg11 |a244   |a      |Brown Rock Salt x 5kg bag T |b       |             5 |                      1 |        5
 			//=========================================================================================================================
 			$db_listings->beginTransaction();
-			// $stmt->execute([
-			// 	$product_name,
-			// 	$packaging_band,
-			// 	$lowest_variation_weight,
-			// 	$variation,
-			// 	$timestamp,
-			// 	$id
-			// ]);
+			$stmt->execute([
+				$product_name,
+				$packaging_band,
+				$lowest_variation_weight,
+				$variation,
+				$timestamp,
+				$id
+			]);
 			$db_listings->commit();
 
 			//=========================================================================

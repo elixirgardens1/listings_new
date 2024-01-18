@@ -241,6 +241,8 @@ function calculate_flds_fnc($params)
 		// Calculate fields
 		@($profit_10off = $new_price_calc * 0.9 - $new_price_calc * 0.9 / 6 - $total_product_cost - $postage);
 		@($profit_10off_perc = $profit_10off / ($new_price_calc * 0.9) * 100);
+		// $profit_10off_perc = $new_price_calc*0.9 - $new_price_calc*0.9/6 - $new_price_calc*0.9*.14 - $total_product_cost - $postage;
+		
 		$cls_colour_profit_10off = $profit_10off < 1 ? ' red-bg' : ' grn';
 		// $cls_colour_profit_10off = $profit_10off < 1.25 ? ' red-bg' : ' grn';
 		$cls_colour_profit_10off_perc = $profit_10off_perc < 20 ? ' red-bg' : ' grn';
