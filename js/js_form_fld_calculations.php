@@ -79,8 +79,9 @@ $(function() {
 	var cpu_to_cust;
 	var vat;
 	var fees;
-	var pp1;
-	var pp2;
+	// var pp1;
+	// var pp2;
+	// var pp1pp2;
 	var perc_advertising;
 	var packaging_band;
 	var weight;
@@ -198,6 +199,10 @@ $(function() {
 // USER FUNCTIONS
 //=========================================================================
 function fnc_calc_new_price(rowid,element_class_name){
+	var pp1;
+	var pp2 = 0;;
+	var pp1pp2;
+	
 	// Calc 'total_weight' if Lowest variation Weight or Variation text fields get updated:
 	// = 'variation' * 'lowest_variation_weight' + 'max_weight' value for this 'packaging_band' [lookup].
 	if( 'lowest_variation_weight' == element_class_name || 'variation' == element_class_name ){
@@ -272,13 +277,12 @@ function fnc_calc_new_price(rowid,element_class_name){
 
 		// Modify "Profit (£)" cell colour (green/red)
 		if( profit < 1 ){ $('tr[data-id_lkup="'+rowid+'"] .profit').removeClass().addClass('profit red-bg'); }
-		// if( profit < 1.25 ){ $('tr[data-id_lkup="'+rowid+'"] .profit').removeClass().addClass('profit red-bg'); }
 		else{ $('tr[data-id_lkup="'+rowid+'"] .profit').removeClass().addClass('profit grn'); }
 
 		profit_perc = (profit / new_price * 100);
 		$('tr[data-id_lkup="'+rowid+'"] .profit_perc').html(profit_perc.toFixed(2) );
 
-		// Modify "Profit %" cell colour (green/red)
+		// Modify "Profit %" cell colour
 		switch (true) {
 		    case profit_perc < 4:
                 $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc red-bg');
@@ -294,21 +298,28 @@ function fnc_calc_new_price(rowid,element_class_name){
                 break;
             default:
             	$('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc blue');
-		    
-		    /*
-		    case profit_perc < 15:
-                $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc red-bg');
+        }
+        
+        pp1pp2 = (pp1 + pp2 + profit) / new_price * 100;
+        // pp1pp2 = 100;
+        $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').html(pp1pp2.toFixed(2) );
+        
+        // Modify "Profit %" cell colour
+		switch (true) {
+		    case pp1pp2 < 19:
+                $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 red-bg');
                 break;
-            case profit_perc < 20:
-                $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc orange');
+            case pp1pp2 < 21:
+                $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 orange');
                 break;
-            case profit_perc < 30:
-                $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc grn');
+            case pp1pp2 < 23:
+                $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 yellow');
                 break;
-            case profit_perc > 29:
-                $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc blue');
+            case pp1pp2 < 33:
+                $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 grn');
                 break;
-            */
+            default:
+            	$('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 blue');
         }
 
         /*

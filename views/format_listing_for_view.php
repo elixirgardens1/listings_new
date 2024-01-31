@@ -89,9 +89,35 @@ foreach( $session['listings'] as $id_lkup => $recs ){
 		'id_skus'  => $id_skus,
 		'vat_rate' => $vat_rate,
 	]);
+	
+	$new_price = $calc_vals['new_price'];
+	$pp1 = $calc_vals['pp1'];
+	$pp2 = $calc_vals['pp2']; // profit +pp2
+	$profit = $calc_vals['profit'];
+	$pp1pp2 = ($pp1+$pp2+$profit)/$new_price*100;
+	$pp1pp2 = number_format((float)$pp1pp2, 2, '.', '');
+	
+	switch (true) {
+        case $pp1pp2 < 19:
+            $cls_colour_pp1pp2 = ' red-bg';
+            break;
+        case $pp1pp2 < 21:
+            $cls_colour_pp1pp2 = ' orange';
+            break;
+        case $pp1pp2 < 23:
+            $cls_colour_pp1pp2 = ' yellow';
+            break;
+        case $pp1pp2 < 33:
+            $cls_colour_pp1pp2 = ' grn';
+            break;
+        default:
+        	$cls_colour_pp1pp2 = ' blue';
+    }
+	
 
 	$session['listings'][$id_lkup]['total_weight']                 = $calc_vals['total_weight'];
-	$session['listings'][$id_lkup]['new_price']                    = $calc_vals['new_price'];
+	$session['listings'][$id_lkup]['new_price']                    = $new_price;
+	// $session['listings'][$id_lkup]['new_price']                    = $calc_vals['new_price'];
 	$session['listings'][$id_lkup]['new_price_e']                  = $calc_vals['new_price_e'];
 	$session['listings'][$id_lkup]['new_price_a']                  = $calc_vals['new_price_a'];
 	$session['listings'][$id_lkup]['new_price_f']                  = $calc_vals['new_price_f'];
@@ -106,10 +132,15 @@ foreach( $session['listings'] as $id_lkup => $recs ){
 	$session['listings'][$id_lkup]['vat']                          = $calc_vals['vat'];
 	$session['listings'][$id_lkup]['fees']                         = $calc_vals['fees'];
 	
-	$session['listings'][$id_lkup]['pp1']                          = $calc_vals['pp1'];
-	$session['listings'][$id_lkup]['pp2']                          = $calc_vals['pp2']; // profit +pp2
+	// $session['listings'][$id_lkup]['pp1']                          = $calc_vals['pp1'];
+	// $session['listings'][$id_lkup]['pp2']                          = $calc_vals['pp2']; // profit +pp2
+	$session['listings'][$id_lkup]['pp1']                          = $pp1;
+	$session['listings'][$id_lkup]['pp2']                          = $pp2;
+	$session['listings'][$id_lkup]['pp1pp2']                       = $pp1pp2;
+	$session['listings'][$id_lkup]['cls_colour_pp1pp2']            = $cls_colour_pp1pp2;
 	
-	$session['listings'][$id_lkup]['profit']                       = $calc_vals['profit'];
+	$session['listings'][$id_lkup]['profit']                       = $profit;
+	// $session['listings'][$id_lkup]['profit']                       = $calc_vals['profit'];
 	$session['listings'][$id_lkup]['profit_perc']                  = $calc_vals['profit_perc'];
 	$session['listings'][$id_lkup]['profit_10off']                 = $calc_vals['profit_10off'];
 	$session['listings'][$id_lkup]['profit_10off_perc']            = $calc_vals['profit_10off_perc'];

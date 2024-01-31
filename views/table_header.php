@@ -98,6 +98,7 @@ Table Columns:
 			
 			<th class="sticky calc fees">PP1 (&pound;)</th>
 			<th class="sticky calc fees">PP2 (&pound;)</th>
+			<th class="sticky calc fees">PP2+<br>PP2 (%)</th>
 			
 			<?php if( !isset($_POST['group_edit']) && !isset($_POST['add_to_group']) ){ ?>
 			<th class="sticky export_remove <?= $bg_colour ?>">

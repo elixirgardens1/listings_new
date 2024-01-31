@@ -166,6 +166,7 @@ foreach( $session['listings'] as $id_lkup => $rec ){ ?>
 		<td class="pp1"><?= $rec['pp1'] ?></td><!-- CALCULATION -->
 		<?php /*$rec['pp2'] = 0;*/ ?>
 		<td class="pp2"><?= $rec['pp2'] ?></td><!-- CALCULATION -->
+		<td class="pp1pp2 <?= $rec['cls_colour_pp1pp2'] ?>""><?= $rec['pp1pp2'] ?></td><!-- CALCULATION -->
 	</tr>
 <?php } ?>
 </table>
