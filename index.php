@@ -12,7 +12,7 @@ http://192.168.0.24/listings_new/convert_db_format/modify_tables.php
 */
 
 //DEBUG
-// echo '<pre style="background:#002; color:#fff;">'; print_r($_POST); echo '</pre>'; die();
+// echo '<div style="position:fixed; margin-left:1710px; margin-top:40px;"><pre style="background:#002; color:#fff;">'; print_r($_POST); echo '</pre></div>';
 
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
@@ -37,17 +37,7 @@ if( isset($_POST['fix_errors_view_cat']) || isset($_POST['fix_errors_view_platfo
 	$_POST['platform'] = $_POST['fix_errors_view_platform'];
 }
 
-// require_once 'database_paths.php';
-
-if ($live = false) {
-	require_once 'C:/inetpub/wwwroot/database_paths.php';
-	$listings_db_path = 'dbase/listings_NEW.db3';
-}
-else {
-	$listings_db_path = 'dbase/listings_NEW.db3';
-	$stock_control_db_path = 'dbase/stock_control.db3';
-}
-
+require_once 'incs/db_connections.php';
 require_once 'incs/php_functions.php';
 
 $db_listings = new PDO("sqlite:$listings_db_path");
@@ -225,7 +215,7 @@ elseif( 'Import' == $view ){ require_once 'views/import.php'; }
 <?php
 require('js/js_multiselect_chkbxs.php');
 require('js/js_connect_btns_to_forms.php');
-require('js/js_retain_scroll_pos.php');
+if ('Edit' != $view) { require('js/js_retain_scroll_pos.php'); }
 ?>
 
 <?php

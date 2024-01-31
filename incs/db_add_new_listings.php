@@ -116,10 +116,11 @@ if( isset($_POST['add_new_listings_to_db']) &&
 	$id_lkups = [];
 	foreach( explode(' ', $variation) as $var ){
 		$id_lkups[] = $last_id;
-		$insert[] = [$last_id++, $key, $cat_id, $group, $product, $packing, $packaging_band_, $lowest_var_wgt_default, $var, NULL, $timestamp];
+		$insert[] = [$last_id++, $key, $cat_id, $group, NULL, $product, $packing, $packaging_band_, $lowest_var_wgt_default, $var, '0.0', NULL, $timestamp];
 	}
 
-	$sql = "INSERT INTO `listings` VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+	$sql = "INSERT INTO `listings` VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	// $sql = "INSERT INTO `listings` VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 	$stmt = $db_listings->prepare($sql);
 	$db_listings->beginTransaction();
 	foreach( $insert as $rec ){
@@ -132,6 +133,7 @@ if( isset($_POST['add_new_listings_to_db']) &&
 			//   13244 |g502 |a9     |i      |TEST         |b       |             1 |                      3 |        4
 			//   13245 |g502 |a9     |i      |TEST         |b       |             1 |                      3 |        5
 			//=========================================================================================================
+			// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($rec); echo '</pre>'; die();
 			$stmt->execute($rec);
 		}
 		else{

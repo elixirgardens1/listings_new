@@ -37,6 +37,7 @@ if( isset($_POST['add_new_product_to_db']) ){
 	$cats = array_count_values($cats);
 	$key = $cat . $cats[$cat];
 	
+	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($cats); echo '</pre>'; die();
 	
 	
 	// $db_stock->query("DELETE FROM `product_rooms` WHERE `rowid` = 777");
@@ -117,13 +118,30 @@ if( isset($_POST['add_new_product_to_db']) ){
 	//=========================================================================
 	// Record changes
 	//=========================================================================
+	/*
 	record_changes_to_stock_fnc([
 		'changes'   => $changes,
 		'user'      => $_POST['user'],
 		'timestamp' => $timestamp,
 		'db'        => $db_listings,
 	]);
+	*/
 	
+	// $_POST = [];
 	
-	$_POST['view'] = 'Add New Product';
+	unset(
+		$_POST['product'],
+		$_POST['cat'],
+		$_POST['cost'],
+		$_POST['units'],
+		$_POST['room'],
+		$_POST['pkg_qty'],
+		$_POST['pkg_multiples'],
+		$_POST['pri_sup'],
+		$_POST['supplier'],
+		$_POST['add_new_product'],
+		$_POST['add_new_product_to_db']
+	);
+	
+	// $_POST['view_'] = 'Add New Product';
 }

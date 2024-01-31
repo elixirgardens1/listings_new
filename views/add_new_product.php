@@ -62,7 +62,11 @@ sort($suppliers_dropdown);
 				<td class="pr10 va_m">
 					<select name="room" id="room" class="large_select" required>
 						<option value="">- Select Room -</option>
-						<?php foreach( $lookup_rooms as $room_id => $room ){ ?>
+						<?php
+						// foreach( $lookup_rooms as $room_id => $room ){
+						foreach( $lookup_rooms as $room ){
+							$room_id = strtolower(substr($room, 0,1));
+						?>
 							<?= sel_opt_fnc($room_id, $room, isset($data['room']) ? $data['room'] : '') ?>
 						<?php } ?>
 					</select>
@@ -100,6 +104,7 @@ sort($suppliers_dropdown);
 	<div class="h20"></div>
 	
 	<input type="hidden" name="user" value="<?= $_POST['user'] ?>">
+	<input type="hidden" name="view" value="<?= $_POST['view'] ?>">
 	
 	<div class="fl-l mr50">
 		<input type="submit" name="add_new_product" class="btn w140" value="Add">
@@ -112,12 +117,20 @@ sort($suppliers_dropdown);
 
 <script>
 	// DEBUG: pre-populate form fields
+	// $('[name="product"]').val('Test Product');
+	// $('[name="cat"]').val('agg');
+	// $('[name="cost"]').val('9.99');
+	// $('[name="units"]').val('q');
+	// $('[name="room"]').val('1');
+	// $('[name="room"]').val('m');
+	// $('[name="pkg_qty"]').val('1');
+	// $('[name="pkg_multiples"]').val('1');
+	// $('[name="pri_sup"]').val('China');
 	
 	// $('[name="product"]').val('Soil Warming Cable 3"');
 	// $('[name="cat"]').val('ele');
 	// $('[name="cost"]').val('3.96');
 	// $('[name="units"]').val('q');
-	// $('[name="room"]').val('m');
 	// $('[name="pkg_qty"]').val('1');
 	// $('[name="pkg_multiples"]').val('1');
 	// $('[name="pri_sup"]').val('China');

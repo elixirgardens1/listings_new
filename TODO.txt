@@ -1,5 +1,11 @@
 # TO-DO
 
+Add 'Changes will be lost' message to 'Back to category' button if changes to comps & ids or any other form fields have been made.
+
+[2023-12-08]
+
+---------------------------------------------------
+
 The following Dashboard views are displaying errors:
 
 - Errors

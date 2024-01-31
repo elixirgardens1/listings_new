@@ -135,7 +135,7 @@ foreach( $session['listings'] as $id_lkup => $rec ){ ?>
 			data-lpignore="true"
 			autocomplete="off">
 		</td>
-		<td class="cpu_to_cust"><?= $rec['cpu_to_cust'] ?></td><!-- CALCULATION -->
+		<td class="cpu_to_cust" style="<?= $rec['prev_cpu_value_less'] ? 'background: red; color: #fff;' : ''; ?>"><?= $rec['cpu_to_cust'] ?></td><!-- CALCULATION -->
 		
 		<td>
 			<input type="text"

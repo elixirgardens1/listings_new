@@ -47,6 +47,8 @@ $files_used[] = 'views/dashboard.php'; //DEBUG
 
 		<input type="submit" name="copy_couriers" value="Copy eBay couriers to Amazon &amp; eBay listings" class="btn w400">
 	</form>
+	
+	<p><a href="tools/update_listings_new_price.php" class="btn w200" style="line-height: 34px;" target="_blank">Bulk price Update</a></p>
 </div>
 
 <!-- DEBUG 
