@@ -200,7 +200,8 @@ $(function() {
 //=========================================================================
 function fnc_calc_new_price(rowid,element_class_name){
 	var pp1;
-	var pp2 = 0;;
+	var pp2;
+	// var pp2 = 0;
 	var pp1pp2;
 	
 	// Calc 'total_weight' if Lowest variation Weight or Variation text fields get updated:
@@ -262,11 +263,25 @@ function fnc_calc_new_price(rowid,element_class_name){
 		pp1 = new_price * <?= $session['pp1_perc'] ?> / 100;
 		$('tr[data-id_lkup="'+rowid+'"] .pp1').html(pp1.toFixed(2))
 		
+		if (new_price < 8) {pp2 = 0.27;}
+        else if (new_price < 15) {pp2 = 0.57;}
+        else if (new_price < 20) {pp2 = 0.87;}
+        else if (new_price < 25) {pp2 = 1.17;}
+        else if (new_price < 33) {pp2 = 1.47;}
+        else if (new_price < 39) {pp2 = 1.77;}
+        else if (new_price < 55.3) {pp2 = 2.07;}
+        else if (new_price < 59.2) {pp2 = 2.37;}
+        else if (new_price < 72.25) {pp2 = 2.67;}
+        else if (new_price > 100) {pp2 = 3.27;}
+        else {pp2 = 2.97;}
+		
+		
 		total_product_cost = fnc_total_product_cost(rowid);
 
 		postage = fnc_postage(rowid);
 
-		profit = new_price - total_product_cost - postage - vat - fees - pp1;
+		profit = new_price - total_product_cost - postage - vat - fees - pp1 - pp2;
+		// profit = new_price - total_product_cost - postage - vat - fees - pp1;
 		
 		// Deduct 30 pence from profit ebay
 		<?php if( 'e' == $platform_post ): ?>
@@ -299,6 +314,18 @@ function fnc_calc_new_price(rowid,element_class_name){
             default:
             	$('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc blue');
         }
+        
+        // if (price_calc < 8) {pp2 = 0.27;}
+        // else if (new_price < 15) {pp2 = 0.57;}
+        // else if (new_price < 20) {pp2 = 0.87;}
+        // else if (new_price < 25) {pp2 = 1.17;}
+        // else if (new_price < 33) {pp2 = 1.47;}
+        // else if (new_price < 39) {pp2 = 1.77;}
+        // else if (new_price < 55.3) {pp2 = 2.07;}
+        // else if (new_price < 59.2) {pp2 = 2.37;}
+        // else if (new_price < 72.25) {pp2 = 2.67;}
+        // else if (new_price > 100) {pp2 = 3.27;}
+        // else {pp2 = 2.97;}
         
         pp1pp2 = (pp1 + pp2 + profit) / new_price * 100;
         // pp1pp2 = 100;

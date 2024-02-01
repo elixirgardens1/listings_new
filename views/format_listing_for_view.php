@@ -62,6 +62,8 @@ foreach( $session['listings'] as $id_lkup => $recs ){
 		'lookup_prime_couriers'   => $session['lookup_prime_couriers'],
 		'lookup_postage_bands'    => $session['lookup_postage_bands'],
 	];
+	
+	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($args); echo '</pre>'; die();
 
 	foreach( $lookup_platform as $key => $platform ){
 		if( 'web' == $platform || 'prime' == $platform ){ continue; }

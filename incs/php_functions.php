@@ -152,11 +152,24 @@ function calculate_flds_fnc($params)
 	
 	$pp1 = $new_price_calc * $args['pp1_perc']/100;
 	
+	if ($new_price_calc < 8)         {$pp2 = 0.27;}
+	elseif ($new_price_calc < 15)    {$pp2 = 0.57;}
+	elseif ($new_price_calc < 20)    {$pp2 = 0.87;}
+	elseif ($new_price_calc < 25)    {$pp2 = 1.17;}
+	elseif ($new_price_calc < 33)    {$pp2 = 1.47;}
+	elseif ($new_price_calc < 39)    {$pp2 = 1.77;}
+	elseif ($new_price_calc < 55.3)  {$pp2 = 2.07;}
+	elseif ($new_price_calc < 59.2)  {$pp2 = 2.37;}
+	elseif ($new_price_calc < 72.25) {$pp2 = 2.67;}
+	elseif ($new_price_calc > 100)   {$pp2 = 3.27;}
+	else                    {$pp2 = 2.97;}
+	// $pp2 = $args['pp2_listings'];
+	
+	
 	$fees = 'w' != $args['platform'] ? $new_price_calc * $args['fees_val'] + $new_price_calc * ($args['perc_advertising']/100) : 0; //MOD
-	@($profit = $new_price_calc - $total_product_cost - $postage - $vat - $fees - $pp1);
-
-	// $pp2 = $args['pp2_listings'] + $profit;
-	$pp2 = $args['pp2_listings'];
+	@($profit = $new_price_calc - $total_product_cost - $postage - $vat - $fees - $pp1 - $pp2);
+	// @($profit = $new_price_calc - $total_product_cost - $postage - $vat - $fees - $pp1);
+	
 	
 	// if (!$new_price_calc) {$new_price_calc = 999;}
 	//ISSUE: Some records on the "Aggregates/Aggregates/Web" page end up with $new_price_calc having a zero value, causing 'DivisionByZeroError'
