@@ -61,6 +61,11 @@ foreach( $session['listings'] as $id_lkup => $rec ){ ?>
 				autocomplete="off">
 		</td>
 		<td class="total_weight"><?= $rec['total_weight'] ?></td><!-- CALCULATION -->
+		<!-- NOTES -->
+		<td>
+			<textarea name="listings_data[<?= $id_lkup ?>][note]" style="width: 74px; height: 28px; background: #cdcdcd; border: 1px solid #333;"><?= $rec['notes'] ?></textarea>
+		</td>
+		
 		<?php
 		// COMPS & IDs
 		if( 'w' != $platform_post ){

@@ -57,6 +57,8 @@ Table Columns:
 		
 			<?php if( 'Edit' != $view ){ ?><th class="sticky packaging_band <?= $bg_colour ?>">Skus</th><?php } ?>
 			
+			<?php if( 'Edit' == $view ){ ?><th class="sticky comp1 <?= $bg_colour ?>">Notes</th><?php } ?>
+			
 			<?php if( 'Edit' == $view && 'w' != $platform_post ){ ?><th class="sticky comp1 <?= $bg_colour ?>">COMPS & IDs</th><?php } ?>
 			
 			<?php if( 'Edit' != $view && 'w' != $platform_post ){ ?>

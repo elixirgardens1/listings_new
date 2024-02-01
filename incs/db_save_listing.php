@@ -91,6 +91,7 @@ if( isset($_POST['save_listing_to_db']) ){
 		$prev_price        = $rec['prev_price'];
 		$new_price         = $rec['new_price'];
 		$perc_advertising  = $rec['perc_advertising'];
+		$note              = $rec['note'];
 		
 		if( 'w' != $post_platform ){
 			// comps_ids
@@ -178,7 +179,8 @@ if( isset($_POST['save_listing_to_db']) ){
 		if( (string)$lookup_courier_names_flip[$courier] !== (string)$listings_couriers[$id] ||
 			(string)$prev_price                          !== (string)$results_listings_platform[$id]['prev_price'] ||
 			(string)$new_price                           !== (string)$results_listings_platform[$id]['new_price'] ||
-			(string)$perc_advertising                    !== (string)$results_listings_platform[$id]['perc_advertising']
+			(string)$perc_advertising                    !== (string)$results_listings_platform[$id]['perc_advertising'] ||
+			(string)$note                                !== (string)$results_listings_platform[$id]['notes']
 		){
 			// DEBUG: Only for display purposes
 			$sql_update_listings_platform[] = "
@@ -187,6 +189,7 @@ if( isset($_POST['save_listing_to_db']) ){
 				`prev_price`        = '$prev_price',
 				`new_price`         = '$new_price',
 				`perc_advertising`  = '$perc_advertising',
+				`notes`             = '$note',
 				`timestamp`         = '$timestamp',
 				WHERE `id`          = '$id'";
 
@@ -195,6 +198,7 @@ if( isset($_POST['save_listing_to_db']) ){
 				`prev_price` = ?,
 				`new_price` = ?,
 				`perc_advertising` = ?,
+				`notes` = ?,
 				`timestamp` = ?
 				WHERE `id` = ?");
 			
@@ -249,6 +253,7 @@ if( isset($_POST['save_listing_to_db']) ){
 				$prev_price,
 				$new_price,
 				$perc_advertising,
+				$note,
 				$timestamp,
 				$id
 			]);
@@ -292,6 +297,7 @@ if( isset($_POST['save_listing_to_db']) ){
 				['{pp}', (string)$results_listings_platform[$id]['prev_price'], (string)$prev_price],
 				['{np}', (string)$results_listings_platform[$id]['new_price'], (string)$new_price],
 				['{pa}', (string)$results_listings_platform[$id]['perc_advertising'], (string)$perc_advertising],
+				['{nt}', (string)$results_listings_platform[$id]['notes'], (string)$note],
 			]);
 			
 			//============================
