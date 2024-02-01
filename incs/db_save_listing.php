@@ -1,11 +1,14 @@
 <?php
 if( isset($_POST['save_listing_to_db']) ){
-
-	//DEBUG
 	// echo '<pre style="background:#111; color:#b5ce28; margin-bottom:-10px;">'; print_r($_POST); echo '</pre>'; die();
 
 	$files_used[] = 'incs/db_save_listing.php'; //DEBUG
 
+	$_POST['listings_data'] = array_map(function($arr){
+		$arr['note'] = str_replace('£', '_POUND_', $arr['note']);
+		return $arr;
+	}, $_POST['listings_data']);
+	
 	$_POST = sanitize_post_data_fnc($_POST, [
 		'my_trim',
 		'remove_multiple_whitespace',
@@ -13,7 +16,6 @@ if( isset($_POST['save_listing_to_db']) ){
 		'ascii_translit'
 	]);
 
-	//DEBUG
 	// echo '<pre style="background:#002; color:#fff;">'; print_r($_POST['listings_data']); echo '</pre>'; die();
 
 	// The Listings Edit page can update up to 3 tables, depending on what values have been modified.
@@ -91,7 +93,7 @@ if( isset($_POST['save_listing_to_db']) ){
 		$prev_price        = $rec['prev_price'];
 		$new_price         = $rec['new_price'];
 		$perc_advertising  = $rec['perc_advertising'];
-		$note              = $rec['note'];
+		$note              = str_replace('_POUND_', '£', $rec['note']);
 		
 		if( 'w' != $post_platform ){
 			// comps_ids
