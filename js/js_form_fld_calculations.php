@@ -272,8 +272,8 @@ function fnc_calc_new_price(rowid,element_class_name){
         else if (new_price < 55.3) {pp2 = 2.07;}
         else if (new_price < 59.2) {pp2 = 2.37;}
         else if (new_price < 72.25) {pp2 = 2.67;}
-        else if (new_price > 100) {pp2 = 3.27;}
-        else {pp2 = 2.97;}
+        else if (new_price < 100) {pp2 = 2.97;}
+        else {pp2 = 3.27;}
 		
 		
 		total_product_cost = fnc_total_product_cost(rowid);
@@ -291,7 +291,7 @@ function fnc_calc_new_price(rowid,element_class_name){
 		$('tr[data-id_lkup="'+rowid+'"] .profit').html(profit.toFixed(2) );
 
 		// Modify "Profit (£)" cell colour (green/red)
-		if( profit < 1 ){ $('tr[data-id_lkup="'+rowid+'"] .profit').removeClass().addClass('profit red-bg'); }
+		if( profit < 0.8 ){ $('tr[data-id_lkup="'+rowid+'"] .profit').removeClass().addClass('profit red-bg'); }
 		else{ $('tr[data-id_lkup="'+rowid+'"] .profit').removeClass().addClass('profit grn'); }
 
 		profit_perc = (profit / new_price * 100);
@@ -299,16 +299,16 @@ function fnc_calc_new_price(rowid,element_class_name){
 
 		// Modify "Profit %" cell colour
 		switch (true) {
-		    case profit_perc < 4:
+		    case profit_perc < 5:
                 $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc red-bg');
                 break;
-            case profit_perc < 7:
+            case profit_perc < 8:
                 $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc orange');
                 break;
             case profit_perc < 10:
                 $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc yellow');
                 break;
-            case profit_perc < 15:
+            case profit_perc < 16:
                 $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc grn');
                 break;
             default:
@@ -324,8 +324,8 @@ function fnc_calc_new_price(rowid,element_class_name){
         // else if (new_price < 55.3) {pp2 = 2.07;}
         // else if (new_price < 59.2) {pp2 = 2.37;}
         // else if (new_price < 72.25) {pp2 = 2.67;}
-        // else if (new_price > 100) {pp2 = 3.27;}
-        // else {pp2 = 2.97;}
+        // else if (new_price < 100) {pp2 = 2.97;}
+        // else {pp2 = 3.27;}
         
         pp1pp2 = (pp1 + pp2 + profit) / new_price * 100;
         // pp1pp2 = 100;
@@ -342,7 +342,7 @@ function fnc_calc_new_price(rowid,element_class_name){
             case pp1pp2 < 23:
                 $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 yellow');
                 break;
-            case pp1pp2 < 33:
+            case pp1pp2 < 35:
                 $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 grn');
                 break;
             default:
@@ -385,9 +385,9 @@ function fnc_calc_new_price(rowid,element_class_name){
 
 
 
-		// 10% Off Profit (£) / 10% Off Profit Perc
+		// 10% Off Profit (£) / 10% Off Profit Perc Bob 07/02/2024
 		<?php if( 'w' == $platform_post ): ?>
-			profit_10off = new_price * 0.9 - new_price * 0.9 / 6 - total_product_cost - postage;
+			profit_10off = new_price * 0.9 - new_price * 0.9 / 6 - total_product_cost - postage - new_price * 0.9 * 0.06 - pp2;
 			$('tr[data-id_lkup="'+rowid+'"] .profit_10off').html(profit_10off.toFixed(2) );
 
 			profit_10off_perc = profit_10off / (new_price * 0.9) * 100;

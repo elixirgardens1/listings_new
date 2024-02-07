@@ -161,8 +161,8 @@ function calculate_flds_fnc($params)
 	elseif ($new_price_calc < 55.3)  {$pp2 = 2.07;}
 	elseif ($new_price_calc < 59.2)  {$pp2 = 2.37;}
 	elseif ($new_price_calc < 72.25) {$pp2 = 2.67;}
-	elseif ($new_price_calc > 100)   {$pp2 = 3.27;}
-	else                    {$pp2 = 2.97;}
+	elseif ($new_price_calc < 100)   {$pp2 = 2.97;}
+	else                    {$pp2 = 3.27;}
 	// $pp2 = $args['pp2_listings'];
 	
 	
@@ -175,19 +175,19 @@ function calculate_flds_fnc($params)
 	//ISSUE: Some records on the "Aggregates/Aggregates/Web" page end up with $new_price_calc having a zero value, causing 'DivisionByZeroError'
 	@($profit_perc = $profit / $new_price_calc * 100);
 
-	$cls_colour_profit = $profit < 1 ? ' red-bg' : ' grn';
+	$cls_colour_profit = $profit < 0.8 ? ' red-bg' : ' grn';
 
 	switch (true) {
-        case $profit_perc < 4:
+        case $profit_perc < 5:
             $cls_colour_profit_perc = ' red-bg';
             break;
-        case $profit_perc < 7:
+        case $profit_perc < 8:
             $cls_colour_profit_perc = ' orange';
             break;
         case $profit_perc < 10:
             $cls_colour_profit_perc = ' yellow';
             break;
-        case $profit_perc < 15:
+        case $profit_perc < 16:
             $cls_colour_profit_perc = ' grn';
             break;
         default:
@@ -251,8 +251,9 @@ function calculate_flds_fnc($params)
 	$cls_colour_profit_10off_perc = '';
 
 	if( 'w' == $args['platform'] ){
-		// Calculate fields
-		@($profit_10off = $new_price_calc * 0.9 - $new_price_calc * 0.9 / 6 - $total_product_cost - $postage);
+		// Calculate fields Bob 07/02/2024
+		@($profit_10off = $new_price_calc * 0.9 - $new_price_calc * 0.9 / 6 - $total_product_cost - $postage  - $new_price_calc * 0.9 * 0.06 - $pp2);
+		//		@($profit_10off = $new_price_calc * 0.9 - $new_price_calc * 0.9 / 6 - $total_product_cost - $postage  - $pp1 - $pp2);
 		@($profit_10off_perc = $profit_10off / ($new_price_calc * 0.9) * 100);
 		// $profit_10off_perc = $new_price_calc*0.9 - $new_price_calc*0.9/6 - $new_price_calc*0.9*.14 - $total_product_cost - $postage;
 		
