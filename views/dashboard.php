@@ -7,7 +7,7 @@ $files_used[] = 'views/dashboard.php'; //DEBUG
 
 <div style="position: absolute; left: 200px; top: 4px;">
 	<a href="http://192.168.0.24/kevInterface.php" target="_blank" class="btn w200 h20">HOME</a>
-	<a href="http://192.168.0.24/listings_new/views/platform.php" target="_blank" class="btn w200 h20">Platform Skus</a>
+	<a href="http://192.168.0.24/listings_new/views/platform.php" target="_blank" class="btn w180 h20">Platform Skus</a>
 </div>
 
 <div style="width: 1000px; margin-top: 30px;">
