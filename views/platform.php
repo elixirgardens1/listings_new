@@ -90,25 +90,25 @@ if(isset($_POST["Import"])){
 		while (($line = fgetcsv($file, 0, ",")) !== FALSE) {
 		    $data_file[] = array_combine($keys, $line);
 		}
-		fclose($file);	
+		fclose($file);
+      $xDrivePath = 'C:/xampp/htdocs';
+      $stock_c = "$xDrivePath\stocksystem\PHPAPI\stock_control.db3";
+      $stock_control = new PDO('sqlite:'.$stock_c);
+      $stmt = $stock_control->prepare("INSERT OR REPLACE INTO `sku_am_eb` (
+         'sku',
+         'id',
+         'platform'
+      ) VALUES (?,?,?)");
+      $stock_control->beginTransaction();
+      foreach ($data_file as $vals) {
+         $stmt->execute([ $vals['sku'],$vals['id'],$vals['platform'] ]);
+      }
+      $stock_control->commit();
+      echo 'UPLOADED';
 	}
 	else{
 		echo 'file empty';
    }
 	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($data_file); echo '</pre>'; die();
-	$xDrivePath = 'C:/xampp/htdocs';
-	$stock_c = "$xDrivePath\stocksystem\PHPAPI\stock_control.db3";
-	$stock_control = new PDO('sqlite:'.$stock_c);
-	$stmt = $stock_control->prepare("INSERT OR REPLACE INTO `sku_am_eb` (
-		'sku',
-		'id',
-		'platform'
-	) VALUES (?,?,?)");
-	$stock_control->beginTransaction();
-	foreach ($data_file as $vals) {
-		$stmt->execute([ $vals['sku'],$vals['id'],$vals['platform'] ]);
-	}
-	$stock_control->commit();
-	echo 'UPLOADED';
 }
 ?>
