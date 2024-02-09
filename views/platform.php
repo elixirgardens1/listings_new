@@ -1,10 +1,3 @@
-<?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-// set_time_limit(40);
-// ini_set("memory_limit", "-1");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,35 +55,33 @@ error_reporting(E_ALL);
 </head>
 <body>
 <form action="platform.php" method="post" enctype="multipart/form-data">
-	<div style="float: left; margin-right: 30px;">
-		<h3>Upload file</h3>
-	  <p><input type="file" name="file" id="file"></p>
-	  <p><button type="submit" id="submit" name="Import" class="btn">Upload CSV</button></p>
-  </div>
-  <div style="float: left; padding-top: 10px; margin-right: 30px;">
-    The 3 column headings must be 'sku', 'id' & 'platform'.<br>
-    <b><i>&#10148; CSVs must be saved: CSV Comma delimited</i></b><br>
-    <b><i>&#10148; Every listing item must have a 'sku', 'id' & 'platform'.</i></b><br>
-    <b><i>&#10148; Platform: 'a' - Amazon, 'e' - Ebay & 'w' - Website</i></b>
-  </div>
-  <div>
-    Example:<br>
-    <img src="..\img\platform_example.png">
-  </div>
+   <div style="float: left; margin-right: 30px;">
+      <h3>Upload file</h3>
+      <p><input type="file" name="file" id="file"></p>
+      <p><button type="submit" id="submit" name="Import" class="btn">Upload CSV</button></p>
+   </div>
+   <div style="float: left; padding-top: 10px; margin-right: 30px;">
+      The 3 column headings must be 'sku', 'id' & 'platform'.<br>
+      <b><i>&#10148; CSVs must be saved: CSV Comma delimited</i></b><br>
+      <b><i>&#10148; Every listing item must have a 'sku', 'id' & 'platform'.</i></b><br>
+      <b><i>&#10148; Platform: 'a' - Amazon, 'e' - Ebay & 'w' - Website</i></b>
+   </div>
+   <div>
+      Example:<br>
+      <img src="..\img\platform_example.png">
+   </div>
 </form>
 
 <?php
-
-
 if(isset($_POST["Import"])){
-  $filename=$_FILES["file"]["tmp_name"];    
-  if($_FILES["file"]["size"] > 0){	
-	  $file = fopen($filename, "r");
-		$keys = fgetcsv($file, 0, ",");
-		while (($line = fgetcsv($file, 0, ",")) !== FALSE) {
-		    $data_file[] = array_combine($keys, $line);
-		}
-		fclose($file);
+   $filename=$_FILES["file"]["tmp_name"];    
+   if($_FILES["file"]["size"] > 0){	
+      $file = fopen($filename, "r");
+      $keys = fgetcsv($file, 0, ",");
+      while (($line = fgetcsv($file, 0, ",")) !== FALSE) {
+         $data_file[] = array_combine($keys, $line);
+      }
+      fclose($file);
       $xDrivePath = 'C:/xampp/htdocs';
       $stock_c = "$xDrivePath\stocksystem\PHPAPI\stock_control.db3";
       $stock_control = new PDO('sqlite:'.$stock_c);
@@ -105,10 +96,9 @@ if(isset($_POST["Import"])){
       }
       $stock_control->commit();
       echo 'UPLOADED';
-	}
-	else{
-		echo 'file empty';
    }
-	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($data_file); echo '</pre>'; die();
+   else{
+      echo 'file empty';
+   }
 }
 ?>
