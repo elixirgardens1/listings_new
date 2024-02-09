@@ -7,12 +7,10 @@ http://localhost/elixir/listings_new/index.php
 
 To convert the existing LISTINGS database into the required format run the following script:
 http://192.168.0.24/listings_new/convert_db_format/modify_tables.php
-
-
 */
 
 //DEBUG
-// echo '<div style="position:fixed; margin-left:1710px; margin-top:40px;"><pre style="background:#002; color:#fff;">'; print_r($_POST); echo '</pre></div>';
+// echo '<div style="position:fixed; margin-left:1710px; margin-top:40px;"><pre style="background:#002; color:#fff;">'; print_r($_POST); echo '</pre></div>'; die();
 
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');

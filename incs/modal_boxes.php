@@ -17,10 +17,10 @@ $files_used[] = 'incs/modal_boxes.php'; //DEBUG
 		<h2 style="font-size: 18px;">Edit SKUs &ndash; <span class="modal_vars"></span></h2>
 		
 		<!-- Add new skus -->
-		
 		<form action="index.php" method="post">
 			<input type="hidden" name="add_sku_form">
 			<input type="hidden" class="modal_id" name="modal_id">
+			<input type="hidden" name="posY" value="<?= $_POST['posY'] ?>">
 			<input type="hidden" name="platform" value="<?= $platform_post ?>">
 			<input type="hidden" name="cat" value="<?= $_POST['cat'] ?>">
 			<input type="hidden" name="cat_id" value="<?= $_POST['cat_id'] ?>">
@@ -51,6 +51,7 @@ $files_used[] = 'incs/modal_boxes.php'; //DEBUG
 		<form action="index.php" method="post">
 			<input type="hidden" name="del_skus_form">
 			<input type="hidden" class="modal_id" name="modal_id">
+			<input type="hidden" name="posY" value="<?= $_POST['posY'] ?>">
 			<input type="hidden" name="platform" value="<?= $platform_post ?>">
 			<input type="hidden" name="cat" value="<?= $_POST['cat'] ?>">
 			<input type="hidden" name="cat_id" value="<?= $_POST['cat_id'] ?>">
