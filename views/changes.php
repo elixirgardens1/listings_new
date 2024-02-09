@@ -1,9 +1,13 @@
 <?php
 //=========================================================================
-// ISSUE:
-// When this page displays it currently returns 2 warnings:  "Undefined array key 1"
-// This is caused by 2 erroneous records (rowid 927 & 928) in changes@listings.db3.
-// The error is in the 'changes' field: '{c}18'
+/*
+ISSUE:
+Need to remove DB records earlier than Jan 2023.
+DELETE FROM `changes` WHERE `timestamp` < 1672740470;
+
+Need to removes user records greater than 9.
+DELETE FROM `changes` WHERE `user` > 9;
+*/
 
 $files_used[] = 'views/changes.php'; //DEBUG
 ?>
@@ -45,6 +49,14 @@ $initials = [
 	'v' => 'Variation: ',
 	'lv' => 'Lowest Variation Weight: ',
 	'cp' => 'Cost Per Unit: ',
+	
+	'nt' => 'Note: ',
+	'id1' => 'ID1: ',
+	'id2' => 'ID2: ',
+	'id3' => 'ID3: ',
+	'ty1' => 'TYPE1: ',
+	'ty2' => 'TYPE2: ',
+	'ty3' => 'TYPE3: ',
 ];
 
 $prices = [
@@ -57,7 +69,7 @@ $prices = [
 
 $tmp = [];
 $users = [];
-foreach( $changes as $i => $vals ){
+foreach ($changes as $i => $vals) {
 	$date = date('Y-m-d', $vals['timestamp']);
 	$time = date('H:i:s', $vals['timestamp']);
 	
@@ -77,38 +89,25 @@ foreach( $changes as $i => $vals ){
 			if( $j ){
 				list($fld_name, $change) = explode('}', $fld);
 				
-				// $lookup_platform = [
-				//     [e] => ebay
-				//     [a] => amazon
-				//     [p] => prime
-				//     [w] => web
-				    
-				//     [f] => floorworld
-				//     [s] => prosalt
-				//     [o] => onbuy
-				// ]
-				
-				//DEBUG
-				// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($lookup_platform); echo '</pre>';
-				// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($fld_name); echo '</pre>'; die();
-				
 				// Price matrix update
 				if( '{' == substr($current_changes, 0,1) && '}' == substr($current_changes, 2,1) ){
-				// if( isset($lookup_platform[$fld_name]) ){
 					$platform = $fld_name;
 					
 					// file_put_contents('debug', $current_changes."\n", FILE_APPEND);
 
+					/*
 					$ids_arr = explode(',', $vals['id']);
 					$prices_arr = explode(',', $change);
 
 					$tmp = [];
 					foreach ($ids_arr as $k => $id) {
+						echo "$k<br>";
 						list($orig, $new) = explode('>', $prices_arr[$k]);
 						$tmp[] = "ID:$id (&pound;$orig -> &pound;$new)";
 					}
 
 					$changes[] = implode(' | ', $tmp);
+					*/
 				}
 				else{
 					$prefix = isset($prices[$fld_name]) ? $prefix = '&pound;' : '';
