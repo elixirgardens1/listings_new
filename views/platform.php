@@ -70,7 +70,7 @@ Needed to link all sku to platforms -->
    </div>
    <div>
       Example:<br>
-      <img src="..\rob\img\platform_example_upload.png">
+      <img src="..\img\platform_example_upload.png">
    </div>
 </form>
 <hr>
@@ -86,7 +86,7 @@ Needed to link all sku to platforms -->
    </div>
    <div>
       Example:<br>
-      <img src="..\rob\img\platform_example_delete.png">
+      <img src="..\img\platform_example_delete.png">
    </div>
 </form>
 <?php
