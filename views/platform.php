@@ -1,3 +1,5 @@
+<!-- Upload data in to stock_control.db3 database with csv file in sku_am_eb table.
+Needed to link all sku to platforms -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
