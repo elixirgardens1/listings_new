@@ -58,7 +58,7 @@ Needed to link all sku to platforms -->
 <body>
 <form action="platform.php" method="post" enctype="multipart/form-data">
    <div style="float: left; margin-right: 30px;">
-      <h3>Upload file</h3>
+      <h3>Add or Update platform links</h3>
       <p><input type="file" name="file" id="file"></p>
       <p><button type="submit" id="submit" name="Import" class="btn">Upload CSV</button></p>
    </div>
@@ -70,14 +70,56 @@ Needed to link all sku to platforms -->
    </div>
    <div>
       Example:<br>
-      <img src="..\img\platform_example.png">
+      <img src="..\rob\img\platform_example_upload.png">
    </div>
 </form>
-
+<hr>
+<form action="platform.php" method="post" enctype="multipart/form-data">
+   <div style="float: left; margin-right: 30px;">
+      <h3>Delete no needed links&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h3>
+      <p><input type="file" name="file" id="file"></p>
+      <p><button type="submit" id="submit" name="Delete" class="btn">Upload CSV</button></p>
+   </div>
+   <div style="float: left; padding-top: 10px; margin-right: 30px;">
+      Only one column heading must be 'sku'.<br>
+      <b><i>&#10148; CSVs must be saved: CSV Comma delimited &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</i></b><br>
+   </div>
+   <div>
+      Example:<br>
+      <img src="..\rob\img\platform_example_delete.png">
+   </div>
+</form>
 <?php
+if(isset($_POST["Delete"])){
+   $filename=$_FILES["file"]["tmp_name"];    
+   if($_FILES["file"]["size"] > 0){ 
+      $file = fopen($filename, "r");
+      $keys = fgetcsv($file, 0, ",");
+      while (($line = fgetcsv($file, 0, ",")) !== FALSE) {
+         $data_file[] = array_combine($keys, $line);
+      }
+      fclose($file);
+      echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($data_file); echo '</pre>'; die();
+      $xDrivePath = 'C:/xampp/htdocs';
+      $stock_c = "$xDrivePath\stocksystem\PHPAPI\stock_control.db3";
+      $stock_control = new PDO('sqlite:'.$stock_c);
+      // $stock_control = new PDO('sqlite:stock_control.db3');
+      $stmt = $stock_control->prepare("DELETE FROM `sku_am_eb` WHERE `sku`=?");
+      $stock_control->beginTransaction();
+      foreach ($data_file as $vals) {
+         $stmt->execute([$vals['sku']]);
+      }
+      $stock_control->commit();
+      echo 'DELETED';
+   }
+   else{
+      echo 'file empty';
+   }
+}
+//--------------------------------------------------------------------------------
 if(isset($_POST["Import"])){
    $filename=$_FILES["file"]["tmp_name"];    
-   if($_FILES["file"]["size"] > 0){	
+   if($_FILES["file"]["size"] > 0){ 
       $file = fopen($filename, "r");
       $keys = fgetcsv($file, 0, ",");
       while (($line = fgetcsv($file, 0, ",")) !== FALSE) {
@@ -87,6 +129,7 @@ if(isset($_POST["Import"])){
       $xDrivePath = 'C:/xampp/htdocs';
       $stock_c = "$xDrivePath\stocksystem\PHPAPI\stock_control.db3";
       $stock_control = new PDO('sqlite:'.$stock_c);
+      // $stock_control = new PDO('sqlite:stock_control.db3');
       $stmt = $stock_control->prepare("INSERT OR REPLACE INTO `sku_am_eb` (
          'sku',
          'id',
