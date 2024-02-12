@@ -81,7 +81,7 @@ Needed to link all sku to platforms -->
       <p><button type="submit" id="submit" name="Delete" class="btn">Upload CSV</button></p>
    </div>
    <div style="float: left; padding-top: 10px; margin-right: 30px;">
-      Only one column heading must be 'sku'.<br>
+      The 2 column headings must be 'sku' & 'platform'.<br>
       <b><i>&#10148; CSVs must be saved: CSV Comma delimited &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</i></b><br>
       <b><i>&#10148; Every listing item must have a 'sku' & 'platform'.</i></b><br>
       <b><i>&#10148; Platform: 'a' - Amazon, 'e' - Ebay & 'w' - Website</i></b>
