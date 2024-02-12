@@ -20,10 +20,12 @@ $files_used[] = 'views/changes.php'; //DEBUG
 <div class="h60"></div>
 
 <?php
-// Delete records from changes table older than 28 days
-// $timestamp_minus_1_month = strtotime("-28 days");
-// $sql = "DELETE FROM `changes` WHERE `timestamp` < $timestamp_minus_1_month";
-// $db_listings->query($sql);
+$db_listings->beginTransaction();
+// Delete records from changes table older than 40 days
+$timestamp_minus_1_month = strtotime("-40 days");
+$sql = "DELETE FROM `changes` WHERE `timestamp` < $timestamp_minus_1_month";
+$db_listings->query($sql);
+$db_listings->commit();
 
 // Need users name
 $sql = "SELECT id,name FROM `user`";
