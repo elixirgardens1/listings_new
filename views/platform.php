@@ -104,10 +104,10 @@ if(isset($_POST["Delete"])){
       $stock_c = "$xDrivePath\stocksystem\PHPAPI\stock_control.db3";
       $stock_control = new PDO('sqlite:'.$stock_c);
       // $stock_control = new PDO('sqlite:stock_control.db3');
-      $stmt = $stock_control->prepare("DELETE FROM `sku_am_eb` WHERE `sku`=?");
+      $stmt = $stock_control->prepare("DELETE FROM `sku_am_eb` WHERE `sku`=? AND `platform`=?");
       $stock_control->beginTransaction();
       foreach ($data_file as $vals) {
-         $stmt->execute([$vals['sku']]);
+         $stmt->execute([$vals['sku'],$vals['platform']]);
       }
       $stock_control->commit();
       echo 'DELETED';
