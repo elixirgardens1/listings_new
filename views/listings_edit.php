@@ -154,6 +154,10 @@ foreach( $session['listings'] as $id_lkup => $rec ){ ?>
 		<td class="profit <?= $rec['cls_colour_profit'] ?>"><?= $rec['profit'] ?></td><!-- CALCULATION -->
 		<td class="profit_perc <?= $rec['cls_colour_profit_perc'] ?>"><?= $rec['profit_perc'] ?></td><!-- CALCULATION -->
 		
+		<td class="pp1pp2 <?= $rec['cls_colour_pp1pp2'] ?>"><?= $rec['pp1pp2'] ?></td><!-- CALCULATION -->
+		<td class="pp1"><?= $rec['pp1'] ?></td><!-- CALCULATION -->
+		<td class="pp2"><?= $rec['pp2'] ?></td><!-- CALCULATION -->
+		
 		<?php if( 'w' == $platform_post ){  ?>
 			<td class="profit_10off <?= $rec['cls_colour_profit_10off'] ?>"><?= $rec['profit_10off'] ?></td><!-- CALCULATION: -->
 			<td class="profit_10off_perc <?= $rec['cls_colour_profit_10off_perc'] ?>"><?= $rec['profit_10off_perc'] ?></td><!-- CALCULATION: -->
@@ -167,11 +171,6 @@ foreach( $session['listings'] as $id_lkup => $rec ){ ?>
 		<?php if( 'w' != $platform_post ){  ?>
 			<td class="fees"><?= $rec['fees'] ?></td><!-- CALCULATION -->
 		<?php } ?>
-		
-		<td class="pp1"><?= $rec['pp1'] ?></td><!-- CALCULATION -->
-		<?php /*$rec['pp2'] = 0;*/ ?>
-		<td class="pp2"><?= $rec['pp2'] ?></td><!-- CALCULATION -->
-		<td class="pp1pp2 <?= $rec['cls_colour_pp1pp2'] ?>""><?= $rec['pp1pp2'] ?></td><!-- CALCULATION -->
 	</tr>
 <?php } ?>
 </table>

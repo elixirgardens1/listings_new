@@ -85,6 +85,10 @@ Table Columns:
 			<th class="sticky calc profit">Profit (&pound;)</th>
 			<th class="sticky calc profit_perc">Profit %</th>
 			
+			<th class="sticky calc fees">PP2+<br>PP2 (%)</th>
+			<th class="sticky calc fees">PP1 (&pound;)</th>
+			<th class="sticky calc fees">PP2 (&pound;)</th>
+			
 			<?php if( 'w' == $platform_post ){ ?>
 			<th class="sticky calc profit_10off">10% Off Profit (&pound;)</th>
 			<th class="sticky calc profit_10off_perc">10% Off Profit Perc</th>
@@ -97,10 +101,6 @@ Table Columns:
 			<?php if( 'w' != $platform_post ){ ?>
 			<th class="sticky calc fees">Fees (&pound;)</th>
 			<?php } ?>
-			
-			<th class="sticky calc fees">PP1 (&pound;)</th>
-			<th class="sticky calc fees">PP2 (&pound;)</th>
-			<th class="sticky calc fees">PP2+<br>PP2 (%)</th>
 			
 			<?php if( !isset($_POST['group_edit']) && !isset($_POST['add_to_group']) ){ ?>
 			<th class="sticky export_remove <?= $bg_colour ?>">
