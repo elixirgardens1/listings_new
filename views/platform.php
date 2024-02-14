@@ -101,7 +101,7 @@ if(isset($_POST["Delete"])){
          $data_file[] = array_combine($keys, $line);
       }
       fclose($file);
-      echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($data_file); echo '</pre>'; die();
+      // echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($data_file); echo '</pre>'; die();
       $xDrivePath = 'C:/xampp/htdocs';
       $stock_c = "$xDrivePath\stocksystem\PHPAPI\stock_control.db3";
       $stock_control = new PDO('sqlite:'.$stock_c);
