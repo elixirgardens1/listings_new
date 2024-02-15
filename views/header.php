@@ -44,6 +44,24 @@ foreach ($session['lookup_cats'] as $key => $_) {
 			<input type="button" id="update_matrix_prices" data-id="0" name="update_matrix_prices" value="update prices" style="display: none" class="btn">
 			<!-- / NEW_PRICE_MATRIX -->
 		</form>
+		
+		<form method="post" style="float: left;">
+			<input type="hidden" name="user" value="<?= $_POST['user'] ?>">
+			<!-- Needs hidden values to enable return to current listing -->
+			<!-- 
+			<input type="hidden" name="posY" value="0">
+			<input type="hidden" name="group_edit" value="a">
+			<input type="hidden" name="view" value="Edit">
+			<input type="hidden" name="cat" value="agg">
+			<input type="hidden" name="cat_id" value="a244">
+			<input type="hidden" name="key" value="agg11">
+			<input type="hidden" name="platform" value="e">
+			<input type="hidden" name="user" value="1">
+			<input type="hidden" name="cpu" value="0.146">
+			<input type="hidden" name="lvw" value="1">
+			 -->
+			<input type="submit" name="view" value="Changes" class="btn" style="margin-left: 10px; margin-top: 2px;">
+		</form>
 	</div>
 
 	<div style="float: right; padding-right: 20px;">
