@@ -184,7 +184,7 @@ $files_used[] = 'incs/modal_boxes.php'; //DEBUG
 		let myVars = $(this).data('vars');
 		$('.modal_vars').html(myVars);
 		
-		let mySkus = $(this).data('skus');
+		let mySkus = String($(this).data('skus'));
 		let skusArr = mySkus.split('_-_');
 		
 		for( let i=0; i<skusArr.length; i++ ){
