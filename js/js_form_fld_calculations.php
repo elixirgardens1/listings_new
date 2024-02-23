@@ -308,11 +308,13 @@ function fnc_calc_new_price(rowid,element_class_name){
             case profit_perc < 10:
                 $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc yellow');
                 break;
-            case profit_perc < 16:
+            case profit_perc < 34:
+            // case profit_perc < 16:
                 $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc grn');
                 break;
             default:
-            	$('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc blue');
+            	$('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc orange');
+            	// $('tr[data-id_lkup="'+rowid+'"] .profit_perc').removeClass().addClass('profit_perc blue');
         }
         
         // if (price_calc < 8) {pp2 = 0.27;}
@@ -331,7 +333,7 @@ function fnc_calc_new_price(rowid,element_class_name){
         // pp1pp2 = 100;
         $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').html(pp1pp2.toFixed(2) );
         
-        // Modify "Profit %" cell colour
+        // Modify "pp1pp2 %" cell colour
 		switch (true) {
 		    case pp1pp2 < 19:
                 $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 red-bg');
@@ -342,11 +344,13 @@ function fnc_calc_new_price(rowid,element_class_name){
             case pp1pp2 < 23:
                 $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 yellow');
                 break;
-            case pp1pp2 < 35:
+            case pp1pp2 < 44:
+            // case pp1pp2 < 33:
                 $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 grn');
                 break;
             default:
-            	$('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 blue');
+            	$('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 orange');
+            	// $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 blue');
         }
 
         /*

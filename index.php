@@ -56,6 +56,7 @@ require_once 'incs/lookups.php';
 // echo '<pre style="background:#002; color:#fff;">'; print_r($lookup_platform); echo '</pre>'; die();
 
 // INSERT, UPDATE, DELETE DATA
+require_once 'incs/db_add_group_notes.php';      // add / edit group notes
 require_once 'incs/db_add_del_skus.php';         // add / edit skus
 require_once 'incs/db_add_to_listing.php';       // add to listing
 require_once 'incs/db_add_prime_to_listing.php'; // add prime to listing

@@ -2,6 +2,40 @@
 $files_used[] = 'incs/modal_boxes.php'; //DEBUG
 ?>
 
+<!-- Edit Notes Modal Box -->
+<?php $width=500; $height=180; ?>
+<div id="modalBgEditNotes" class="modalBg">
+	<div id="modalBox" class="modalBox" style="width:<?= $width ?>px; height:<?= $height ?>px;">
+		<!-- modal close button -->
+		<input type="button"
+		name="close_modal"
+		class="btn modalClose"
+		style="margin-left:<?= $width-20 ?>px; margin-top:-8px; height:26px; border:0; border-radius:20px;"
+		value="X">
+		
+		<!-- Modal Title -->
+		<h2 style="font-size: 18px;">Edit Note</h2>
+		
+		<!-- Add new skus -->
+		<form action="index.php" method="post">
+			<input type="hidden" name="add_group_note_form">
+			<input type="hidden" class="modal_id" name="modal_id">
+			<input type="hidden" name="posY" value="0">
+			<input type="hidden" name="platform" value="<?= $platform_post ?>">
+			<input type="hidden" name="cat" value="<?= $_POST['cat'] ?>">
+			<input type="hidden" name="cat_id" value="<?= $_POST['cat_id'] ?>">
+			<input type="hidden" name="user" value="<?= $_POST['user'] ?>">
+			<input type="hidden" name="view" value="<?= $_POST['view'] ?>">
+			
+			<!-- htmlspecialchars_decode()  -->
+			
+			<textarea name="group_note" id="" class="focus_txt modal_note" style="width: <?= ($width-120) ?>px; height: 80px;"></textarea>
+			
+			<input type="submit" class="btn fl-r" id="add_note_btn" value="add/edit">
+		</form>
+	</div>
+</div>
+
 <!-- Edit Skus Modal Box -->
 <?php $width=660; $height=500; ?>
 <div id="modalBgEditSkus" class="modalBg">
@@ -166,6 +200,24 @@ $files_used[] = 'incs/modal_boxes.php'; //DEBUG
 		}
 	});
 	
+	// Display group notes
+	$('.triggerNoteEdit').on('click', function(){
+		$('#modalBgEditNotes').css({'display': 'block'});
+		
+		$('.focus_txt').focus();
+		
+		let myId = $(this).data('id');
+		let myNote = $(this).data('note');
+		
+		$('.modal_note').val(myNote);
+		
+		console.log('triggerNoteEdit - id: ' + myId);
+	});
+
+
+
+
+
 	// Display add/edit Skus modal box
 	$('.triggerSkuEdit').on('click', function(){
 		// Clear add sku text fields & add sku(s) button
@@ -340,25 +392,25 @@ $files_used[] = 'incs/modal_boxes.php'; //DEBUG
 	// Close modalBox when escape key is pressed
 	$(document).on('keyup',function(e){
 		if (e.keyCode === 27) { // esc
-			$('#modalBg, #modalBgEdit, #modalBgEditSkus, #del_sku').css({'display': 'none'});
+			$('#modalBg, #modalBgEdit, #modalBgEditSkus, #modalBgEditNotes, #del_sku').css({'display': 'none'});
 			totalChkd = 0;
 		}
 	});
 
 	// Close modalBox when cancel is clicked
 	$('.modalClose').on('click',function (){
-		$('#modalBg, #modalBgEdit, #modalBgEditSkus, #del_sku').css({'display': 'none'});
+		$('#modalBg, #modalBgEdit, #modalBgEditSkus, #modalBgEditNotes, #del_sku').css({'display': 'none'});
 		totalChkd = 0;
  	});
 	
 	// Close modalBox when modalBg is clicked
-	$('#modalBg, #modalBgEdit, #modalBgEditSkus').on('click',function(){
-		$('#modalBg, #modalBgEdit, #modalBgEditSkus, #del_sku').css({'display': 'none'});
+	$('#modalBg, #modalBgEdit, #modalBgEditSkus, #modalBgEditNotes').on('click',function(){
+		$('#modalBg, #modalBgEdit, #modalBgEditSkus, #modalBgEditNotes, #del_sku').css({'display': 'none'});
 		totalChkd = 0;
 	});
 	
 	// Don't hide modal box if clicked directly
-	$('#modalBox, #modalBgEdit, #modalBgEditSkus').on('click',function(e){
+	$('#modalBox, #modalBgEdit, #modalBgEditSkus, #modalBgEditNotes').on('click',function(e){
 		e.stopPropagation();
 	});
 </script>

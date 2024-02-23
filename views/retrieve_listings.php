@@ -185,6 +185,11 @@ $fees_val = $lookup_dash_view_profit[$platform_post]['platform_fees'];
 $pricing_suggestion_vals[$platform_post] = $lookup_dash_view_profit[$platform_post]['projection_20perc'];
 $pricing_suggestion_val = $pricing_suggestion_vals[$platform_post];
 
+// Retrieve notes
+$sql = "SELECT `group_`, `note` FROM `notes` WHERE `cat_id` = '$cat_id' AND `source` = '$platform_post'";
+$results = $db_listings->query($sql);
+$session['notes'] = $results->fetchAll(PDO::FETCH_KEY_PAIR);
+
 $session['listings'] = [];
 foreach( $listings as $rec ){
 	// Skip if undefined

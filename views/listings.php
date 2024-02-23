@@ -22,6 +22,7 @@ foreach( $session['listings'] as $id_lkup => $rec ){
 			'cat'           => $cat,
 			'cat_id'        => $cat_id,
 			'platform_post' => $platform_post,
+			'notes'         => $session['notes'],
 		]);
 		
 		$forms_data[] = array_merge($return['forms_data'], ['vars' => $group_variations]);
@@ -236,6 +237,7 @@ $return = spacer_and_buttons_fnc([
 	'cat'           => $cat,
 	'cat_id'        => $cat_id,
 	'platform_post' => $platform_post,
+	'notes'         => $session['notes'],
 ]);
 
 $forms_data[] = array_merge($return['forms_data'], ['vars' => $group_variations]);

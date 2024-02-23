@@ -187,11 +187,13 @@ function calculate_flds_fnc($params)
         case $profit_perc < 10:
             $cls_colour_profit_perc = ' yellow';
             break;
-        case $profit_perc < 16:
+        case $profit_perc < 34:
+        // case $profit_perc < 16:
             $cls_colour_profit_perc = ' grn';
             break;
         default:
-        	$cls_colour_profit_perc = ' blue';
+        	$cls_colour_profit_perc = ' orange';
+        	// $cls_colour_profit_perc = ' blue';
         
         /*
         case $profit_perc < 15:
@@ -409,6 +411,9 @@ function spacer_and_buttons_fnc($args)
 	$cat           = $args['cat'];
 	$cat_id        = $args['cat_id'];
 	$platform_post = $args['platform_post'];
+	$notes         = $args['notes'];
+	
+	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($notes[0]); echo '</pre>'; die();
 	
 	$product_name = '';
 	if( 1 == count($product_names[$group_prev]) ){
@@ -448,7 +453,7 @@ function spacer_and_buttons_fnc($args)
 	static $inc = 0;
 	
 	$tmp = [];
-	$tmp[] = '<tr><td colspan="25">';
+	$tmp[] = '<tr><td colspan="30">';
 	
 	$tmp[] = '<input type="button" name="edit" data-id="'.$inc.'" value="Edit" class="btn bt_spacer">';
 	$tmp[] = '<input type="button" name="add" data-id="'.$inc.'" value="Add" class="btn bt_spacer">';
@@ -459,6 +464,16 @@ function spacer_and_buttons_fnc($args)
 	if( 'p' != $platform_post ){
 		$tmp[] = '<input type="button" name="add_prime" data-id="'.$inc.'" value="Add Prime" class="btn bt_spacer">';
 	}
+	
+	$note = !isset($notes[$inc]) ? '' : $notes[$inc];
+	
+	$tmp[] = '<input type="button" name="note" data-id="'.$inc.'" data-note="'.htmlspecialchars($note).'" value="Pricing Note" class="btn bt_spacer triggerNoteEdit" onclick="return false">';
+	
+	if ('' != $note) {
+		$tmp[] = '<div style="margin-top:0; margin-bottom:0;" class="tooltip"><img src="incs/notes_icon_s.png" style="margin-top:-5px; margin-bottom:-5px;" alt="note"><span class="tooltiptext">'.$note.'</span></div>';
+	}
+	
+	// $tmp[] = !isset($notes[$inc]) ? '' : $notes[$inc];
 	
 	$inc++;
 	

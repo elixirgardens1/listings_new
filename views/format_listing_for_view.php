@@ -109,11 +109,13 @@ foreach( $session['listings'] as $id_lkup => $recs ){
         case $pp1pp2 < 23:
             $cls_colour_pp1pp2 = ' yellow';
             break;
-        case $pp1pp2 < 33:
+        case $pp1pp2 < 44:
+        // case $pp1pp2 < 33:
             $cls_colour_pp1pp2 = ' grn';
             break;
         default:
-        	$cls_colour_pp1pp2 = ' blue';
+        	$cls_colour_pp1pp2 = ' orange';
+        	// $cls_colour_pp1pp2 = ' blue';
     }
 	
 
