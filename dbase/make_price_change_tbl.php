@@ -16,7 +16,7 @@ $db_archive = new PDO('sqlite:archive/listings_NEW.db3');
 
 
 $sql = "DROP TABLE `price_change`";
-$db->query($sql);
+// $db->query($sql);
 
 
 
@@ -29,14 +29,15 @@ $db->exec(
 		`timestamp` INT
 	)"
 );
-
+// die();
+/*
 $price_change_hc = [
     ['11470','e','13.99>14.99','4','1661844099'],
     ['11471','e','17.99>21.49','4','1661844099'],
     ['11472','e','21.99>25.99','4','1661844099'],
     ['11473','e','24.99>29.99','4','1661844099'],
     ['11483','e','15.99>17.69','4','1661844140'],
-    /* etc */
+    // etc
 ];
 
 $stmt = $db->prepare("INSERT INTO `price_change` VALUES (?,?,?,?,?)");
@@ -46,7 +47,7 @@ foreach ($price_change_hc as $i => $rec) {
 }
 $db->commit();
 die();
-
+*/
 
 
 
@@ -78,7 +79,7 @@ die();
 
 
 
-
+$fresh = true;
 $fresh = false;
 
 if (!$fresh) {
@@ -105,8 +106,25 @@ $price_change_data = [];
 foreach ($changes as $rec) {
 	$id = $rec['id'];
 	
+	$platform = '';
 	if( preg_match('/([a-z])\{np\}/', $rec['changes'], $m) ){
 		$platform = $m[1];
+	}
+	
+	if ('' == $platform) {
+		$platform = substr($rec['changes'], 0,1);
+		if ('l' == $platform) {
+			list(, $tmp) = explode('_', $rec['changes']);
+			$platform = substr($tmp, 0,1);
+			
+			echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($rec); echo '</pre>';
+			echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r('Platform: '.$platform); echo '</pre>';
+		}
+		
+		// if ( preg_match('/[^aewp]/', $platform) ) {
+		// 	echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($rec); echo '</pre>';
+		// 	echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r('Platform: '.$platform); echo '</pre>';
+		// }
 	}
 	
 	list(, $price) = explode('{np}', $rec['changes']);
@@ -117,13 +135,18 @@ foreach ($changes as $rec) {
 	$price_change_data[] = [$id, $platform, $price, $user, $ts];
 }
 
+// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($price_change_data); echo '</pre>'; die();
+
 if (!$fresh) {
 	$price_change_data = array_merge($price_change_data, $price_change);
 	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($price_change_data); echo '</pre>'; die();
 }
+else {
+	$db->query("DELETE FROM `price_change`");
+}
 
+// die();
 
-$db->query("DELETE FROM `price_change`");
 
 $stmt = $db->prepare("INSERT INTO `price_change` VALUES (?,?,?,?,?)");
 $db->beginTransaction();

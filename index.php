@@ -7,17 +7,16 @@ http://localhost/elixir/listings_new/index.php
 
 To convert the existing LISTINGS database into the required format run the following script:
 http://192.168.0.24/listings_new/convert_db_format/modify_tables.php
+
+
 */
 
 //DEBUG
-// echo '<div style="position:fixed; margin-left:1710px; margin-top:40px;"><pre style="background:#002; color:#fff;">'; print_r($_POST); echo '</pre></div>'; die();
+// echo '<div style="position:fixed; margin-left:1710px; margin-top:40px;"><pre style="background:#002; color:#fff;">'; print_r($_POST); echo '</pre></div>';
 
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
-
-ini_set("memory_limit", "-1");
-// set_time_limit(40);
 
 // Default to Login view
 $view = isset($_POST['view']) ? $_POST['view'] : 'Login';
@@ -56,7 +55,6 @@ require_once 'incs/lookups.php';
 // echo '<pre style="background:#002; color:#fff;">'; print_r($lookup_platform); echo '</pre>'; die();
 
 // INSERT, UPDATE, DELETE DATA
-require_once 'incs/db_add_group_notes.php';      // add / edit group notes
 require_once 'incs/db_add_del_skus.php';         // add / edit skus
 require_once 'incs/db_add_to_listing.php';       // add to listing
 require_once 'incs/db_add_prime_to_listing.php'; // add prime to listing

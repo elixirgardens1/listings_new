@@ -3,7 +3,7 @@
 http://localhost/listings_new/views/display_price_update_info.php
 http://localhost/ELIXIR/listings_new/views/display_price_update_info.php
 
-http://192.168.0.24/FESP-REFACTOR/ 
+http://192.168.0.24/listings_new/views/display_price_update_info.php 
 */
 
 ini_set('display_errors', '1');
@@ -11,8 +11,64 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 ini_set("memory_limit", "-1");
 
-$db_listings = new PDO("sqlite:../dbase/listings_NEW.db3");
-$db_stock = new PDO("sqlite:../dbase/stock_control.db3");
+
+require_once '../incs/db_connections.php';
+$db_listings = new PDO("sqlite:$listings_db_path");
+$db_stock    = new PDO("sqlite:$stock_control_db_path");
+
+// Get most recent timestamp
+$sql = "SELECT `timestamp` FROM `price_change` ORDER BY `rowid` DESC LIMIT 1";
+$res = $db_listings->query($sql);
+$last_ts = $res->fetch(PDO::FETCH_COLUMN);
+
+// Get all price updates since last time records were added to 'price_change' table.
+$sql = "SELECT * FROM `changes` WHERE `changes` LIKE '%{np}%' AND `timestamp` > $last_ts";
+$res = $db_listings->query($sql);
+$changes = $res->fetchAll(PDO::FETCH_ASSOC);
+
+// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($changes); echo '</pre>'; die();
+
+// Delete `price_change` records older than 18 months
+$ts_minus_18months = strtotime(date('Y-m-d'). ' - 18 months');
+$sql = "DELETE FROM `price_change` WHERE `timestamp` < $ts_minus_18months";
+$db_listings->query($sql);
+
+// Add new records to `price_change` table
+// +++++++++++++++++++++++++++++++++++++++
+$price_change_data = [];
+foreach ($changes as $rec) {
+    $id = $rec['id'];
+    
+    $platform = '';
+    if( preg_match('/([a-z])\{np\}/', $rec['changes'], $m) ){
+        $platform = $m[1];
+    }
+    
+    if ('' == $platform) {
+        $platform = substr($rec['changes'], 0,1);
+        if ('l' == $platform) {
+            list(, $tmp) = explode('_', $rec['changes']);
+            $platform = substr($tmp, 0,1);
+        }
+    }
+    
+    list(, $price) = explode('{np}', $rec['changes']);
+    list($price,) = explode('{', $price);
+    
+    $user = $rec['user'];
+    $ts = $rec['timestamp'];
+    $price_change_data[] = [$id, $platform, $price, $user, $ts];
+}
+
+$stmt = $db_listings->prepare("INSERT INTO `price_change` (`id`,`platform`,`change`,`user`,`timestamp`) VALUES (?,?,?,?,?)");
+
+$db_listings->beginTransaction();
+foreach ($price_change_data as $rec) {
+    $stmt->execute([$rec[0],$rec[1],$rec[2],$rec[3],$rec[4]]);
+}
+$db_listings->commit();
+
+
 
 
 $sql = "SELECT * FROM `price_change`";
@@ -164,7 +220,7 @@ foreach ($changes as $rec) {
 $undef_vals = array_values($undef);
 sort($undef_vals);
 
-echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($undef_vals); echo '</pre>';
+// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r("Not in 'listings' table: "); print_r($undef_vals); echo '</pre>';
 
 /* QUERIES:
 key (listings): g107, g108, g109 etc
@@ -213,7 +269,7 @@ function array_to_table_fnc($args){
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>PHP Array to Table</title>
+<title>All listings price changes</title>
 
 <!-- TABLE STYLE -->
 <style>

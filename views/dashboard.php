@@ -19,6 +19,8 @@ $files_used[] = 'views/dashboard.php'; //DEBUG
 		<input type="submit" name="view" value="Errors" class="btn w200">
 
 		<input type="submit" name="view" value="Changes" class="btn w200">
+		
+		<a href="views/display_price_update_info.php" class="btn w160 h22" style="line-height: 22px;" target="_blank">Price Changes</a>
 
 		<div class="dropdown" style="float:right; width:120px;">
 			<button onclick="myFunction()" class="dropbtn w120 h30">View Profit</button>
