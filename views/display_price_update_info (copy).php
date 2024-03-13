@@ -22,8 +22,7 @@ $res = $db_listings->query($sql);
 $last_ts = $res->fetch(PDO::FETCH_COLUMN);
 
 // Get all price updates since last time records were added to 'price_change' table.
-$sql = "SELECT * FROM `changes` WHERE `changes` LIKE '%{np}%' AND `timestamp` > 1710201600"; //DEBUG
-// $sql = "SELECT * FROM `changes` WHERE `changes` LIKE '%{np}%' AND `timestamp` > $last_ts";
+$sql = "SELECT * FROM `changes` WHERE `changes` LIKE '%{np}%' AND `timestamp` > $last_ts";
 $res = $db_listings->query($sql);
 $changes = $res->fetchAll(PDO::FETCH_ASSOC);
 
@@ -35,34 +34,16 @@ $sql = "DELETE FROM `price_change` WHERE `timestamp` < $ts_minus_18months";
 $db_listings->query($sql);
 
 
-// Get 'price_change' data here to check which 'id's already exist.
-// It will need updating from new 'changes' data (INSERT or UPDATE).
-$sql = "SELECT * FROM `price_change` WHERE `timestamp` != 1710244105"; //DEBUG
-// $sql = "SELECT * FROM `price_change`";
-$res = $db_listings->query($sql);
-$price_change = $res->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+
+
+
+
+// Add new records to `price_change` table
+// +++++++++++++++++++++++++++++++++++++++
 /*
-[
-    [
-        [id] => 11140
-        [platform] => e
-        [change] => 10.89>10.99
-        [user] => 2
-        [timestamp] => 1704702287
-    ][
-        [id] => 11150
-        [platform] => e
-        [change] => 77.49>78.99
-        [user] => 2
-        [timestamp] => 1704702310
-    ]
-    etc.
-*/
-
-$price_change_ids = array_column($price_change, 'id');
-$price_change_ids_keys = array_fill_keys($price_change_ids, 1);
-
-// Add/Edit `price_change` table records
 $price_change_data = [];
 foreach ($changes as $rec) {
     $id = $rec['id'];
@@ -85,80 +66,47 @@ foreach ($changes as $rec) {
     
     $user = $rec['user'];
     $ts = $rec['timestamp'];
-    
-    $price = 'UPDATED_PRICE'; //DEBUG
-    
-    // UPDATE record if ID already exists
-    if (isset($price_change_ids_keys[$id])) {
-        if ($ts < 1710241194) {continue;} //DEBUG
-        $price_change_data['update'][$id] = [$platform, $price, $user, $ts, $id];
-    }
-    // INSERT new record 
-    else {
-        $price_change_data['insert'][] = [$id, $platform, $price, $user, $ts];
-    }
+    $price_change_data[] = [$id, $platform, $price, $user, $ts];
 }
 
-/*
-LAST INSERT ROW: 11692
-
-UPDATES
-14261 | e | 6.59>6.49
-14260 | a | 5.69>5.99
-14261 | a | 6.98>6.99
-14262 | a | 7.89>7.99
-14263 | a | 8.29>8.49
-14264 | a | 9.39>8.99
-14265 | a | 9.99>9.49
-14266 | a | 10.29>9.99
-14267 | a | 12.09>11.99
-14268 | a | 12.75>12.49
-14270 | a | 26.99>29.99
-*/
-
-// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($price_change_data); echo '</pre>';
-
-
-$stmt_insert = $db_listings->prepare("INSERT INTO `price_change` (`id`,`platform`,`change`,`user`,`timestamp`) VALUES (?,?,?,?,?)");
-$stmt_update = $db_listings->prepare("UPDATE `price_change` SET `platform` = ?, `change` = ?, `user` = ?, `timestamp` = ? WHERE `id` = ?");
+$stmt = $db_listings->prepare("INSERT INTO `price_change` (`id`,`platform`,`change`,`user`,`timestamp`) VALUES (?,?,?,?,?)");
 
 $db_listings->beginTransaction();
-foreach ($price_change_data as $type => $recs) {
-    if ('update' == $type) {
-        foreach ($recs as $rec) {
-            $stmt_update->execute($rec);
-        }
-    }
-    elseif ('insert' == $type) {
-        foreach ($recs as $rec) {
-            $stmt_insert->execute($rec);
-        }
-    }
+foreach ($price_change_data as $rec) {
+    $stmt->execute([$rec[0],$rec[1],$rec[2],$rec[3],$rec[4]]);
 }
 $db_listings->commit();
-
-
-// Update 'price_change' array
-foreach ($price_change as $i => $rec) {
-    if (isset($price_change_data['update'][$rec['id']])) {
-        $price_change[$i]['change']    = $price_change_data['update'][$rec['id']][1];
-        $price_change[$i]['user']      = $price_change_data['update'][$rec['id']][2];
-        $price_change[$i]['timestamp'] = $price_change_data['update'][$rec['id']][3];
-    }
-}
-// Append to 'price_change' array
-foreach ($price_change_data['insert'] as $rec) {
-    $price_change[] = $rec;
-}
+*/
 
 
 
-// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($price_change); echo '</pre>'; die();
+$sql = "SELECT * FROM `price_change`";
+// $sql = "SELECT * FROM `price_change` LIMIT 40000";
+// $sql = "SELECT * FROM `changes` WHERE `changes` LIKE '%{np}%'";
+$res = $db_listings->query($sql);
+$changes = $res->fetchAll(PDO::FETCH_ASSOC); // FETCH_ASSOC FETCH_COLUMN FETCH_KEY_PAIR FETCH_NUM
+/*
+[
+    [
+        [id] => 11140
+        [platform] => e
+        [change] => 10.89>10.99
+        [user] => 2
+        [timestamp] => 1704702287
+    ][
+        [id] => 11150
+        [platform] => e
+        [change] => 77.49>78.99
+        [user] => 2
+        [timestamp] => 1704702310
+    ]
+    etc.
+*/
+
+$changes_ids_str = implode("','", array_column($changes, 'id'));
 
 
-$price_changes_ids_str = implode("','", array_column($price_change, 'id'));
-
-$sql = "SELECT id_lkup,key,cat_id,product_name FROM `listings` WHERE `id_lkup` IN ('$price_changes_ids_str')";
+$sql = "SELECT id_lkup,key,cat_id,product_name FROM `listings` WHERE `id_lkup` IN ('$changes_ids_str')";
 $res = $db_listings->query($sql);
 $listings_info_lkup = $res->fetchAll(PDO::FETCH_ASSOC);
 
@@ -251,9 +199,10 @@ $sql = "SELECT id,txt FROM `platforms`";
 $res = $db_listings->query($sql);
 $platform_lkup = $res->fetchAll(PDO::FETCH_KEY_PAIR);
 
+
 $undef = [];
 $data = [];
-foreach ($price_change as $rec) {
+foreach ($changes as $rec) {
     $cat = 'MISSING_CAT';
     $sub_cat = 'MISSING_SUB';
     $product_name = 'MISSING_NAME';
@@ -286,6 +235,7 @@ sort($undef_vals);
 key (listings): g107, g108, g109 etc
 Fertilisers (fer) > Liquid Seaweed and iron (a59)
 */
+
 
 $args_array_to_table = [
     'tbl_class' => 'tbl-1',
