@@ -85,7 +85,7 @@ Table Columns:
 			<th class="sticky calc profit">Profit (&pound;)</th>
 			<th class="sticky calc profit_perc">Profit %</th>
 			
-			<th class="sticky calc fees">PP1+<br>PP2 (%)</th>
+			<th class="sticky calc fees">PP1+<br>PP2+<br>Profit (%)</th>
 			<th class="sticky calc fees">PP1 (&pound;)</th>
 			<th class="sticky calc fees">PP2 (&pound;)</th>
 			

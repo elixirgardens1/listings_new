@@ -22,8 +22,8 @@ $res = $db_listings->query($sql);
 $last_ts = $res->fetch(PDO::FETCH_COLUMN);
 
 // Get all price updates since last time records were added to 'price_change' table.
-$sql = "SELECT * FROM `changes` WHERE `changes` LIKE '%{np}%' AND `timestamp` > 1710201600"; //DEBUG
-// $sql = "SELECT * FROM `changes` WHERE `changes` LIKE '%{np}%' AND `timestamp` > $last_ts";
+// $sql = "SELECT * FROM `changes` WHERE `changes` LIKE '%{np}%' AND `timestamp` > 1710201600"; //DEBUG
+$sql = "SELECT * FROM `changes` WHERE `changes` LIKE '%{np}%' AND `timestamp` > $last_ts";
 $res = $db_listings->query($sql);
 $changes = $res->fetchAll(PDO::FETCH_ASSOC);
 
@@ -31,14 +31,14 @@ $changes = $res->fetchAll(PDO::FETCH_ASSOC);
 
 // Delete `price_change` records older than 18 months
 $ts_minus_18months = strtotime(date('Y-m-d'). ' - 18 months');
-$sql = "DELETE FROM `price_change` WHERE `timestamp` < $ts_minus_18months";
-$db_listings->query($sql);
+// $sql = "DELETE FROM `price_change` WHERE `timestamp` < $ts_minus_18months";
+// $db_listings->query($sql);
 
 
 // Get 'price_change' data here to check which 'id's already exist.
 // It will need updating from new 'changes' data (INSERT or UPDATE).
-$sql = "SELECT * FROM `price_change` WHERE `timestamp` != 1710244105"; //DEBUG
-// $sql = "SELECT * FROM `price_change`";
+// $sql = "SELECT * FROM `price_change` WHERE `timestamp` != 1710244105"; //DEBUG
+$sql = "SELECT * FROM `price_change`";
 $res = $db_listings->query($sql);
 $price_change = $res->fetchAll(PDO::FETCH_ASSOC);
 /*
@@ -90,12 +90,12 @@ foreach ($changes as $rec) {
     
     // UPDATE record if ID already exists
     if (isset($price_change_ids_keys[$id])) {
-        if ($ts < 1710241194) {continue;} //DEBUG
-        $price_change_data['update'][$id] = [$platform, $price, $user, $ts, $id];
+        // if ($ts < 1710241194) {continue;} //DEBUG
+        $price_change_data['update']["{$id}_$platform"] = [$platform, $price, $user, $ts, $id];
     }
     // INSERT new record 
     else {
-        $price_change_data['insert'][] = [$id, $platform, $price, $user, $ts];
+        $price_change_data['insert']["{$id}_$platform"] = [$id, $platform, $price, $user, $ts];
     }
 }
 
@@ -116,12 +116,9 @@ UPDATES
 14270 | a | 26.99>29.99
 */
 
-// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($price_change_data); echo '</pre>';
-
-
 $stmt_insert = $db_listings->prepare("INSERT INTO `price_change` (`id`,`platform`,`change`,`user`,`timestamp`) VALUES (?,?,?,?,?)");
 $stmt_update = $db_listings->prepare("UPDATE `price_change` SET `platform` = ?, `change` = ?, `user` = ?, `timestamp` = ? WHERE `id` = ?");
-
+/*
 $db_listings->beginTransaction();
 foreach ($price_change_data as $type => $recs) {
     if ('update' == $type) {
@@ -136,23 +133,35 @@ foreach ($price_change_data as $type => $recs) {
     }
 }
 $db_listings->commit();
+*/
 
+// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($price_change); echo '</pre>'; die();
 
 // Update 'price_change' array
-foreach ($price_change as $i => $rec) {
-    if (isset($price_change_data['update'][$rec['id']])) {
-        $price_change[$i]['change']    = $price_change_data['update'][$rec['id']][1];
-        $price_change[$i]['user']      = $price_change_data['update'][$rec['id']][2];
-        $price_change[$i]['timestamp'] = $price_change_data['update'][$rec['id']][3];
+if (isset($price_change_data['update'])) {
+    foreach ($price_change as $i => $rec) {
+        if (isset($price_change_data['update']["{$rec['id']}_{$rec['platform']}"])) {
+            $price_change[$i]['change']    = $price_change_data['update']["{$rec['id']}_{$rec['platform']}"][1];
+            $price_change[$i]['user']      = $price_change_data['update']["{$rec['id']}_{$rec['platform']}"][2];
+            $price_change[$i]['timestamp'] = $price_change_data['update']["{$rec['id']}_{$rec['platform']}"][3];
+        }
     }
 }
 // Append to 'price_change' array
-foreach ($price_change_data['insert'] as $rec) {
-    $price_change[] = $rec;
+if (isset($price_change_data['insert'])) {
+    foreach ($price_change_data['insert'] as $rec) {
+        $price_change[] = [
+            'id'        => $rec[0],
+            'platform'  => $rec[1],
+            'change'    => $rec[2],
+            'user'      => $rec[3],
+            'timestamp' => $rec[4],
+        ];
+    }
 }
 
-
-
+// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($price_change_data['insert']); echo '</pre>';
+// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r('$price_change'); echo '</pre>';
 // echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($price_change); echo '</pre>'; die();
 
 
@@ -272,7 +281,7 @@ foreach ($price_change as $rec) {
     $platform = $platform_lkup[$rec['platform']];
     $change = $rec['change'];
     $user = $user_lkup[$rec['user']];
-    $date = date("Y-m-d", $rec['timestamp']);
+    $date = date("Y-m-d H:i", $rec['timestamp']);
     
     $data[] = [$id,$cat,$sub_cat,$product_name,$change,$platform,$user,$date];
 }

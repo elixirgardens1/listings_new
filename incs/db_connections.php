@@ -2,7 +2,8 @@
 
 // All this need storing in the likes of db_lkup table in a database.
 $doc_root = $_SERVER["DOCUMENT_ROOT"];
-$listings_path = "$doc_root/ELIXIR/listings_new/";
+$listings_path = "$doc_root/listings_new/";
+// $listings_path = "$doc_root/ELIXIR/listings_new/";
 
 if ($live = false) {
     require_once 'C:/inetpub/wwwroot/database_paths.php';

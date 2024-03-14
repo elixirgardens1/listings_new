@@ -18,7 +18,8 @@ $price_change = $res->fetchAll(PDO::FETCH_ASSOC); // FETCH_ASSOC FETCH_COLUMN FE
 $tmp = [];
 $price_change_data = [];
 foreach ($price_change as $rec) {
-	if (!isset($tmp[$rec['id']])) {
+	$id_platform = $rec['id'].$rec['platform'];
+	if (!isset($tmp[$id_platform])) {
 		// $price_change_data[] = [
 		// 	'id'        => $rec['id'],
 		// 	'platform'  => $rec['platform'],
@@ -27,7 +28,7 @@ foreach ($price_change as $rec) {
 		// 	'timestamp' => $rec['timestamp'],
 		// ];
 		$price_change_data[] = $rec;
-		$tmp[$rec['id']] = 1;
+		$tmp[$id_platform] = 1;
 	}
 }
 
@@ -36,11 +37,12 @@ function sortByTimestamp($a, $b) {
 }
 usort($price_change_data, 'sortByTimestamp');
 
+// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($price_change_data); echo '</pre>'; die();
 
 
 
 
-/*
+
 $sql = "DELETE FROM `price_change`";
 $db->query($sql);
 
@@ -52,7 +54,7 @@ foreach ($price_change_data as $rec) {
     $stmt->execute([$rec['id'],$rec['platform'],$rec['change'],$rec['user'],$rec['timestamp']]);
 }
 $db->commit();
-*/
+
 
 
 // echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r(count($price_change)); echo '</pre>';
