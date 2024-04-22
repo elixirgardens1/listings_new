@@ -44,12 +44,17 @@ function calculate_flds_fnc($params)
 	// Calculate fields
 	$total_product_cost = $args['cost_per_unit'] * $args['variation'];
 	
-	if( '20-30kg DX Over 8ft' != $args['courier'] ){
-		$postage = ($courier_cost + $args['lookup_postage_bands'][ $args['packaging_band'] ]['cost']) * ceil($args['lowest_variation_weight'] * $args['variation'] / 29.5 );
-	}
-	else{
-		$postage = (13.59+( ($total_weight - 20) *0.3 )) *1.095 *1.1;
-	}
+	//Rob ask disable 2024 04 18
+	// if( '20-30kg DX Over 8ft' != $args['courier'] ){
+	// 	$postage = ($courier_cost + $args['lookup_postage_bands'][ $args['packaging_band'] ]['cost']) * ceil($args['lowest_variation_weight'] * $args['variation'] / 29.5 );
+	// }
+	// else{
+	// 	$postage = (13.59+( ($total_weight - 20) *0.3 )) *1.095 *1.1;
+	// }
+
+	//Replaced DX calculation
+	$postage = ($courier_cost + $args['lookup_postage_bands'][ $args['packaging_band'] ]['cost']) * ceil($args['lowest_variation_weight'] * $args['variation'] / 29.5 );
+	
 	
 	
 	// If courier name contains 'pallet', 'drop' or '20-30kg dx'
@@ -411,9 +416,6 @@ function spacer_and_buttons_fnc($args)
 	$cat           = $args['cat'];
 	$cat_id        = $args['cat_id'];
 	$platform_post = $args['platform_post'];
-	$notes         = $args['notes'];
-	
-	// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($notes[0]); echo '</pre>'; die();
 	
 	$product_name = '';
 	if( 1 == count($product_names[$group_prev]) ){
@@ -453,7 +455,7 @@ function spacer_and_buttons_fnc($args)
 	static $inc = 0;
 	
 	$tmp = [];
-	$tmp[] = '<tr><td colspan="30">';
+	$tmp[] = '<tr><td colspan="25">';
 	
 	$tmp[] = '<input type="button" name="edit" data-id="'.$inc.'" value="Edit" class="btn bt_spacer">';
 	$tmp[] = '<input type="button" name="add" data-id="'.$inc.'" value="Add" class="btn bt_spacer">';
@@ -464,16 +466,6 @@ function spacer_and_buttons_fnc($args)
 	if( 'p' != $platform_post ){
 		$tmp[] = '<input type="button" name="add_prime" data-id="'.$inc.'" value="Add Prime" class="btn bt_spacer">';
 	}
-	
-	$note = !isset($notes[$inc]) ? '' : $notes[$inc];
-	
-	$tmp[] = '<input type="button" name="note" data-id="'.$inc.'" data-note="'.htmlspecialchars($note).'" value="Pricing Note" class="btn bt_spacer triggerNoteEdit" onclick="return false">';
-	
-	if ('' != $note) {
-		$tmp[] = '<div style="margin-top:0; margin-bottom:0;" class="tooltip"><img src="incs/notes_icon_s.png" style="margin-top:-5px; margin-bottom:-5px;" alt="note"><span class="tooltiptext">'.$note.'</span></div>';
-	}
-	
-	// $tmp[] = !isset($notes[$inc]) ? '' : $notes[$inc];
 	
 	$inc++;
 	

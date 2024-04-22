@@ -333,7 +333,7 @@ function fnc_calc_new_price(rowid,element_class_name){
         // pp1pp2 = 100;
         $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').html(pp1pp2.toFixed(2) );
         
-        // Modify "pp1pp2 %" cell colour
+        // Modify "Profit %" cell colour
 		switch (true) {
 		    case pp1pp2 < 19:
                 $('tr[data-id_lkup="'+rowid+'"] .pp1pp2').removeClass().addClass('pp1pp2 red-bg');
@@ -499,15 +499,23 @@ function fnc_postage(rowid){
 
 	courier = courier.replace("£10", "&pound;10");
 	
-	if ('20-30kg DX Over 8ft' != courier) {
-		var cost_c = parseFloat( lookup_couriers[courier]['cost'] );
-		var postage = (cost_c + cost_pb) * Math.ceil(lowest_variation_weight * variation / 29.5);
-	}
-	else {
-		var total_weight = $('tr[data-id_lkup="'+rowid+'"] .total_weight').html();
-		var postage = (13.59+( (total_weight - 20) *0.3 )) *1.095 *1.1;
-	}
 	
+	// Rob ask disable 2024 04 18	
+	// if ('20-30kg DX Over 8ft' != courier) {
+	// 	var cost_c = parseFloat( lookup_couriers[courier]['cost'] );
+	// 	var postage = (cost_c + cost_pb) * Math.ceil(lowest_variation_weight * variation / 29.5);
+	// }
+	// else {
+	// 	var total_weight = $('tr[data-id_lkup="'+rowid+'"] .total_weight').html();
+	// 	var postage = (13.59+( (total_weight - 20) *0.3 )) *1.095 *1.1;
+	// }
+
+
+	//This on what we replaice
+	var cost_c = parseFloat( lookup_couriers[courier]['cost'] );
+	var postage = (cost_c + cost_pb) * Math.ceil(lowest_variation_weight * variation / 29.5);
+
+
 	// console.log(['Postage: ' + postage, 'total_weight: ' + total_weight]);
 
 	// console.table({
