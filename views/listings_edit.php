@@ -146,7 +146,7 @@ foreach( $session['listings'] as $id_lkup => $rec ){ ?>
 			<input type="text"
 			class="perc_advertising txtfld def"
 			name="listings_data[<?= $id_lkup ?>][perc_advertising]"
-			value="<?= $recs['perc_advertising'] ?>"
+			value="<?= $rec['perc_advertising'] ?>"
 			data-lpignore="true"
 			autocomplete="off">
 		</td>

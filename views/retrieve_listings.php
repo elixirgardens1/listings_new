@@ -215,9 +215,14 @@ foreach( $listings as $rec ){
 	}
 	else{
 		if( isset($keys_costs[$rec['key']]) ){
+			// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($rec['key']); echo '</pre>';
+			// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r('IF'); echo '</pre>';
 			$cpu_ = $keys_costs[$rec['key']];
 		}
 		else{
+			// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r($rec['key']); echo '</pre>';
+			// echo '<pre style="background:#111; color:#b5ce28; font-size:11px;">'; print_r('ELSE'); echo '</pre>';
+			// $multi_cpu = get_multi_cpu_fnc($db_listings);
 			$multi_cpu = get_multi_cpu_fnc($crud_listings);
 
 			$keys_ = explode(' ', $multi_cpu[$rec['key']]['keys']);

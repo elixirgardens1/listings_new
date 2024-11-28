@@ -251,6 +251,8 @@ if( isset($_POST['save_listing_to_db']) ){
 			//=======================================================
 			$db_listings->beginTransaction();
 			
+			$perc_advertising = '' != $perc_advertising ? $perc_advertising : 0;
+			
 			$stmt->execute([
 				$prev_price,
 				$new_price,

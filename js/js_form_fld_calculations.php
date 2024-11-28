@@ -166,7 +166,7 @@ $(function() {
 
 		//DEBUG
 		var str = $(this).val();
-
+		
 		if( -1 !== str.indexOf("_") && 'product_name' == element_class_name ){
 			// console.log( 'No Underscores' );
 
@@ -188,7 +188,7 @@ $(function() {
 	$('.txtfld').on('blur', function(){
 		rowid = $(this).parent().parent().attr('data-id_lkup');
 		element_class_name = $(this).attr("class").split(" ")[0];
-
+		
 		fnc_calc_new_price(rowid,element_class_name);
 	});
 });
@@ -232,6 +232,7 @@ function fnc_calc_new_price(rowid,element_class_name){
 		'prev_price' == element_class_name ||
 		'new_price' == element_class_name ||
 		'cost_per_unit' == element_class_name ||
+		'perc_advertising' == element_class_name || //2024-11-28
 		'variation' == element_class_name ||
 		'courier' == element_class_name ||
 		'packaging_band' == element_class_name
